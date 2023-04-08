@@ -9,7 +9,8 @@ import SwiftUI
 
 struct Gauge: View {
     
-    @State var value: Double = 18 / 100 * 600
+    @Binding var value: Double
+    
     var body: some View {
         ZStack (alignment: .leading) {
             Capsule()
@@ -17,14 +18,8 @@ struct Gauge: View {
                 .foregroundColor(.light)
             
             Capsule()
-                .frame(width: value, height: 64)
+                .frame(width: value * 600 , height: 64)
                 .foregroundColor(.keyColor)
         }
-    }
-}
-
-struct Gauge_Previews: PreviewProvider {
-    static var previews: some View {
-        Gauge()
     }
 }

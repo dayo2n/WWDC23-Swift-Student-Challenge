@@ -10,6 +10,7 @@ import SwiftUI
 struct TutorialView: View {
     @State private var learningItem: LearningItem = LearningItem(learningMode: .number)
     @State private var currentLevel: Int = 0
+    @State private var currentProgressValue: Double = 0.1
     
     @State private var showLearningView: Bool = true
     @State private var isCellPressed: [Bool] = Array(repeating: false, count: 6)
@@ -20,7 +21,7 @@ struct TutorialView: View {
     var body: some View {
         VStack {
             // gauge
-            Gauge()
+            Gauge(value: $currentProgressValue)
             
             Text("Let's do this!")
                 .font(.sandoll(size: 44, weight: .bold))
@@ -94,20 +95,19 @@ struct TutorialView: View {
         .animation(.spring())
         .alert(isCorrectResult ? "Great!🥳" : "Do it again🤓", isPresented: $showResult) {
             Button(isCorrectResult ? "Next" : "Again", role: .cancel) {
-                if currentLevel < learningItem.learningItems.count - 1 {
-                    currentLevel += isCorrectResult ? 1 : 0
-                    isCellPressed = Array(repeating: false, count: 6)
-                    
-                    if isCorrectResult {
-                        showLearningView = true
-                        correctResultCells = Braille.BRAILLE_NUMBERS[currentLevel].cells
-                    }
+                isCellPressed = Array(repeating: false, count: 6)
+                
+                if isCorrectResult {
+                    currentLevel += (currentLevel < learningItem.learningItems.count - 1) ? 1 : 0
+                    correctResultCells = Braille.BRAILLE_NUMBERS[currentLevel].cells
+                    showLearningView = true
+                    currentProgressValue = Double(currentLevel + 1) / Double(learningItem.learningItems.count)
                 }
-
             }
         }
         .navigationBarItems(trailing: Button(action: { showLearningView = true }, label: {
             Text("Hint")
+                .padding()
         }))
     }
 }
