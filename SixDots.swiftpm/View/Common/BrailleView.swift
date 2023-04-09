@@ -13,14 +13,14 @@ struct BrailleView: View {
     var cellSize: CGFloat
     
     var body: some View {
-        HStack (spacing: 30) {
-            VStack (spacing: 25) {
+        HStack (spacing: 10) {
+            VStack (spacing: 15) {
                 ForEach (0..<3) { cell in
                     CellView(isTapped: $statusOfCells[cell], cellSize: cellSize)
                 }
             }
             
-            VStack (spacing: 25) {
+            VStack (spacing: 15) {
                 ForEach (0..<3) { cell in
                     CellView(isTapped: $statusOfCells[cell + 3], cellSize: cellSize)
                 }
