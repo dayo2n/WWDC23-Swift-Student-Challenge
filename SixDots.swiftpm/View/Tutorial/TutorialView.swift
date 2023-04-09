@@ -18,8 +18,18 @@ struct TutorialView: View {
     @State private var showResult: Bool = false
     @State private var isCorrectResult: Bool = false
     
+    @State private var showNavigationAlert: Bool = false
+    @State private var activateNavigationToQuizView: Bool = false
+    
     var body: some View {
         VStack {
+            NavigationLink(
+                destination: TutorialNumberQuizView(),
+                isActive: $activateNavigationToQuizView,
+                label: {
+                    EmptyView()
+                })
+            
             // gauge
             Gauge(value: $currentProgressValue)
             
@@ -98,17 +108,32 @@ struct TutorialView: View {
                 isCellPressed = Array(repeating: false, count: 6)
                 
                 if isCorrectResult {
-                    currentLevel += (currentLevel < learningItem.learningItems.count - 1) ? 1 : 0
-                    correctResultCells = Braille.BRAILLE_NUMBERS[currentLevel].cells
-                    showLearningView = true
-                    currentProgressValue = Double(currentLevel + 1) / Double(learningItem.learningItems.count)
+                    if currentLevel == learningItem.learningItems.count - 1 {
+                        showNavigationAlert = true
+                    } else if currentLevel < learningItem.learningItems.count - 1 {
+                        currentLevel += 1
+                        correctResultCells = Braille.BRAILLE_NUMBERS[currentLevel].cells
+                        showLearningView = true
+                        currentProgressValue = Double(currentLevel + 1) / Double(learningItem.learningItems.count)
+                    }
                 }
             }
+        }
+        .alert(isPresented: $showNavigationAlert) {
+            Alert(title: Text("You did it!😆"), message: Text("Let's check your Braille"), dismissButton: .default(Text("Okay"), action: { 
+                self.navigateToQuizView()
+            }))
         }
         .navigationBarItems(trailing: Button(action: { showLearningView = true }, label: {
             Text("Hint")
                 .padding()
         }))
+    }
+    
+    private func navigateToQuizView() {
+        DispatchQueue.main.async {
+            self.activateNavigationToQuizView = true
+        }
     }
 }
 

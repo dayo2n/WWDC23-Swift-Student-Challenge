@@ -14,11 +14,11 @@ struct Gauge: View {
     var body: some View {
         ZStack (alignment: .leading) {
             Capsule()
-                .frame(width: 600, height: 64)
+                .frame(width: 600, height: 50)
                 .foregroundColor(.light)
             
             Capsule()
-                .frame(width: value * 600 , height: 64)
+                .frame(width: value * 600 , height: 50)
                 .foregroundColor(.keyColor)
         }
     }

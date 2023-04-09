@@ -13,12 +13,13 @@ struct CheckButton: View {
     
     var body: some View {
         Text("Check")
-            .font(.sandoll(size: 48, weight: .semibold))
+            .font(.sandoll(size: 30, weight: .semibold))
             .foregroundColor(isActive ? Color.dark : Color.light)
+            .frame(width: 200, height: 80)
             .background {
                 Rectangle()
                     .foregroundColor(isActive ? Color.keyColor : Color.light)
-                    .frame(width: 220, height: 100)
+                    .frame(width: 200, height: 80)
                     .cornerRadius(40)
                     .opacity(isActive ? 0.8 : 0.5)
             }
