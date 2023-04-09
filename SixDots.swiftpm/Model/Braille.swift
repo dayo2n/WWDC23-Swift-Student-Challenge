@@ -30,5 +30,25 @@ struct Braille {
                                     Braille(keyword: "g", cells: [true, true, false, true, true, false]),
                                     Braille(keyword: "h", cells: [true, true, false, false, true, false]),
                                     Braille(keyword: "i", cells: [false, true, false, true, false, false]),
-                                    Braille(keyword: "j", cells: [false, true, false, true, true, false])]
+                                    Braille(keyword: "j", cells: [false, true, false, true, true, false]),
+                                    
+                                    Braille(keyword: "k", cells: [true, false, true, false, false, false]),
+                                    Braille(keyword: "l", cells: [true, true, true, false, false, false]),
+                                    Braille(keyword: "m", cells: [true, false, true, true, false, false]),
+                                    Braille(keyword: "n", cells: [true, false, true, true, true, false]),
+                                    Braille(keyword: "o", cells: [true, false, true, false, true, false]),
+                                    Braille(keyword: "p", cells: [true, true, true, true, false, false]),
+                                    Braille(keyword: "q", cells: [true, true, true, true, true, false]),
+                                    Braille(keyword: "r", cells: [true, true, true, false, true, false]),
+                                    Braille(keyword: "s", cells: [false, true, true, true, false, false]),
+                                    Braille(keyword: "t", cells: [false, true, true, true, true, false]),
+                                    
+                                    Braille(keyword: "u", cells: [true, false, true, false, false, true]),
+                                    Braille(keyword: "v", cells: [true, true, true, false, false, true]),
+                                    Braille(keyword: "w", cells: [false, true, false, true, true, true]),
+                                    Braille(keyword: "x", cells: [true, false, true, true, false, true]),
+                                    Braille(keyword: "y", cells: [true, false, true, true, true, true]),
+                                    Braille(keyword: "z", cells: [true, false, true, false, true, true]),
+                                    
+    ]
 }

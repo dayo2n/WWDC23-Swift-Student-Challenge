@@ -1,16 +1,16 @@
 //
-//  TutorialView.swift
+//  SwiftUIView.swift
 //  
 //
-//  Created by 제나 on 2023/04/07.
+//  Created by 제나 on 2023/04/09.
 //
 
 import SwiftUI
 
-struct TutorialView: View {
-    @State private var learningItem: LearningItem = LearningItem(learningMode: .number)
+struct TutorialAlphabetView: View {
+    @State private var learningItem: LearningItem = LearningItem(learningMode: .alphabet)
     @State private var currentLevel: Int = 0
-    @State private var currentProgressValue: Double = 0.1
+    @State private var currentProgressValue: Double = 0.03
     
     @State private var showLearningView: Bool = true
     @State private var isCellPressed: [Bool] = Array(repeating: false, count: 6)
@@ -24,7 +24,7 @@ struct TutorialView: View {
     var body: some View {
         VStack {
             NavigationLink(
-                destination: TutorialNumberQuizView(),
+                destination: TutorialAlphabetQuizView(),
                 isActive: $activateNavigationToQuizView,
                 label: {
                     EmptyView()
@@ -61,7 +61,7 @@ struct TutorialView: View {
             .padding(.bottom, 60)
             
             Button {
-                isCorrectResult = isCellPressed == Braille.BRAILLE_NUMBERS[currentLevel].cells
+                isCorrectResult = isCellPressed == Braille.BRAILLE_ALPHABETS[currentLevel].cells
                 showResult = true
             } label: {
                 CheckButton()
@@ -69,7 +69,7 @@ struct TutorialView: View {
             .padding(.bottom, 30)
         }
         .onAppear {
-            correctResultCells = Braille.BRAILLE_NUMBERS[currentLevel].cells
+            correctResultCells = Braille.BRAILLE_ALPHABETS[currentLevel].cells
         }
         .sheet(isPresented: $showLearningView) {
             VStack(spacing: 20) {
@@ -112,7 +112,7 @@ struct TutorialView: View {
                         showNavigationAlert = true
                     } else if currentLevel < learningItem.learningItems.count - 1 {
                         currentLevel += 1
-                        correctResultCells = Braille.BRAILLE_NUMBERS[currentLevel].cells
+                        correctResultCells = Braille.BRAILLE_ALPHABETS[currentLevel].cells
                         showLearningView = true
                         currentProgressValue = Double(currentLevel + 1) / Double(learningItem.learningItems.count)
                     }
@@ -120,7 +120,7 @@ struct TutorialView: View {
             }
         }
         .alert(isPresented: $showNavigationAlert) {
-            Alert(title: Text("You did it!😆"), message: Text("Let's check your Braille"), dismissButton: .default(Text("Okay"), action: { 
+            Alert(title: Text("You did it!😆"), message: Text("Let's check your Braille"), dismissButton: .default(Text("Okay"), action: {
                 self.navigateToQuizView()
             }))
         }
@@ -137,3 +137,10 @@ struct TutorialView: View {
     }
 }
 
+
+
+struct TutorialAlphabetView_Previews: PreviewProvider {
+    static var previews: some View {
+        TutorialAlphabetView()
+    }
+}

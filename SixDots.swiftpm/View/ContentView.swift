@@ -11,7 +11,7 @@ struct ContentView: View {
                 }
 
                 NavigationLink {
-                    TutorialView()
+                    TutorialLevelSelctionView()
                 } label: {
                     SelectModeButtonView(iconImageName: "books.vertical", modeName: "Tutorial")
                 }
