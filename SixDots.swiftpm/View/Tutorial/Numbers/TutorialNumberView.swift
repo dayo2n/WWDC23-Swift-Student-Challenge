@@ -12,6 +12,7 @@ struct TutorialNumberView: View {
     @State private var currentLevel: Int = 0
     @State private var currentProgressValue: Double = 0.1
     
+    @State private var turnOnShowLearningView: Bool = true
     @State private var showLearningView: Bool = true
     @State private var isCellPressed: [Bool] = Array(repeating: false, count: 6)
     @State private var correctResultCells: [Bool] = Array(repeating: false, count: 6)
@@ -29,6 +30,13 @@ struct TutorialNumberView: View {
                 label: {
                     EmptyView()
                 })
+            
+            HStack {
+                Spacer()
+                
+                Toggle("", isOn: $turnOnShowLearningView)
+                    .padding(30)
+            }
             
             // gauge
             Gauge(value: $currentProgressValue)
@@ -109,7 +117,7 @@ struct TutorialNumberView: View {
                 
                 if isCorrectResult {
                     if currentLevel == learningItem.learningItems.count - 1 {
-                        showNavigationAlert = true
+                        showNavigationAlert = showLearningView
                     } else if currentLevel < learningItem.learningItems.count - 1 {
                         currentLevel += 1
                         correctResultCells = Braille.BRAILLE_NUMBERS[currentLevel].cells
