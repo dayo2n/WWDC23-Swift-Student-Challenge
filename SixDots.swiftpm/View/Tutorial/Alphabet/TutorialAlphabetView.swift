@@ -1,5 +1,5 @@
 //
-//  SwiftUIView.swift
+//  TutorialAlphabetView.swift
 //  
 //
 //  Created by 제나 on 2023/04/09.
@@ -21,6 +21,36 @@ struct TutorialAlphabetView: View {
     @State private var showNavigationAlert: Bool = false
     @State private var activateNavigationToQuizView: Bool = false
     
+    private let learningTip: [String] = ["If you haven't studied numbers yet,\n go back and study numbers first!",
+                                         "Did you notice something?",
+                                         "Did you notice that there is a pattern?",
+                                         "Did you notice that there is a pattern \nrelated to numbers?",
+                                         "The lowercase letter a through j\nmatches the number 1 through 0.",
+                                         "Then how do we distinguish numbers from a~j?",
+                                         "Use the number symbol Braille,\nwhich looks like an inverted L",
+                                         "You've probably seen number symbol Braille\nin the final quizof the number tutorial.",
+                                         "If you don't remember,\nyou'll have to try the numbers again!😂",
+                                         "You finished one pattern up to j.",
+                                         
+                                         "You'll find the same pattern as the numbers from k to t",
+                                         "What do you think?",
+                                         "Did you notice something this time too?",
+                                         "k~t is equal to the addition\nof the 4th cell from the dot form a~j.",
+                                         "",
+                                         "",
+                                         "",
+                                         "",
+                                         "",
+                                         "You learned the second pattern until t :)",
+                                         
+                                         "In the third pattern, the 6th cell is added.",
+                                         "Although u to z belong to this pattern,\nit is important to note that w is an exception.",
+                                         "Caution! If it's in alphabetical order,\nit'll be w... It's a loner, so I'll let you know at the end.\nThis is x this time:)",
+                                         "This is y this time:)",
+                                         "You're almost done!",
+                                         "It's finally out!\nW is an alphabet that is added later,\nso the shape is special.",
+    ]
+    
     var body: some View {
         VStack {
             NavigationLink(
@@ -33,11 +63,8 @@ struct TutorialAlphabetView: View {
             // gauge
             Gauge(value: $currentProgressValue)
             
-            Text("Let's do this!")
-                .font(.sandoll(size: 44, weight: .bold))
-            
             Text("\(learningItem.learningItems[currentLevel])")
-                .font(.sandoll(size: 120, weight: .bold))
+                .font(.sandoll(size: 100, weight: .bold))
             
             HStack (spacing: 50) {
                 VStack (spacing: 35) {
@@ -74,10 +101,16 @@ struct TutorialAlphabetView: View {
         .sheet(isPresented: $showLearningView) {
             VStack(spacing: 20) {
                 Text("This is")
-                    .font(.sandoll(size: 40, weight: .bold))
+                    .font(.sandoll(size: 30, weight: .bold))
                 
                 Text("\(learningItem.learningItems[currentLevel])")
-                    .font(.sandoll(size: 100, weight: .bold))
+                    .font(.sandoll(size: 50, weight: .bold))
+                
+                
+                Text("\(learningTip[currentLevel])")
+                    .font(.sandoll(size: 20, weight: .bold))
+                    .multilineTextAlignment(.center)
+                    .padding(.bottom, 20)
                 
                 HStack (spacing: 50) {
                     VStack (spacing: 35) {

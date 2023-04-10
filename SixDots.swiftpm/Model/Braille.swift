@@ -45,10 +45,9 @@ struct Braille {
                                     
                                     Braille(keyword: "u", cells: [true, false, true, false, false, true]),
                                     Braille(keyword: "v", cells: [true, true, true, false, false, true]),
-                                    Braille(keyword: "w", cells: [false, true, false, true, true, true]),
                                     Braille(keyword: "x", cells: [true, false, true, true, false, true]),
                                     Braille(keyword: "y", cells: [true, false, true, true, true, true]),
                                     Braille(keyword: "z", cells: [true, false, true, false, true, true]),
-                                    
+                                    Braille(keyword: "w", cells: [false, true, false, true, true, true]),
     ]
 }
