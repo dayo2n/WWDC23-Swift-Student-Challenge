@@ -21,5 +21,6 @@ struct Gauge: View {
                 .frame(width: value * 600 , height: 50)
                 .foregroundColor(.keyColor)
         }
+        .animation(/*@START_MENU_TOKEN@*/.easeIn/*@END_MENU_TOKEN@*/, value: 0.2)
     }
 }
