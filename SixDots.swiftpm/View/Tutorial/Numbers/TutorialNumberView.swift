@@ -32,7 +32,7 @@ struct TutorialNumberView: View {
                 })
             
             TurnOnShowLearningViewToggle(turnOnShowLearningView: $turnOnShowLearningView)
-                .padding(30)
+                .padding(20)
             
             Spacer()
             
@@ -40,10 +40,10 @@ struct TutorialNumberView: View {
             Gauge(value: $currentProgressValue)
             
             Text("Let's do this!")
-                .font(.sandoll(size: 44, weight: .bold))
+                .font(.sandoll(size: 40, weight: .bold))
             
             Text("\(learningItem.learningItems[currentLevel])")
-                .font(.sandoll(size: 120, weight: .bold))
+                .font(.sandoll(size: 80, weight: .bold))
             
             HStack (spacing: 50) {
                 VStack (spacing: 35) {
@@ -64,7 +64,7 @@ struct TutorialNumberView: View {
                     }
                 }
             }
-            .padding(.bottom, 60)
+            .padding(.bottom, 30)
             
             Button {
                 isCorrectResult = isCellPressed == Braille.BRAILLE_NUMBERS[currentLevel].cells
@@ -72,7 +72,8 @@ struct TutorialNumberView: View {
             } label: {
                 CheckButton()
             }
-            .padding(.bottom, 30)
+            
+            Spacer()
         }
         .onAppear {
             correctResultCells = Braille.BRAILLE_NUMBERS[currentLevel].cells
