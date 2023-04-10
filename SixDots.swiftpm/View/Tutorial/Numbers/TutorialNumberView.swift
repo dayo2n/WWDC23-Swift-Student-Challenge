@@ -31,12 +31,10 @@ struct TutorialNumberView: View {
                     EmptyView()
                 })
             
-            HStack {
-                Spacer()
-                
-                Toggle("", isOn: $turnOnShowLearningView)
-                    .padding(30)
-            }
+            TurnOnShowLearningViewToggle(turnOnShowLearningView: $turnOnShowLearningView)
+                .padding(30)
+            
+            Spacer()
             
             // gauge
             Gauge(value: $currentProgressValue)
@@ -121,7 +119,7 @@ struct TutorialNumberView: View {
                     } else if currentLevel < learningItem.learningItems.count - 1 {
                         currentLevel += 1
                         correctResultCells = Braille.BRAILLE_NUMBERS[currentLevel].cells
-                        showLearningView = true
+                        showLearningView = turnOnShowLearningView
                         currentProgressValue = Double(currentLevel + 1) / Double(learningItem.learningItems.count)
                     }
                 }

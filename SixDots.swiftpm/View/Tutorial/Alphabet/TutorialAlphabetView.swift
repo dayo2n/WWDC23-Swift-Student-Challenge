@@ -60,13 +60,10 @@ struct TutorialAlphabetView: View {
                 label: {
                     EmptyView()
                 })
+            TurnOnShowLearningViewToggle(turnOnShowLearningView: $turnOnShowLearningView)
+                .padding(30)
             
-            HStack {
-                Spacer()
-                
-                Toggle("", isOn: $turnOnShowLearningView)
-                    .padding(30)
-            }
+            Spacer()
             
             // gauge
             Gauge(value: $currentProgressValue)
