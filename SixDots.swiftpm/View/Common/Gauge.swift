@@ -10,15 +10,16 @@ import SwiftUI
 struct Gauge: View {
     
     @Binding var value: Double
+    @State var size: GeometryProxy
     
     var body: some View {
         ZStack (alignment: .leading) {
             Capsule()
-                .frame(width: 600, height: 50)
+                .frame(width: size.size.width * 0.8, height: 50)
                 .foregroundColor(.light)
             
             Capsule()
-                .frame(width: value * 600 , height: 50)
+                .frame(width: value * size.size.width * 0.8 , height: 50)
                 .foregroundColor(.keyColor)
         }
         .animation(/*@START_MENU_TOKEN@*/.easeIn/*@END_MENU_TOKEN@*/, value: 0.2)
