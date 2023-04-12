@@ -122,10 +122,7 @@ struct TutorialAlphabetView: View {
                     HStack (spacing: 50) {
                         VStack (spacing: 35) {
                             ForEach (0..<3) { cell in
-                                CellView(isTapped: $isCellPressed[cell], cellSize: 100)
-                                    .onTapGesture {
-                                        isCellPressed[cell].toggle()
-                                    }
+                                CellView(isTapped: $isCellPressed[cell], cellSize: 70)
                             }
                         }
                         
