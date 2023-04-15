@@ -67,7 +67,7 @@ struct TutorialAlphabetView: View {
                 Spacer()
                 
                 // gauge
-                Gauge(value: $currentProgressValue, size: geo)
+                Gauge(value: $currentProgressValue, size: geo.size)
                 
                 Text("\(learningItem.learningItems[currentLevel])")
                     .font(.sandoll(size: 80, weight: .bold))

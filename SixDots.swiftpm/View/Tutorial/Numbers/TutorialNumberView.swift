@@ -38,7 +38,7 @@ struct TutorialNumberView: View {
                 Spacer()
                 
                 // gauge
-                Gauge(value: $currentProgressValue, size: geo)
+                Gauge(value: $currentProgressValue, size: geo.size)
                 
                 Text("Let's do this!")
                     .font(.sandoll(size: 40, weight: .bold))

@@ -45,8 +45,8 @@ struct TutorialNumberQuizView: View {
             
             HStack(spacing: 20) {
                 HStack(spacing: 40) {
-                    BrailleView(statusOfCells: $answer_left[0], cellSize: 40)
-                    BrailleView(statusOfCells: $answer_left[1], cellSize: 40)
+                    BrailleView(statusOfCells: answer_left[0], cellSize: 40)
+                    BrailleView(statusOfCells: answer_left[1], cellSize: 40)
                 }
                 .padding(30)
                 .background {
@@ -61,8 +61,8 @@ struct TutorialNumberQuizView: View {
                 }
                 
                 HStack(spacing: 40) {
-                    BrailleView(statusOfCells: $answer_right[0], cellSize: 40)
-                    BrailleView(statusOfCells: $answer_right[1], cellSize: 40)
+                    BrailleView(statusOfCells: answer_right[0], cellSize: 40)
+                    BrailleView(statusOfCells: answer_right[1], cellSize: 40)
                 }
                 .padding(30)
                 .background {
@@ -103,7 +103,7 @@ struct TutorialNumberQuizView: View {
                         VStack(spacing: 10) {
                             Text("\(index + 1)")
                                 .font(.sandoll(size: 30, weight: .regular))
-                            BrailleView(statusOfCells: $hintCells[index], cellSize: 30)
+                            BrailleView(statusOfCells: hintCells[index], cellSize: 30)
                         }
                         .padding()
                         .background {
@@ -120,7 +120,7 @@ struct TutorialNumberQuizView: View {
                         VStack(spacing: 10) {
                             Text("\((index + 1 + 5) % 10)")
                                 .font(.sandoll(size: 30, weight: .regular))
-                            BrailleView(statusOfCells: $hintCells[index + 5], cellSize: 30)
+                            BrailleView(statusOfCells: hintCells[index + 5], cellSize: 30)
                         }
                         .padding()
                         .background {

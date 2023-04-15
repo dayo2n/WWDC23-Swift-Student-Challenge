@@ -9,7 +9,7 @@ import SwiftUI
 
 struct BrailleView: View {
     
-    @Binding var statusOfCells: [Bool]
+    @State var statusOfCells: [Bool]
     var cellSize: CGFloat
     
     var body: some View {
