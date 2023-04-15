@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "XHENA.png",
+      "filename" : "XHENA1.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "XHENA@2x.png",
+      "filename" : "XHENA1@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "XHENA@3x.png",
+      "filename" : "XHENA1@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
