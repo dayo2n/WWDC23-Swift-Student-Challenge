@@ -10,11 +10,6 @@ import SwiftUI
 struct Episode2_1View: View {
     var body: some View {
         ZStack {
-            Image("XHENA2")
-                .resizable()
-                .scaledToFit()
-                .padding(.horizontal, 100)
-                .padding(.top, 200)
             
             VStack {
                 Spacer()
@@ -51,6 +46,13 @@ struct Episode2_1View: View {
             }
             .padding(.bottom, 40)
             .padding(.horizontal, 40)
+        }
+        .background {
+            Image("XHENA2")
+                .resizable()
+                .scaledToFit()
+                .padding(.horizontal, 100)
+                .padding(.top, 200)
         }
         .ignoresSafeArea()
     }

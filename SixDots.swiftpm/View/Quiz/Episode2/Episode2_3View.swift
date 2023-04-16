@@ -1,18 +1,21 @@
 //
-//  Episode1_2View.swift
-//  
+//  Episode2_3View.swift
 //
-//  Created by 제나 on 2023/04/15.
+//
+//  Created by 제나 on 2023/04/16.
 //
 
 import SwiftUI
 
-struct Episode1_2View: View {
-    
-    private let guidingTexts = ["This is the 10th floor of the building, so I have to take the elevator down.", "This is the 1-th floor of the building, so I have to take the elevator down.\nUh, wait, what the hell is this?!"]
-    @State private var numberOfClickNext = 0
+struct Episode2_3View: View {
     var body: some View {
         ZStack {
+            
+            Image("\(IMAGE_FloorButtonWithBraille)")
+                .resizable()
+                .scaledToFit()
+                .padding(.horizontal, 200)
+                .padding(.bottom, 500)
             
             VStack {
                 Spacer()
@@ -20,11 +23,11 @@ struct Episode1_2View: View {
                 ZStack {
                     VStack(alignment: .leading, spacing: 20) {
                         
-                        Text("\(guidingTexts[numberOfClickNext])")
+                        Text("Ah, there it is.\nThank you for making braille.\nBraille before 1 is a number sign. \nDoesn't it look like a flipped L?\n\n**Anyway, I hope every button on the other floor has braille...🥺**")
                             .font(.sandoll(size: 35, weight: .regular))
-                            .foregroundColor(Color.dark)
+                            .lineSpacing(10)
                     }
-                        
+                    
                     VStack {
                         Spacer()
                         
@@ -32,7 +35,7 @@ struct Episode1_2View: View {
                             Spacer()
                             
                             Button {
-                                numberOfClickNext += 1
+                                
                             } label: {
                                 NextButtonView()
                             }
@@ -45,22 +48,24 @@ struct Episode1_2View: View {
                 .background {
                     RoundedRectangle(cornerRadius: 20)
                         .foregroundColor(Color.light.opacity(0.9))
+                        
                 }
             }
             .padding(.bottom, 40)
             .padding(.horizontal, 40)
         }
         .background {
-            Image("\(IMAGE_FrontElevator)")
+            Image("\(IMAGE_InsideElevator)")
                 .resizable()
                 .scaledToFill()
+                .blur(radius: 5)
         }
         .ignoresSafeArea()
     }
 }
 
-struct Episode1_2View_Previews: PreviewProvider {
+struct Episode2_3View_Previews: PreviewProvider {
     static var previews: some View {
-        Episode1_2View()
+        Episode2_3View()
     }
 }
