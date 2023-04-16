@@ -11,7 +11,7 @@ struct NextButtonView: View {
     var body: some View {
         HStack {
             Text("NEXT")
-                .font(.sandoll(size: 40, weight: .regular))
+                .font(.sandoll(size: 40, weight: .bold))
                 .foregroundColor(Color.keyColor)
             
             Image(systemName: "arrowtriangle.forward.fill")
