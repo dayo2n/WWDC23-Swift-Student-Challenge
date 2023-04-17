@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct Episode3_1View: View {
-    @State private var numberofClickNext = 0
+    @State private var numberOfClickNext = 0
     var body: some View {
         ZStack {
             
@@ -18,7 +18,7 @@ struct Episode3_1View: View {
                 ZStack {
                     VStack(alignment: .leading, spacing: 20) {
                         
-                        Text(numberofClickNext == 0 ? "It's hard to even get out of the building..." : "Now, there is a bus coming to the bus stop in front of this building, and I go home by that bus.\nBut I have to cross the crosswalk once to the bus stop.")
+                        Text(numberOfClickNext == 0 ? "It's hard to even get out of the building..." : "Now, there is a bus coming to the bus stop in front of this building, and I go home by that bus.\nBut I have to cross the crosswalk once to the bus stop.")
                             .font(.sandoll(size: 35, weight: .regular))
                     }
                     
@@ -28,12 +28,21 @@ struct Episode3_1View: View {
                         HStack {
                             Spacer()
                             
-                            Button {
-                                numberofClickNext += 1
-                            } label: {
-                                NextButtonView()
+                            if numberOfClickNext == 0 {
+                                Button {
+                                    numberOfClickNext += 1
+                                } label: {
+                                    NextButtonView()
+                                }
+                                .padding(20)
+                            } else {
+                                NavigationLink {
+                                    Episode3_2View()
+                                } label: {
+                                    NextButtonView()
+                                }
+                                .padding(20)
                             }
-                            .padding(20)
                         }
                     }
                 }
@@ -49,7 +58,7 @@ struct Episode3_1View: View {
             .padding(.horizontal, 40)
         }
         .background {
-            Image(numberofClickNext == 0 ? "XHENA3" : "XHENA4")
+            Image(numberOfClickNext == 0 ? "XHENA3" : "XHENA4")
                 .resizable()
                 .scaledToFit()
                 .padding(.horizontal, 100)

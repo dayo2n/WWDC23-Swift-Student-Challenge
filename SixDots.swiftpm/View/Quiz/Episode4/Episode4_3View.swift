@@ -11,8 +11,14 @@ struct Episode4_3View: View {
     
     @State private var numberOfClickNext = 0
     @State private var isCellPressed = Array(repeating: false, count: 6)
+    @State private var showResult = false
+    @State private var activateNavigationToNextView = false
     var body: some View {
         ZStack {
+            
+            NavigationLink(destination: Episode4_4View(), isActive: $activateNavigationToNextView) {
+                EmptyView()
+            }
             
             HStack {
                 Image("\(IMAGE_StopBell)")
@@ -24,6 +30,9 @@ struct Episode4_3View: View {
                                 CellView(isTapped: $isCellPressed[cell], cellSize: 100)
                                     .onTapGesture {
                                         isCellPressed[cell].toggle()
+                                        if isCellPressed == Braille.BRAILLE_ALPHABETS[18].cells {
+                                            showResult = true
+                                        }
                                     }
                             }
                         }
@@ -33,6 +42,9 @@ struct Episode4_3View: View {
                                 CellView(isTapped: $isCellPressed[cell + 3], cellSize: 100)
                                     .onTapGesture {
                                         isCellPressed[cell+3].toggle()
+                                        if isCellPressed == Braille.BRAILLE_ALPHABETS[18].cells {
+                                            showResult = true
+                                        }
                                     }
                             }
                         }
@@ -54,10 +66,10 @@ struct Episode4_3View: View {
                 ZStack {
                     VStack(alignment: .leading, spacing: 20) {
                         
-                        Text(numberOfClickNext > 0 ? "Would you engrave braille for me?\nJust need **S**, the first letter of STOP to know!" : "Where the hell is the stop button? No matter how hard I look, there's no braille.")
+                        Text(numberOfClickNext > 0 ? "Would you engrave braille for me?\nJust need **S**, the first letter of STOP to know!" : "Where the hell is the stop button?\nNo matter how hard I look, there's no braille.")
                             .font(.sandoll(size: 35, weight: .regular))
                         
-                        Text(numberOfClickNext > 0 ? "\n\nPlease engrave it in the braille on the screen!\nPress the NEXT button when you're done!" : "")
+                        Text(numberOfClickNext > 0 ? "\n\nPlease engrave it in the braille on the screen!" : "")
                             .font(.sandoll(size: 25, weight: .regular))
                     }
                     
@@ -67,12 +79,14 @@ struct Episode4_3View: View {
                         HStack {
                             Spacer()
                             
-                            Button {
-                                numberOfClickNext += 1
-                            } label: {
-                                NextButtonView()
+                            if numberOfClickNext == 0 {
+                                Button {
+                                    numberOfClickNext += 1
+                                } label: {
+                                    NextButtonView()
+                                }
+                                .padding(20)
                             }
-                            .padding(20)
                         }
                     }
                 }
@@ -94,6 +108,11 @@ struct Episode4_3View: View {
                 .blur(radius: 5)
         }
         .ignoresSafeArea()
+        .alert("You did it🥳", isPresented: $showResult) {
+            Button("Next", role: .cancel) {
+                self.activateNavigationToNextView = true
+            }
+        }
     }
 }
 

@@ -11,8 +11,13 @@ struct Episode2_2View: View {
     @State private var isCellPressed = Array(repeating: false, count: 6)
     @State private var numberOfClickNext = 0
     @State private var showResult = false
+    @State private var navigateToNextView = false
     var body: some View {
         ZStack {
+            
+            NavigationLink(destination: Episode2_3View(), isActive: $navigateToNextView) {
+                EmptyView()
+            }
             
             Image("\(IMAGE_FloorButton)")
                 .resizable()
@@ -27,6 +32,9 @@ struct Episode2_2View: View {
                             CellView(isTapped: $isCellPressed[cell], cellSize: 100)
                                 .onTapGesture {
                                     isCellPressed[cell].toggle()
+                                    if isCellPressed == Braille.BRAILLE_NUMBERS[0].cells {
+                                        showResult = true
+                                    }
                                 }
                         }
                     }
@@ -36,6 +44,9 @@ struct Episode2_2View: View {
                             CellView(isTapped: $isCellPressed[cell + 3], cellSize: 100)
                                 .onTapGesture {
                                     isCellPressed[cell+3].toggle()
+                                    if isCellPressed == Braille.BRAILLE_NUMBERS[0].cells {
+                                        showResult = true
+                                    }
                                 }
                         }
                     }
@@ -56,7 +67,7 @@ struct Episode2_2View: View {
                 ZStack {
                     VStack(alignment: .leading, spacing: 20) {
                         
-                        Text(numberOfClickNext > 0 ? "You can mark the six dots on the screen.\nPress the NEXT button when you're done!" : "Hmm... Well, I've got a new snag.\nThere's no braille on the elevator button.\nCan you make a number Braille on the button on the **first floor** I'm going to?")
+                        Text(numberOfClickNext > 0 ? "You can mark the six dots on the screen." : "Hmm... Well, I've got a new snag.\nThere's no braille on the elevator button.\nCan you make a number Braille on the button on the **first floor** I'm going to?")
                             .font(.sandoll(size: 35, weight: .regular))
                             .lineSpacing(10)
                     }
@@ -67,15 +78,14 @@ struct Episode2_2View: View {
                         HStack {
                             Spacer()
                             
-                            Button {
-                                numberOfClickNext += 1
-                                if numberOfClickNext > 2 {
-                                    showResult = true
+                            if numberOfClickNext == 0 {
+                                Button {
+                                    numberOfClickNext += 1
+                                } label: {
+                                    NextButtonView()
                                 }
-                            } label: {
-                                NextButtonView()
+                                .padding(20)
                             }
-                            .padding(20)
                         }
                     }
                 }
@@ -96,9 +106,9 @@ struct Episode2_2View: View {
                 .scaledToFill()
                 .blur(radius: 5)
         }
-        .alert(isCellPressed == Braille.BRAILLE_NUMBERS[0].cells ? "That's right!🥳" : "Do it Again🤓", isPresented: $showResult) {
+        .alert( "That's right!🥳", isPresented: $showResult) {
             Button("Next", role: .cancel) {
-
+                self.navigateToNextView = true
             }
         }
         .ignoresSafeArea()

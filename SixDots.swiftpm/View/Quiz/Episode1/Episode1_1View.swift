@@ -36,8 +36,8 @@ struct Episode1_1View: View {
                         HStack {
                             Spacer()
                             
-                            Button {
-                                
+                            NavigationLink {
+                                Episode1_2View()
                             } label: {
                                 NextButtonView()
                             }
@@ -62,6 +62,15 @@ struct Episode1_1View: View {
                 .padding(.all, 200)
         }
         .ignoresSafeArea()
+        .navigationBarBackButtonHidden(true)
+        .navigationBarItems(leading: Button(action: {
+            NavigationUtil.popToRootView()
+        }, label: {
+            HStack {
+                Image(systemName: "house")
+                Text("Home")
+            }
+        }))
     }
 }
 

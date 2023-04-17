@@ -9,17 +9,17 @@ struct ContentView: View {
                 } label: {
                     SelectModeButtonView(iconImageName: "questionmark.circle", modeName: "Introduction")
                 }
+                
+                NavigationLink {
+                    Episode1_1View()
+                } label: {
+                    SelectModeButtonView(iconImageName: "graduationcap.fill", modeName: "Quiz")
+                }
 
                 NavigationLink {
                     TutorialLevelSelctionView()
                 } label: {
                     SelectModeButtonView(iconImageName: "books.vertical", modeName: "Tutorial")
-                }
-
-                NavigationLink {
-                    
-                } label: {
-                    SelectModeButtonView(iconImageName: "graduationcap.fill", modeName: "Quiz")
                 }
             }
         }

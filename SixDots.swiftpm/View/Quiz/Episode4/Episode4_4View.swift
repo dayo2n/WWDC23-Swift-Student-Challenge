@@ -31,13 +31,6 @@ struct Episode4_4View: View {
                         
                         HStack {
                             Spacer()
-                            
-                            Button {
-                                
-                            } label: {
-                                NextButtonView()
-                            }
-                            .padding(20)
                         }
                     }
                 }

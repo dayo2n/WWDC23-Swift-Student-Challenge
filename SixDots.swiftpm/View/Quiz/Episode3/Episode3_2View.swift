@@ -22,19 +22,27 @@ struct Episode3_2View: View {
                             .font(.sandoll(size: 35, weight: .regular))
                             .lineSpacing(10)
                     }
-                    
-                    VStack {
+                    HStack {
                         Spacer()
                         
-                        HStack {
+                        VStack {
                             Spacer()
                             
-                            Button {
-                                numberOfClickNext += 1
-                            } label: {
-                                NextButtonView()
+                            if numberOfClickNext == 0 {
+                                Button {
+                                    numberOfClickNext += 1
+                                } label: {
+                                    NextButtonView()
+                                }
+                                .padding(20)
+                            } else {
+                                NavigationLink {
+                                    Episode3_3View()
+                                } label: {
+                                    NextButtonView()
+                                }
+                                .padding(20)
                             }
-                            .padding(20)
                         }
                     }
                 }

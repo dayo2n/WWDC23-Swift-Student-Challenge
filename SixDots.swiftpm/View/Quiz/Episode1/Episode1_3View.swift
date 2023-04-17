@@ -11,9 +11,14 @@ struct Episode1_3View: View {
     
     @State private var clickedUpButton = false
     @State private var clickedDownButton = false
+    @State private var activateNavigationToNextView = false
     
     var body: some View {
         ZStack {
+            
+            NavigationLink(destination: Episode1_4View(), isActive: $activateNavigationToNextView) {
+                EmptyView()
+            }
             
             Image("\(IMAGE_DownButtonWithWrongBraille)")
                 .resizable()
@@ -89,9 +94,18 @@ struct Episode1_3View: View {
         }
         .alert("You did it🥳", isPresented: $clickedDownButton) {
             Button("Next", role: .cancel) {
-
+                self.activateNavigationToNextView = true
             }
         }
+        .navigationBarBackButtonHidden(true)
+        .navigationBarItems(leading: Button(action: {
+            NavigationUtil.popToRootView()
+        }, label: {
+            HStack {
+                Image(systemName: "house")
+                Text("Home")
+            }
+        }))
     }
 }
 

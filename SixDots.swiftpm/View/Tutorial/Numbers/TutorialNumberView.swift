@@ -129,19 +129,13 @@ struct TutorialNumberView: View {
             }
             .alert(isPresented: $showNavigationAlert) {
                 Alert(title: Text("You did it!😆"), message: Text("Let's check your Braille"), dismissButton: .default(Text("Okay"), action: {
-                    self.navigateToQuizView()
+                    self.activateNavigationToQuizView = true
                 }))
             }
             .navigationBarItems(trailing: Button(action: { showLearningView = true }, label: {
                 Text("Hint")
                     .padding()
             }))
-        }
-    }
-    
-    private func navigateToQuizView() {
-        DispatchQueue.main.async {
-            self.activateNavigationToQuizView = true
         }
     }
 }

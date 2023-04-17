@@ -41,7 +41,7 @@ struct Episode3_4View: View {
                 ZStack {
                     VStack(alignment: .leading, spacing: 20) {
                         
-                        Text("The block on the left is the **guiding block** that says you can go straight.\n\nThe block on the right is the **stop block** that tells you to stop. It is usually used in front of the crosswalk or when the road is divided into several directions.")
+                        Text("The block on the left is the **guiding block** that says you can **go straight.**\n\nThe block on the right is the **stop block** that tells you to stop. It is usually used in front of the crosswalk or when the road is divided into several directions.")
                             .font(.sandoll(size: 35, weight: .regular))
                             .lineSpacing(10)
                     }
@@ -52,8 +52,8 @@ struct Episode3_4View: View {
                         HStack {
                             Spacer()
                             
-                            Button {
-                                
+                            NavigationLink {
+                                Episode4_1View()
                             } label: {
                                 NextButtonView()
                             }

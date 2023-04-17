@@ -9,7 +9,7 @@ import SwiftUI
 
 struct Episode1_2View: View {
     
-    private let guidingTexts = ["This is the 10th floor of the building, so I have to take the elevator down.", "This is the 1-th floor of the building, so I have to take the elevator down.\nUh, wait, what the hell is this?!"]
+    private let guidingTexts = ["This is the 10th floor of the building, so I have to take the elevator down.", "This is the 10th floor of the building, so I have to take the elevator down.\nUh, wait, what the hell is this?!"]
     @State private var numberOfClickNext = 0
     var body: some View {
         ZStack {
@@ -31,12 +31,21 @@ struct Episode1_2View: View {
                         HStack {
                             Spacer()
                             
-                            Button {
-                                numberOfClickNext += 1
-                            } label: {
-                                NextButtonView()
+                            if numberOfClickNext == 0 {
+                                Button {
+                                    numberOfClickNext += 1
+                                } label: {
+                                    NextButtonView()
+                                }
+                                .padding(20)
+                            } else {
+                                NavigationLink {
+                                    Episode1_3View()
+                                } label: {
+                                    NextButtonView()
+                                }
+                                .padding(20)
                             }
-                            .padding(20)
                         }
                     }
                 }
@@ -56,6 +65,15 @@ struct Episode1_2View: View {
                 .scaledToFill()
         }
         .ignoresSafeArea()
+        .navigationBarBackButtonHidden(true)
+        .navigationBarItems(leading: Button(action: {
+            NavigationUtil.popToRootView()
+        }, label: {
+            HStack {
+                Image(systemName: "house")
+                Text("Home")
+            }
+        }))
     }
 }
 

@@ -8,10 +8,15 @@
 import SwiftUI
 
 struct Episode3_3View: View {
-    @State private var numberOfClickNext = 0
     @State private var isStopBlock = Array(repeating: false, count: 5)
+    @State private var showResult = false
+    @State private var navigateToNextView = false
     var body: some View {
         ZStack {
+            
+            NavigationLink(destination: Episode3_4View(), isActive: $navigateToNextView) {
+                EmptyView()
+            }
             ZStack {
                 Image("\(IMAGE_Crosswalk)")
                     .resizable()
@@ -27,6 +32,9 @@ struct Episode3_3View: View {
                                 .frame(width: 120)
                                 .onTapGesture {
                                     isStopBlock[index].toggle()
+                                    if !isStopBlock.contains(false) {
+                                        showResult = true
+                                    }
                                 }
                         }
                     }
@@ -44,28 +52,15 @@ struct Episode3_3View: View {
             VStack {
                 Spacer()
                 
-                ZStack {
+                HStack {
+                    Spacer()
                     VStack(alignment: .leading, spacing: 20) {
                         
                         Text("There're some invalid Braille blocks.\nIn front of the crosswalk, there should be a warning tile that means stop and be careful.\nPlease change the wrong blocks!")
                             .font(.sandoll(size: 35, weight: .regular))
                             .lineSpacing(10)
                     }
-                    
-                    VStack {
-                        Spacer()
-                        
-                        HStack {
-                            Spacer()
-                            
-                            Button {
-                                numberOfClickNext += 1
-                            } label: {
-                                NextButtonView()
-                            }
-                            .padding(20)
-                        }
-                    }
+                    Spacer()
                 }
                 .padding(.horizontal, 15)
                 .frame(height: 500)
@@ -79,12 +74,17 @@ struct Episode3_3View: View {
             .padding(.horizontal, 40)
         }
         .background {
-            Image("\( IMAGE_NoBraileSideWalkOnStreet0)")
+            Image("\(IMAGE_NoBraileSideWalkOnStreet0)")
                 .resizable()
                 .scaledToFill()
                 .blur(radius: 10)
         }
         .ignoresSafeArea()
+        .alert("You did it🥳", isPresented: $showResult) {
+            Button("Next", role: .cancel) {
+                self.navigateToNextView = true
+            }
+        }
     }
 }
 

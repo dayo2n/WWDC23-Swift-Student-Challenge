@@ -27,8 +27,8 @@ struct Episode2_1View: View {
                         HStack {
                             Spacer()
                             
-                            Button {
-                                
+                            NavigationLink {
+                                Episode2_2View()
                             } label: {
                                 NextButtonView()
                             }
