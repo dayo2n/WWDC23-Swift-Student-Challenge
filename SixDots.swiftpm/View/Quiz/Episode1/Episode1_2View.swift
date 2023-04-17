@@ -21,8 +21,9 @@ struct Episode1_2View: View {
                     VStack(alignment: .leading, spacing: 20) {
                         
                         Text("\(guidingTexts[numberOfClickNext])")
-                            .font(.sandoll(size: 35, weight: .regular))
+                            .font(.sandoll(size: 35, weight: .medium))
                             .foregroundColor(Color.dark)
+                            .lineSpacing(10)
                     }
                         
                     VStack {

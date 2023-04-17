@@ -68,8 +68,8 @@ struct Episode2_2View: View {
                 ZStack {
                     VStack(alignment: .leading, spacing: 20) {
                         
-                        Text("Hmm... Well, I've got a new snag.\nThere's no braille on the elevator button.\nCan you make a number Braille on the button on the **first floor** I'm going to?")
-                            .font(.sandoll(size: 35, weight: .regular))
+                        Text("Hmm... Well, I've got a new snag..\nThere's no braille on the elevator button.\n**Can you make a number Braille on the button on the first floor** I'm going to?")
+                            .font(.sandoll(size: 35, weight: .medium))
                             .foregroundColor(Color.dark)
                             .lineSpacing(10)
                     }

@@ -67,9 +67,10 @@ struct Episode4_3View: View {
                 ZStack {
                     VStack(alignment: .leading, spacing: 20) {
                         
-                        Text(numberOfClickNext > 0 ? "Would you engrave braille for me?\nJust need **S**, the first letter of STOP to know!" : "Where the hell is the stop button?\nNo matter how hard I look, there's no braille.")
-                            .font(.sandoll(size: 35, weight: .regular))
+                        Text(numberOfClickNext > 0 ? "Would you engrave braille for me?\nI just need **S**, the first letter of STOP to know!" : "Where the hell is the stop button?\nNo matter how hard I look, there's no braille.")
+                            .font(.sandoll(size: 35, weight: .medium))
                             .foregroundColor(Color.dark)
+                            .lineSpacing(10)
                         
                         Text(numberOfClickNext > 0 ? "\n\nPlease engrave it in the braille on the screen!" : "")
                             .font(.sandoll(size: 25, weight: .regular))

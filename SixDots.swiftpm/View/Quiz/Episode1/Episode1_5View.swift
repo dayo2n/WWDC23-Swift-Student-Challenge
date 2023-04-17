@@ -23,8 +23,8 @@ struct Episode1_5View: View {
                 ZStack {
                     VStack(alignment: .leading, spacing: 20) {
                         
-                        Text("The down button should be ‘DOWN’ or abbreviated as ‘DWN’ in Braille so I can read it.")
-                            .font(.sandoll(size: 35, weight: .regular))
+                        Text("The down button should be **‘DOWN’** or abbreviated as **‘DWN’** in Braille so I can read it.")
+                            .font(.sandoll(size: 35, weight: .medium))
                             .foregroundColor(Color.dark)
                             .lineSpacing(10)
                     }

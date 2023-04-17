@@ -13,6 +13,7 @@ struct Episode1_3View: View {
     @State private var clickedDownButton = false
     @State private var activateNavigationToNextView = false
     @State private var showHint = false
+    @State private var buttonWidth = 300
     
     var body: some View {
         ZStack {
@@ -33,8 +34,9 @@ struct Episode1_3View: View {
                 ZStack {
                     VStack(alignment: .center, spacing: 20) {
                         Text("The button on the elevator is weird.\n**Is the wrong button a up button or a down button?**\n\nIf you need a help, press the **hint button!**")
-                            .font(.sandoll(size: 35, weight: .regular))
+                            .font(.sandoll(size: 35, weight: .medium))
                             .foregroundColor(Color.dark)
+                            .lineSpacing(10)
                         
                         Spacer()
                         
@@ -47,9 +49,14 @@ struct Episode1_3View: View {
                                     .font(.sandoll(size: 35, weight: .semibold))
                                     .foregroundColor(Color.dark)
                                     .padding(.vertical, 30)
-                                    .frame(width: 300)
+                                    .frame(width: CGFloat(buttonWidth))
                                     .background(clickedUpButton ? Color.keyColor.opacity(0.8) : Color.dark.opacity(0.2))
                                     .cornerRadius(20)
+                                    .onAppear {
+                                        withAnimation(Animation.linear(duration: 0.6).repeatForever()) {
+                                            buttonWidth = 310
+                                        }
+                                    }
                             }
                             
                             Button {
@@ -59,14 +66,20 @@ struct Episode1_3View: View {
                                     .font(.sandoll(size: 35, weight: .semibold))
                                     .foregroundColor(Color.dark)
                                     .padding(.vertical, 30)
-                                    .frame(width: 300)
+                                    .frame(width: CGFloat(buttonWidth))
                                     .background(clickedDownButton ?  Color.keyColor.opacity(0.8) :  Color.dark.opacity(0.2))
                                     .cornerRadius(20)
+                                
+                                .onAppear {
+                                    withAnimation(Animation.linear(duration: 0.6).repeatForever()) {
+                                        buttonWidth = 310
+                                    }
+                                }
                             }
                             Spacer()
                         }
                     }
-                    .padding(.vertical, 80)
+                    .padding(.vertical, 40)
                 }
                 .frame(height: 500)
                 .padding(.horizontal, 15)

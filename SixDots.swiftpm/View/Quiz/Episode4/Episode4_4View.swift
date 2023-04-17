@@ -22,9 +22,10 @@ struct Episode4_4View: View {
                 ZStack {
                     VStack(alignment: .leading, spacing: 20) {
                         
-                        Text("Blind people can't even find the location of the bus stop bell, but it's more difficult without braille.")
-                            .font(.sandoll(size: 35, weight: .regular))
+                        Text("Blind people can't even find the location of the bus stop bell, but it's more difficult without braille.😭")
+                            .font(.sandoll(size: 35, weight: .medium))
                             .foregroundColor(Color.dark)
+                            .lineSpacing(10)
                     }
                     
                     VStack {

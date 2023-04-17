@@ -23,8 +23,8 @@ struct Episode2_3View: View {
                 ZStack {
                     VStack(alignment: .leading, spacing: 20) {
                         
-                        Text("Ah, there it is.\nThank you for making braille.\nBraille before 1 is a number sign. \nDoesn't it look like a flipped L?\n\n**Anyway, I hope every button on the other floor has braille...🥺**")
-                            .font(.sandoll(size: 35, weight: .regular))
+                        Text("Ah, there it is.\nThank you for making braille.\nBraille before 1 is a **number sign**. \nDoesn't it look like a flipped L?🤣\n\n**Anyway, I hope every button on the other floor has braille...🥺**")
+                            .font(.sandoll(size: 35, weight: .medium))
                             .foregroundColor(Color.dark)
                             .lineSpacing(10)
                     }

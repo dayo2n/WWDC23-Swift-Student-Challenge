@@ -18,9 +18,10 @@ struct Episode3_1View: View {
                 ZStack {
                     VStack(alignment: .leading, spacing: 20) {
                         
-                        Text(numberOfClickNext == 0 ? "It's hard to even get out of the building..." : "Now, there is a bus coming to the bus stop in front of this building, and I go home by that bus.\nBut I have to cross the crosswalk once to the bus stop.")
-                            .font(.sandoll(size: 35, weight: .regular))
+                        Text(numberOfClickNext == 0 ? "It's hard to even get out of the building..." : "Now, there is a bus coming to the bus stop in front of this building, and I go home by that bus.\nBut I have to **cross the crosswalk once** to the bus stop.")
+                            .font(.sandoll(size: 35, weight: .medium))
                             .foregroundColor(Color.dark)
+                            .lineSpacing(10)
                     }
                     
                     VStack {

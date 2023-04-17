@@ -18,8 +18,9 @@ struct Episode2_1View: View {
                     VStack(alignment: .leading, spacing: 20) {
                         
                         Text("Surprised it's unreadable Braille, thanks for your help!")
-                            .font(.sandoll(size: 35, weight: .regular))
+                            .font(.sandoll(size: 35, weight: .medium))
                             .foregroundColor(Color.dark)
+                            .lineSpacing(10)
                     }
                     
                     VStack {

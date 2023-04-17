@@ -58,7 +58,7 @@ struct Episode3_3View: View {
                     VStack(alignment: .leading, spacing: 20) {
                         
                         Text("There're some invalid Braille blocks.\n**In front of the crosswalk, there should be a warning tile that means stop and be careful.**\nPlease change the wrong blocks!")
-                            .font(.sandoll(size: 35, weight: .regular))
+                            .font(.sandoll(size: 35, weight: .medium))
                             .foregroundColor(Color.dark)
                             .lineSpacing(10)
                     }

@@ -27,7 +27,7 @@ struct Episode1_4View: View {
                         VStack(alignment: .leading, spacing: 20) {
                             
                             Text("Braille on this down button does not say **'DOWN'**.\nThe contractor simply **rotated the 'UP' button 180 degrees.**")
-                                .font(.sandoll(size: 35, weight: .regular))
+                                .font(.sandoll(size: 35, weight: .medium))
                                 .foregroundColor(Color.dark)
                                 .lineSpacing(10)
                         }

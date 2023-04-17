@@ -18,8 +18,9 @@ struct Episode4_1View: View {
                     VStack(alignment: .leading, spacing: 20) {
                         
                         Text("Now, there is a bus coming to the bus stop in front of this building, and I go home by that bus.")
-                            .font(.sandoll(size: 35, weight: .regular))
+                            .font(.sandoll(size: 35, weight: .medium))
                             .foregroundColor(Color.dark)
+                            .lineSpacing(10)
                     }
                     
                     VStack {

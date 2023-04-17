@@ -18,8 +18,8 @@ struct Episode3_2View: View {
                 ZStack {
                     VStack(alignment: .leading, spacing: 20) {
                         
-                        Text(numberOfClickNext == 0 ? "I can hear the sound of cars passing by..\nBut since there's a guiding tiles, it must not be a road for cars, right?" : "Oh, my gosh!!\nIt must have been a directional tiles, but it must have been wrong.")
-                            .font(.sandoll(size: 35, weight: .regular))
+                        Text(numberOfClickNext == 0 ? "I can hear the sound of cars passing by..\nBut since there's a guiding tiles, it must not be a road for cars, right?" : "Oh, my gosh!!\nSomeone rang a crack to let me know it's dangerous.\nMaybe the Braille walking block is installed incorrectly.")
+                            .font(.sandoll(size: 35, weight: .medium))
                             .foregroundColor(Color.dark)
                             .lineSpacing(10)
                     }

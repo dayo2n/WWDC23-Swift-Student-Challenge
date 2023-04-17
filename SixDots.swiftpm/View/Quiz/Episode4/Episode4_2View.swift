@@ -18,8 +18,9 @@ struct Episode4_2View: View {
                     VStack(alignment: .leading, spacing: 20) {
                         
                         Text("If we get off at the next stop, it's my house.")
-                            .font(.sandoll(size: 35, weight: .regular))
+                            .font(.sandoll(size: 35, weight: .medium))
                             .foregroundColor(Color.dark)
+                            .lineSpacing(10)
                     }
                     
                     VStack {

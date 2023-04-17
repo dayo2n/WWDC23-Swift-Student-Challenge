@@ -16,18 +16,10 @@ struct Episode1_1View: View {
                 ZStack {
                     VStack(alignment: .leading, spacing: 20) {
                         
-                        Text("Hi, My name is XHENA!")
-                            .font(.sandoll(size: 35, weight: .regular))
+                        Text("Hi, My name is XHENA!\nI’m visually impaired\nI went out today, but now I have to go home alone after finishing my business.\n\n**Can you help me get home?**")
+                            .font(.sandoll(size: 35, weight: .medium))
                             .foregroundColor(Color.dark)
-                        Text("I’m visually impaired")
-                            .font(.sandoll(size: 35, weight: .regular))
-                            .foregroundColor(Color.dark)
-                        Text("I went out today, but now I have to go home alone after finishing my business.")
-                            .font(.sandoll(size: 35, weight: .regular))
-                            .foregroundColor(Color.dark)
-                        Text("Can you help me get home?")
-                            .font(.sandoll(size: 35, weight: .bold))
-                            .foregroundColor(Color.dark)
+                            .lineSpacing(10)
                     }
                         
                     VStack {
