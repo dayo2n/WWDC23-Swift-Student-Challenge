@@ -11,101 +11,100 @@ struct Episode1_4View: View {
     @State private var isRotating = 0.0
     @State private var isMoving = 0
     var body: some View {
-        ZStack {
-            
-            Image("\(IMAGE_DownButtonWithWrongBraille)")
-                .resizable()
-                .scaledToFit()
-                .frame(width: 500)
-                .padding(.bottom, 500)
-            
-            VStack {
-                Spacer()
+        GeometryReader { geo in
+            ZStack {
                 
-                ZStack {
-                    VStack(alignment: .leading, spacing: 20) {
-                        
-                        Text("Braille on this down button does not say **'DOWN'**.\nThe contractor simply **rotated the 'UP' button 180 degrees.**")
-                            .font(.sandoll(size: 35, weight: .regular))
-                            .foregroundColor(Color.dark)
-                            .lineSpacing(10)
-                    }
-                        
-                    VStack {
-                        Spacer()
-                        
-                        HStack {
-                            Spacer()
-                            
-                            NavigationLink {
-                                Episode1_5View()
-                            } label: {
-                                NextButtonView()
-                            }
-                            .padding(20)
-                        }
-                    }
-                }
-                .padding(.horizontal, 15)
-                .frame(height: 500)
-                .background {
-                    RoundedRectangle(cornerRadius: 20)
-                        .foregroundColor(Color.light.opacity(0.9))
-                }
-            }
-            .padding(.bottom, 40)
-            .padding(.horizontal, 40)
-            
-            VStack {
-                HStack {
+                Image("\(IMAGE_DownButtonWithWrongBraille)")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: geo.size.width * 0.6)
+                    .padding(.bottom, 500)
+                
+                VStack {
                     Spacer()
                     
-                    Image("\(IMAGE_CroppedUpButton)")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 230)
-                        .rotationEffect(.degrees(isRotating))
-                        .offset(x: -100, y: CGFloat(isMoving))
-                        .onAppear {
-                            withAnimation(.linear(duration: 1.0)) {
-                                    isRotating = 190.0
-                                }
+                    ZStack {
+                        VStack(alignment: .leading, spacing: 20) {
                             
-                            withAnimation(.linear(duration: 1.0).delay(1.0)) {
-                                isMoving = 320
-                                }
+                            Text("Braille on this down button does not say **'DOWN'**.\nThe contractor simply **rotated the 'UP' button 180 degrees.**")
+                                .font(.sandoll(size: 35, weight: .regular))
+                                .foregroundColor(Color.dark)
+                                .lineSpacing(10)
                         }
-                        .padding(30)
+                            
+                        VStack {
+                            Spacer()
+                            
+                            HStack {
+                                Spacer()
+                                
+                                NavigationLink {
+                                    Episode1_5View()
+                                } label: {
+                                    NextButtonView()
+                                }
+                                .padding(20)
+                            }
+                        }
+                    }
+                    .padding(.horizontal, 15)
+                    .frame(height: 500)
+                    .background {
+                        RoundedRectangle(cornerRadius: 20)
+                            .foregroundColor(Color.light.opacity(0.9))
+                    }
                 }
+                .padding(.bottom, 40)
+                .padding(.horizontal, 40)
                 
-                Spacer()
+                VStack {
+                    HStack {
+                        Spacer()
+                        
+                        Image("\(IMAGE_CroppedUpButton)")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 220)
+                            .rotationEffect(.degrees(isRotating))
+                            .offset(x: -100, y: CGFloat(isMoving))
+                            .onAppear {
+                                withAnimation(.linear(duration: 1.0)) {
+                                        isRotating = 190.0
+                                    }
+                                
+                                withAnimation(.linear(duration: 1.0).delay(1.0)) {
+                                    isMoving = Int(geo.size.height / 3)
+                                    }
+                            }
+                            .padding(30)
+                        
+                        Spacer()
+                    }
+                    
+                    Spacer()
+                }
             }
-        }
-        .background {
-            Image("\(IMAGE_FrontElevator)")
-                .resizable()
-                .scaledToFill()
-                .blur(radius: 15)
-        }
-        .ignoresSafeArea()
-        .navigationBarBackButtonHidden(true)
-        .navigationBarItems(leading: Button(action: {
-            NavigationUtil.popToRootView()
-        }, label: {
-            HStack {
-                Image(systemName: "house")
-                    .font(.sandoll(size: 20, weight: .semibold))
-                    .foregroundColor(Color.dark)
-                Text("Home")
-                    .font(.sandoll(size: 20, weight: .semibold))
-                    .foregroundColor(Color.dark)
+            .background {
+                Image("\(IMAGE_FrontElevator)")
+                    .resizable()
+                    .scaledToFill()
+                    .blur(radius: 15)
             }
-            .padding()
-        }))
-        .onAppear {
-            withAnimation(Animation.easeIn) {
-                
-            }
+            .ignoresSafeArea()
+            .navigationBarBackButtonHidden(true)
+            .navigationBarItems(leading: Button(action: {
+                NavigationUtil.popToRootView()
+            }, label: {
+                HStack {
+                    Image(systemName: "house")
+                        .font(.sandoll(size: 20, weight: .semibold))
+                        .foregroundColor(Color.dark)
+                    Text("Home")
+                        .font(.sandoll(size: 20, weight: .semibold))
+                        .foregroundColor(Color.dark)
+                }
+                .padding()
+            }))
         }
     }
 }
