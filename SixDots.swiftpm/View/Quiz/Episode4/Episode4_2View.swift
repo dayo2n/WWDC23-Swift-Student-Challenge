@@ -19,6 +19,7 @@ struct Episode4_2View: View {
                         
                         Text("If we get off at the next stop, it's my house.")
                             .font(.sandoll(size: 35, weight: .regular))
+                            .foregroundColor(Color.dark)
                     }
                     
                     VStack {
@@ -59,8 +60,11 @@ struct Episode4_2View: View {
         }, label: {
             HStack {
                 Image(systemName: "house")
+                    .font(.sandoll(size: 20, weight: .semibold))
                 Text("Home")
+                    .font(.sandoll(size: 20, weight: .semibold))
             }
+            .padding()
         }))
     }
 }

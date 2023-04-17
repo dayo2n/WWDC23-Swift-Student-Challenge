@@ -25,6 +25,7 @@ struct Episode2_3View: View {
                         
                         Text("Ah, there it is.\nThank you for making braille.\nBraille before 1 is a number sign. \nDoesn't it look like a flipped L?\n\n**Anyway, I hope every button on the other floor has braille...🥺**")
                             .font(.sandoll(size: 35, weight: .regular))
+                            .foregroundColor(Color.dark)
                             .lineSpacing(10)
                     }
                     
@@ -58,7 +59,7 @@ struct Episode2_3View: View {
             Image("\(IMAGE_InsideElevator)")
                 .resizable()
                 .scaledToFill()
-                .blur(radius: 5)
+                .blur(radius: 15)
         }
         .ignoresSafeArea()
         .navigationBarBackButtonHidden(true)
@@ -67,8 +68,11 @@ struct Episode2_3View: View {
         }, label: {
             HStack {
                 Image(systemName: "house")
+                    .font(.sandoll(size: 20, weight: .semibold))
                 Text("Home")
+                    .font(.sandoll(size: 20, weight: .semibold))
             }
+            .padding()
         }))
     }
 }

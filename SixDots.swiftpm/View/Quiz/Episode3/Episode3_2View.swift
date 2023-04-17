@@ -18,8 +18,9 @@ struct Episode3_2View: View {
                 ZStack {
                     VStack(alignment: .leading, spacing: 20) {
                         
-                        Text(numberOfClickNext == 0 ? "I can hear the sound of cars passing by..\nBut since there's a directional tiles, it must not be a road for cars, right?" : "Oh, my gosh!!\nIt must have been a directional tiles, but it must have been wrong.")
+                        Text(numberOfClickNext == 0 ? "I can hear the sound of cars passing by..\nBut since there's a guiding tiles, it must not be a road for cars, right?" : "Oh, my gosh!!\nIt must have been a directional tiles, but it must have been wrong.")
                             .font(.sandoll(size: 35, weight: .regular))
+                            .foregroundColor(Color.dark)
                             .lineSpacing(10)
                     }
                     HStack {
@@ -69,8 +70,13 @@ struct Episode3_2View: View {
         }, label: {
             HStack {
                 Image(systemName: "house")
+                    .font(.sandoll(size: 20, weight: .semibold))
+                    .foregroundColor(Color.dark)
                 Text("Home")
+                    .font(.sandoll(size: 20, weight: .semibold))
+                    .foregroundColor(Color.dark)
             }
+            .padding()
         }))
     }
 }

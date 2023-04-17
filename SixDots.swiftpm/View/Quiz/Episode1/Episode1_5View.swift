@@ -58,7 +58,7 @@ struct Episode1_5View: View {
             Image("\(IMAGE_FrontElevator)")
                 .resizable()
                 .scaledToFill()
-                .blur(radius: 5)
+                .blur(radius: 15)
         }
         .ignoresSafeArea()
         .navigationBarBackButtonHidden(true)
@@ -67,8 +67,13 @@ struct Episode1_5View: View {
         }, label: {
             HStack {
                 Image(systemName: "house")
+                    .font(.sandoll(size: 20, weight: .semibold))
+                    .foregroundColor(Color.dark)
                 Text("Home")
+                    .font(.sandoll(size: 20, weight: .semibold))
+                    .foregroundColor(Color.dark)
             }
+            .padding()
         }))
     }
 }

@@ -13,6 +13,7 @@ struct Episode4_3View: View {
     @State private var isCellPressed = Array(repeating: false, count: 6)
     @State private var showResult = false
     @State private var activateNavigationToNextView = false
+    @State private var showHint = false
     var body: some View {
         ZStack {
             
@@ -68,9 +69,11 @@ struct Episode4_3View: View {
                         
                         Text(numberOfClickNext > 0 ? "Would you engrave braille for me?\nJust need **S**, the first letter of STOP to know!" : "Where the hell is the stop button?\nNo matter how hard I look, there's no braille.")
                             .font(.sandoll(size: 35, weight: .regular))
+                            .foregroundColor(Color.dark)
                         
                         Text(numberOfClickNext > 0 ? "\n\nPlease engrave it in the braille on the screen!" : "")
                             .font(.sandoll(size: 25, weight: .regular))
+                            .foregroundColor(Color.dark)
                     }
                     
                     VStack {
@@ -105,7 +108,7 @@ struct Episode4_3View: View {
             Image("\(IMAGE_InsideBus)")
                 .resizable()
                 .scaledToFill()
-                .blur(radius: 5)
+                .blur(radius: 15)
         }
         .ignoresSafeArea()
         .navigationBarBackButtonHidden(true)
@@ -114,12 +117,47 @@ struct Episode4_3View: View {
         }, label: {
             HStack {
                 Image(systemName: "house")
+                    .font(.sandoll(size: 20, weight: .semibold))
                 Text("Home")
+                    .font(.sandoll(size: 20, weight: .semibold))
+            }
+            .padding()
+        }), trailing: Button(action: {
+            showHint = true
+        }, label: {
+            if numberOfClickNext > 0 {
+                Text("Hint")
+                    .font(.sandoll(size: 20, weight: .semibold))
+                    .padding()
             }
         }))
         .alert("You did it🥳", isPresented: $showResult) {
             Button("Next", role: .cancel) {
                 self.activateNavigationToNextView = true
+            }
+        }
+        .sheet(isPresented: $showHint) {
+            GeometryReader { geo in
+                VStack(alignment: .center) {
+                    Spacer()
+                    Image("\(IMAGE_BrailleNeue_KosukeTakahashi)")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: geo.size.width)
+                    HStack {
+                        Spacer()
+                        Text("Image credits Kosuke Takahashi.")
+                            .font(.sandoll(size: 15, weight: .regular))
+                            .padding([.bottom, .trailing], 20)
+                    }
+                    Button {
+                        showHint = false
+                    } label: {
+                        Text("Dismiss")
+                            .font(.sandoll(size: 20, weight: .semibold))
+                    }
+                    Spacer()
+                }
             }
         }
     }

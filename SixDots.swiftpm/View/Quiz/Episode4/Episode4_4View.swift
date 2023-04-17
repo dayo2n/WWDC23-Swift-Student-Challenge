@@ -24,6 +24,7 @@ struct Episode4_4View: View {
                         
                         Text("Blind people can't even find the location of the bus stop bell, but it's more difficult without braille.")
                             .font(.sandoll(size: 35, weight: .regular))
+                            .foregroundColor(Color.dark)
                     }
                     
                     VStack {
@@ -49,7 +50,7 @@ struct Episode4_4View: View {
             Image("\(IMAGE_InsideBus)")
                 .resizable()
                 .scaledToFill()
-                .blur(radius: 5)
+                .blur(radius: 15)
         }
         .ignoresSafeArea()
         .navigationBarBackButtonHidden(true)
@@ -58,8 +59,11 @@ struct Episode4_4View: View {
         }, label: {
             HStack {
                 Image(systemName: "house")
+                    .font(.sandoll(size: 20, weight: .semibold))
                 Text("Home")
+                    .font(.sandoll(size: 20, weight: .semibold))
             }
+            .padding()
         }))
     }
 }

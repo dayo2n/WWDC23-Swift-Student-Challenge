@@ -118,7 +118,7 @@ struct TutorialNumberQuizView: View {
                 HStack(spacing: 10) {
                     ForEach(0..<5) { index in
                         VStack(spacing: 10) {
-                            Text("\((index + 1 + 5) % 10)")
+                            Text("\((index + 1 + 5))")
                                 .font(.sandoll(size: 30, weight: .regular))
                             BrailleView(statusOfCells: hintCells[index + 5], cellSize: 30)
                         }

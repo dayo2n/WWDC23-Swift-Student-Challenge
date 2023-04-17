@@ -19,6 +19,7 @@ struct Episode2_1View: View {
                         
                         Text("Surprised it's unreadable Braille, thanks for your help!")
                             .font(.sandoll(size: 35, weight: .regular))
+                            .foregroundColor(Color.dark)
                     }
                     
                     VStack {
@@ -61,8 +62,11 @@ struct Episode2_1View: View {
         }, label: {
             HStack {
                 Image(systemName: "house")
+                    .font(.sandoll(size: 20, weight: .semibold))
                 Text("Home")
+                    .font(.sandoll(size: 20, weight: .semibold))
             }
+            .padding()
         }))
     }
 }

@@ -43,6 +43,7 @@ struct Episode3_4View: View {
                         
                         Text("The block on the left is the **guiding block** that says you can **go straight.**\n\nThe block on the right is the **stop block** that tells you to stop. It is usually used in front of the crosswalk or when the road is divided into several directions.")
                             .font(.sandoll(size: 35, weight: .regular))
+                            .foregroundColor(Color.dark)
                             .lineSpacing(10)
                     }
                     
@@ -76,7 +77,7 @@ struct Episode3_4View: View {
             Image("\( IMAGE_NoBraileSideWalkOnStreet0)")
                 .resizable()
                 .scaledToFill()
-                .blur(radius: 10)
+                .blur(radius: 15)
         }
         .ignoresSafeArea()
         .navigationBarBackButtonHidden(true)
@@ -85,8 +86,13 @@ struct Episode3_4View: View {
         }, label: {
             HStack {
                 Image(systemName: "house")
+                    .font(.sandoll(size: 20, weight: .semibold))
+                    .foregroundColor(Color.dark)
                 Text("Home")
+                    .font(.sandoll(size: 20, weight: .semibold))
+                    .foregroundColor(Color.dark)
             }
+            .padding()
         }))
     }
 }

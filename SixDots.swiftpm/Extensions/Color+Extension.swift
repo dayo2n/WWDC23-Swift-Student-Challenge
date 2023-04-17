@@ -35,5 +35,5 @@ extension Color {
     
     static let light = Color(hex: "EEEEEE")
     static let dark = Color(hex: "222222")
-    static let keyColor = Color(hex: "FFC700")
+    static let keyColor = Color(hex: "EEBA00")
 }

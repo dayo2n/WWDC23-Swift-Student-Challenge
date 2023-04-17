@@ -11,6 +11,7 @@ struct Episode3_3View: View {
     @State private var isStopBlock = Array(repeating: false, count: 5)
     @State private var showResult = false
     @State private var navigateToNextView = false
+    @State private var showHint = false
     var body: some View {
         ZStack {
             
@@ -56,8 +57,9 @@ struct Episode3_3View: View {
                     Spacer()
                     VStack(alignment: .leading, spacing: 20) {
                         
-                        Text("There're some invalid Braille blocks.\nIn front of the crosswalk, there should be a warning tile that means stop and be careful.\nPlease change the wrong blocks!")
+                        Text("There're some invalid Braille blocks.\n**In front of the crosswalk, there should be a warning tile that means stop and be careful.**\nPlease change the wrong blocks!")
                             .font(.sandoll(size: 35, weight: .regular))
+                            .foregroundColor(Color.dark)
                             .lineSpacing(10)
                     }
                     Spacer()
@@ -77,7 +79,7 @@ struct Episode3_3View: View {
             Image("\(IMAGE_NoBraileSideWalkOnStreet0)")
                 .resizable()
                 .scaledToFill()
-                .blur(radius: 10)
+                .blur(radius: 15)
         }
         .ignoresSafeArea()
         .alert("You did it🥳", isPresented: $showResult) {
@@ -91,9 +93,24 @@ struct Episode3_3View: View {
         }, label: {
             HStack {
                 Image(systemName: "house")
+                    .font(.sandoll(size: 20, weight: .semibold))
+                    .foregroundColor(Color.dark)
                 Text("Home")
+                    .font(.sandoll(size: 20, weight: .semibold))
+                    .foregroundColor(Color.dark)
             }
+            .padding()
+        }), trailing: Button(action: {
+            showHint = true
+        }, label: {
+            Text("Hint")
+                .font(.sandoll(size: 20, weight: .semibold))
+                .foregroundColor(Color.dark)
+                .padding()
         }))
+        .alert("Tap the yellow braille block on the screen!", isPresented: $showHint) {
+            Button("Okay", role: .cancel) { }
+        }
     }
 }
 

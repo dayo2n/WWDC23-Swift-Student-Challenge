@@ -71,8 +71,13 @@ struct Episode1_2View: View {
         }, label: {
             HStack {
                 Image(systemName: "house")
+                    .font(.sandoll(size: 20, weight: .semibold))
+                    .foregroundColor(Color.dark)
                 Text("Home")
+                    .font(.sandoll(size: 20, weight: .semibold))
+                    .foregroundColor(Color.dark)
             }
+            .padding()
         }))
     }
 }

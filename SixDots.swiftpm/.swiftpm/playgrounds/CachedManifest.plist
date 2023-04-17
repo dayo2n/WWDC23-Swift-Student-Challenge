@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CachedManifest</key>
+	<dict>
+		<key>manifestData</key>
+		<data>
+		eyJkZXBlbmRlbmNpZXMiOltdLCJkaXNwbGF5TmFtZSI6IlNpeERvdHMiLCJw
+		YWNrYWdlS2luZCI6eyJyb290Ijp7fX0sInBsYXRmb3JtcyI6W3sib3B0aW9u
+		cyI6W10sInBsYXRmb3JtTmFtZSI6ImlvcyIsInZlcnNpb24iOiIxNS4yIn1d
+		LCJwcm9kdWN0cyI6W3sibmFtZSI6IlNpeERvdHMiLCJzZXR0aW5ncyI6W3si
+		YnVuZGxlSWRlbnRpZmllciI6WyJwb3MuYWNhZGVteS5TaXhEb3RzIl19LHsi
+		dGVhbUlkZW50aWZpZXIiOlsiN0Q1UFpKV1E5VCJdfSx7ImRpc3BsYXlWZXJz
+		aW9uIjpbIjEuMCJdfSx7ImJ1bmRsZVZlcnNpb24iOlsiMSJdfSx7ImlPU0Fw
+		cEluZm8iOlt7ImFjY2VudENvbG9yIjp7InByZXNldENvbG9yIjp7InByZXNl
+		dENvbG9yIjp7InJhd1ZhbHVlIjoib3JhbmdlIn19fSwiYXBwQ2F0ZWdvcnki
+		OnsicmF3VmFsdWUiOiJwdWJsaWMuYXBwLWNhdGVnb3J5LnV0aWxpdGllcyJ9
+		LCJhcHBJY29uIjp7InBsYWNlaG9sZGVyIjp7Imljb24iOnsicmF3VmFsdWUi
+		OiJ0d29QZW9wbGUifX19LCJjYXBhYmlsaXRpZXMiOltdLCJzdXBwb3J0ZWRE
+		ZXZpY2VGYW1pbGllcyI6WyJwYWQiLCJwaG9uZSJdLCJzdXBwb3J0ZWRJbnRl
+		cmZhY2VPcmllbnRhdGlvbnMiOlt7InBvcnRyYWl0Ijp7fX0seyJsYW5kc2Nh
+		cGVSaWdodCI6e319LHsibGFuZHNjYXBlTGVmdCI6e319LHsicG9ydHJhaXRV
+		cHNpZGVEb3duIjp7ImNvbmRpdGlvbiI6eyJkZXZpY2VGYW1pbGllcyI6WyJw
+		YWQiXX19fV19XX1dLCJ0YXJnZXRzIjpbIkFwcE1vZHVsZSJdLCJ0eXBlIjp7
+		ImV4ZWN1dGFibGUiOm51bGx9fV0sInRhcmdldE1hcCI6eyJBcHBNb2R1bGUi
+		OnsiZGVwZW5kZW5jaWVzIjpbXSwiZXhjbHVkZSI6W10sIm5hbWUiOiJBcHBN
+		b2R1bGUiLCJwYXRoIjoiLiIsInJlc291cmNlcyI6W10sInNldHRpbmdzIjpb
+		XSwidHlwZSI6ImV4ZWN1dGFibGUifX0sInRhcmdldHMiOlt7ImRlcGVuZGVu
+		Y2llcyI6W10sImV4Y2x1ZGUiOltdLCJuYW1lIjoiQXBwTW9kdWxlIiwicGF0
+		aCI6Ii4iLCJyZXNvdXJjZXMiOltdLCJzZXR0aW5ncyI6W10sInR5cGUiOiJl
+		eGVjdXRhYmxlIn1dLCJ0b29sc1ZlcnNpb24iOnsiX3ZlcnNpb24iOiI1LjYu
+		MCJ9fQ==
+		</data>
+		<key>manifestHash</key>
+		<data>
+		a2WFopzGvI+Im4Cmb/uMbrwQooAxjgNwoa/RExW/aKk=
+		</data>
+		<key>schemaVersion</key>
+		<integer>4</integer>
+		<key>swiftPMVersionString</key>
+		<string>5.7.1</string>
+	</dict>
+</dict>
+</plist>

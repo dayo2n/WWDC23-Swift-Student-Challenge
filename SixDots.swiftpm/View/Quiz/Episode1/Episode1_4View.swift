@@ -25,7 +25,7 @@ struct Episode1_4View: View {
                 ZStack {
                     VStack(alignment: .leading, spacing: 20) {
                         
-                        Text("Braille on this button does not say 'DOWN'.\nThe contractor simply rotated the 'UP' button 180 degrees.")
+                        Text("Braille on this down button does not say **'DOWN'**.\nThe contractor simply **rotated the 'UP' button 180 degrees.**")
                             .font(.sandoll(size: 35, weight: .regular))
                             .foregroundColor(Color.dark)
                             .lineSpacing(10)
@@ -85,7 +85,7 @@ struct Episode1_4View: View {
             Image("\(IMAGE_FrontElevator)")
                 .resizable()
                 .scaledToFill()
-                .blur(radius: 5)
+                .blur(radius: 15)
         }
         .ignoresSafeArea()
         .navigationBarBackButtonHidden(true)
@@ -94,8 +94,13 @@ struct Episode1_4View: View {
         }, label: {
             HStack {
                 Image(systemName: "house")
+                    .font(.sandoll(size: 20, weight: .semibold))
+                    .foregroundColor(Color.dark)
                 Text("Home")
+                    .font(.sandoll(size: 20, weight: .semibold))
+                    .foregroundColor(Color.dark)
             }
+            .padding()
         }))
         .onAppear {
             withAnimation(Animation.easeIn) {
