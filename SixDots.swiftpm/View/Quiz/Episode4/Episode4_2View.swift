@@ -53,6 +53,15 @@ struct Episode4_2View: View {
                 .scaledToFill()
         }
         .ignoresSafeArea()
+        .navigationBarBackButtonHidden(true)
+        .navigationBarItems(leading: Button(action: {
+            NavigationUtil.popToRootView()
+        }, label: {
+            HStack {
+                Image(systemName: "house")
+                Text("Home")
+            }
+        }))
     }
 }
 

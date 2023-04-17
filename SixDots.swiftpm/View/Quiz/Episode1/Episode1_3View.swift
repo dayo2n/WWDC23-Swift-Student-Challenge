@@ -31,18 +31,14 @@ struct Episode1_3View: View {
                 
                 ZStack {
                     VStack(alignment: .center, spacing: 20) {
-                        
-                        Text("Is the wrong button a up button or a down button?")
-                            .font(.sandoll(size: 35, weight: .regular))
-                            .foregroundColor(Color.dark)
-                        
-                        Text("The button on the elevator is weird. Is the wrong button a up button or a down button?")
+                        Text("The button on the elevator is weird.\nIs the wrong button a up button or a down button?\n\nIf you need a help, press the hint button!")
                             .font(.sandoll(size: 35, weight: .regular))
                             .foregroundColor(Color.dark)
                         
                         Spacer()
                         
                         HStack(spacing: 50) {
+                            Spacer()
                             Button {
                                clickedUpButton = true
                             } label: {
@@ -50,7 +46,7 @@ struct Episode1_3View: View {
                                     .font(.sandoll(size: 35, weight: .semibold))
                                     .foregroundColor(Color.dark)
                                     .padding(.vertical, 30)
-                                    .frame(width: 220)
+                                    .frame(width: 300)
                                     .background(clickedUpButton ? Color.keyColor.opacity(0.8) : Color.dark.opacity(0.2))
                                     .cornerRadius(20)
                             }
@@ -62,13 +58,14 @@ struct Episode1_3View: View {
                                     .font(.sandoll(size: 35, weight: .semibold))
                                     .foregroundColor(Color.dark)
                                     .padding(.vertical, 30)
-                                    .frame(width: 220)
+                                    .frame(width: 300)
                                     .background(clickedDownButton ?  Color.keyColor.opacity(0.8) :  Color.dark.opacity(0.2))
                                     .cornerRadius(20)
                             }
+                            Spacer()
                         }
                     }
-                    .padding(.vertical, 100)
+                    .padding(.vertical, 80)
                 }
                 .frame(height: 500)
                 .padding(.horizontal, 15)

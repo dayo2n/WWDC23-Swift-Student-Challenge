@@ -108,6 +108,15 @@ struct Episode4_3View: View {
                 .blur(radius: 5)
         }
         .ignoresSafeArea()
+        .navigationBarBackButtonHidden(true)
+        .navigationBarItems(leading: Button(action: {
+            NavigationUtil.popToRootView()
+        }, label: {
+            HStack {
+                Image(systemName: "house")
+                Text("Home")
+            }
+        }))
         .alert("You did it🥳", isPresented: $showResult) {
             Button("Next", role: .cancel) {
                 self.activateNavigationToNextView = true

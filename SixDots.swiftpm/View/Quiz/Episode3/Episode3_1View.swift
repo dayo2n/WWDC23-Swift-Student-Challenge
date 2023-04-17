@@ -66,6 +66,15 @@ struct Episode3_1View: View {
                 .padding(.bottom, 20)
         }
         .ignoresSafeArea()
+        .navigationBarBackButtonHidden(true)
+        .navigationBarItems(leading: Button(action: {
+            NavigationUtil.popToRootView()
+        }, label: {
+            HStack {
+                Image(systemName: "house")
+                Text("Home")
+            }
+        }))
     }
 }
 

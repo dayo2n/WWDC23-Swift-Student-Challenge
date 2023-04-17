@@ -85,6 +85,15 @@ struct Episode3_3View: View {
                 self.navigateToNextView = true
             }
         }
+        .navigationBarBackButtonHidden(true)
+        .navigationBarItems(leading: Button(action: {
+            NavigationUtil.popToRootView()
+        }, label: {
+            HStack {
+                Image(systemName: "house")
+                Text("Home")
+            }
+        }))
     }
 }
 
