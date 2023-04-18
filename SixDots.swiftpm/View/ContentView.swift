@@ -16,6 +16,6 @@ struct ContentView: View {
                     SelectModeButtonView(iconImageName: "graduationcap.fill", modeName: "Quiz")
                 }
             }
-        }
+        }.navigationViewStyle(StackNavigationViewStyle())
     }
 }

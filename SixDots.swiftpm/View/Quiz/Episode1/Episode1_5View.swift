@@ -17,7 +17,6 @@ struct Episode1_5View: View {
                 .scaledToFit()
                 .frame(width: 500)
                 .padding(.bottom, 500)
-            
             VStack {
                 Spacer()
                 ZStack {
@@ -28,7 +27,6 @@ struct Episode1_5View: View {
                             .lineSpacing(10)
                         Spacer()
                     }
-                        
                     VStack {
                         Spacer()
                         HStack {

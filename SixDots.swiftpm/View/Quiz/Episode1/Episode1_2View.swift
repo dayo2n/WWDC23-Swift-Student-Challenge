@@ -29,13 +29,10 @@ struct Episode1_2View: View {
                                     self.textOpacity = 1.0
                                 }
                             }
-                        
                         Spacer()
                     }
-                        
                     VStack {
                         Spacer()
-                        
                         HStack {
                             if numberOfClickNext == 0 {
                                 Button {

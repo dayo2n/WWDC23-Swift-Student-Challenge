@@ -14,10 +14,8 @@ struct Episode3_1View: View {
     @Environment(\.dismiss) private var dismiss
     var body: some View {
         ZStack {
-            
             VStack {
                 Spacer()
-                
                 ZStack {
                     HStack {
                         Text(numberOfClickNext == 0 ? "It's hard to even get out of the building..." : "I can go home by bus coming to the bus stop in front of this building.\nBut I have to cross the crosswalk once to the bus stop.")
@@ -30,13 +28,10 @@ struct Episode3_1View: View {
                                     textOpacity = 1.0
                                 }
                             }
-                        
                         Spacer()
                     }
-                    
                     VStack {
                         Spacer()
-                        
                         HStack {
                             Button {
                                 if numberOfClickNext == 0 {
@@ -72,7 +67,6 @@ struct Episode3_1View: View {
                 .background {
                     RoundedRectangle(cornerRadius: 20)
                         .foregroundColor(Color.light.opacity(0.9))
-                        
                 }
             }
             .padding(.bottom, 40)

@@ -13,10 +13,8 @@ struct Episode4_2View: View {
     @State private var contentOpacity = 0.0
     var body: some View {
         ZStack {
-            
             VStack {
                 Spacer()
-                
                 ZStack {
                     HStack {
                         Text("I'll almost be home once I get off at the next stop.")
@@ -25,10 +23,8 @@ struct Episode4_2View: View {
                             .lineSpacing(10)
                         Spacer()
                     }
-                    
                     VStack {
                         Spacer()
-                        
                         HStack {
                             Button {
                                 dismiss()
@@ -51,7 +47,6 @@ struct Episode4_2View: View {
                 .background {
                     RoundedRectangle(cornerRadius: 20)
                         .foregroundColor(Color.light.opacity(0.9))
-                        
                 }
                 .opacity(contentOpacity)
             }

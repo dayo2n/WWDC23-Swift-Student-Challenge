@@ -18,11 +18,9 @@ struct Episode4_3View: View {
     @Environment(\.dismiss) private var dismiss
     var body: some View {
         ZStack {
-            
             NavigationLink(destination: Episode4_4View(), isActive: $activateNavigationToNextView) {
                 EmptyView()
             }
-            
             HStack {
                 Image("\(IMAGE_StopBell)")
                 
@@ -39,7 +37,6 @@ struct Episode4_3View: View {
                                     }
                             }
                         }
-                        
                         VStack (spacing: 35) {
                             ForEach (0..<3) { cell in
                                 CellView(isTapped: $isCellPressed[cell + 3], cellSize: 100)
@@ -62,13 +59,10 @@ struct Episode4_3View: View {
             }
             .padding(.bottom, 450)
             
-            
             VStack {
                 Spacer()
-                
                 ZStack {
                     VStack(alignment: .leading, spacing: 20) {
-                        
                         Text(numberOfClickNext > 0 ? "Can you emboss braille for me? I can recognize it with just the first letter **'s'** of STOP!" : "Where is the bus stop button?\nI can't feel the braille no matter how much I touch it.")
                             .font(.sandoll(size: 35, weight: .medium))
                             .foregroundColor(Color.dark)
@@ -79,18 +73,14 @@ struct Episode4_3View: View {
                                     textOpacity = 1.0
                                 }
                             }
-                        
                         Text(numberOfClickNext > 0 ? "\nLet's make the braille **s**!\nAgain, you can press the button on the upper right to see the hint." : "")
                             .font(.sandoll(size: 25, weight: .regular))
                             .foregroundColor(Color.dark)
                             .opacity(textOpacity)
                     }
-                    
                     VStack {
                         Spacer()
-                        
                         HStack {
-                            
                             Button {
                                 if numberOfClickNext == 0 {
                                     dismiss()
@@ -118,7 +108,6 @@ struct Episode4_3View: View {
                 .background {
                     RoundedRectangle(cornerRadius: 20)
                         .foregroundColor(Color.light.opacity(0.9))
-                        
                 }
             }
             .padding(.bottom, 40)

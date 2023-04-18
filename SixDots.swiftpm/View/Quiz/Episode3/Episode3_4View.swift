@@ -22,8 +22,14 @@ struct Episode3_4View: View {
                     
                     Text("Straight")
                         .font(.sandoll(size: 50, weight: .bold))
+                        .padding(.horizontal, 20)
+                        .padding(.vertical, 10)
+                        .background {
+                            RoundedRectangle(cornerRadius: 20)
+                                .foregroundColor(.light)
+                                .opacity(0.3)
+                        }
                 }
-                
                 VStack {
                     Image("\(IMAGE_StopBlock)")
                         .resizable()
@@ -33,6 +39,13 @@ struct Episode3_4View: View {
                     
                     Text("Stop")
                         .font(.sandoll(size: 50, weight: .bold))
+                        .padding(.horizontal, 20)
+                        .padding(.vertical, 10)
+                        .background {
+                            RoundedRectangle(cornerRadius: 20)
+                                .foregroundColor(.light)
+                                .opacity(0.3)
+                        }
                 }
             }
             .padding(.bottom, 400)
@@ -62,20 +75,9 @@ struct Episode3_4View: View {
                                         textOpacities[1] = 1.0
                                     }
                                 }
-//                            Text("It is commonly used in front of the crosswalks or when there is a sudden change in the road.")
-//                                .font(.sandoll(size: 35, weight: .medium))
-//                                .foregroundColor(Color.dark)
-//                                .lineSpacing(10)
-//                                .opacity(textOpacities[2])
-//                                .onAppear {
-//                                    withAnimation(.easeIn.delay(2)) {
-//                                        textOpacities[2] = 1.0
-//                                    }
-//                                }
                         }
                         Spacer()
                     }
-                    
                     VStack {
                         Spacer()
                         HStack {
@@ -99,8 +101,7 @@ struct Episode3_4View: View {
                 .frame(height: 500)
                 .background {
                     RoundedRectangle(cornerRadius: 20)
-                        .foregroundColor(Color.light.opacity(0.9))
-                        
+                        .foregroundColor(Color.light.opacity(0.9))   
                 }
             }
             .padding(.bottom, 40)

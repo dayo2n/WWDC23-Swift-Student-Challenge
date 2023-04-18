@@ -22,7 +22,6 @@ struct Episode2_2View: View {
             NavigationLink(destination: Episode2_3View(), isActive: $navigateToNextView) {
                 EmptyView()
             }
-            
             Image("\(IMAGE_FloorButton)")
                 .resizable()
                 .scaledToFit()
@@ -42,7 +41,6 @@ struct Episode2_2View: View {
                                 }
                         }
                     }
-                    
                     VStack (spacing: 35) {
                         ForEach (0..<3) { cell in
                             CellView(isTapped: $isCellPressed[cell + 3], cellSize: 100)
@@ -64,7 +62,6 @@ struct Episode2_2View: View {
                 .padding(.leading, 250)
                 .padding(.bottom, 500)
             }
-            
             VStack {
                 Spacer()
                 ZStack {

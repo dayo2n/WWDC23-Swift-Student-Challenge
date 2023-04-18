@@ -11,10 +11,8 @@ struct Episode4_1View: View {
     @Environment(\.dismiss) private var dismiss
     var body: some View {
         ZStack {
-            
             VStack {
                 Spacer()
-                
                 ZStack {
                     HStack {
                         Text("Oh, I can hear the bus coming!")
@@ -23,7 +21,6 @@ struct Episode4_1View: View {
                             .lineSpacing(10)
                         Spacer()
                     }
-                    
                     VStack {
                         Spacer()
                         HStack {
@@ -48,7 +45,6 @@ struct Episode4_1View: View {
                 .background {
                     RoundedRectangle(cornerRadius: 20)
                         .foregroundColor(Color.light.opacity(0.9))
-                        
                 }
             }
             .padding(.bottom, 40)

@@ -16,7 +16,6 @@ struct Episode3_3View: View {
     @Environment(\.dismiss) private var dismiss
     var body: some View {
         ZStack {
-            
             NavigationLink(destination: Episode3_4View(), isActive: $navigateToNextView) {
                 EmptyView()
             }
@@ -25,7 +24,6 @@ struct Episode3_3View: View {
                     .resizable()
                     .scaledToFit()
                     .padding(.bottom, 550)
-                
                 VStack {
                     HStack {
                         ForEach(0..<5) { index in
@@ -51,7 +49,6 @@ struct Episode3_3View: View {
                         .frame(width: 120)
                 }
             }
-            
             ZStack {
                 VStack {
                     Spacer()
@@ -95,7 +92,6 @@ struct Episode3_3View: View {
                     .background {
                         RoundedRectangle(cornerRadius: 20)
                             .foregroundColor(Color.light.opacity(0.9))
-                            
                     }
                 }
                 VStack {
@@ -106,7 +102,6 @@ struct Episode3_3View: View {
                         } label: {
                             PrevButtonView()
                         }
-                        
                         Spacer()
                     }
                 }

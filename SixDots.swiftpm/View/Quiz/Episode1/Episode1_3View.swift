@@ -19,7 +19,6 @@ struct Episode1_3View: View {
     
     var body: some View {
         ZStack {
-            
             NavigationLink(destination: Episode1_4View(), isActive: $activateNavigationToNextView) {
                 EmptyView()
             }
@@ -33,7 +32,6 @@ struct Episode1_3View: View {
             GeometryReader { geo in
                 VStack {
                     Spacer()
-                    
                     ZStack {
                         VStack(alignment: .center, spacing: 20) {
                             HStack {
@@ -71,9 +69,7 @@ struct Episode1_3View: View {
                                 }
                                 Spacer()
                             }
-                            
                             Spacer()
-                            
                             HStack(spacing: 50) {
                                 Spacer()
                                 Button {
@@ -93,7 +89,6 @@ struct Episode1_3View: View {
                                             }
                                         }
                                 }
-                                
                                 Button {
                                    clickedDownButton = true
                                 } label: {

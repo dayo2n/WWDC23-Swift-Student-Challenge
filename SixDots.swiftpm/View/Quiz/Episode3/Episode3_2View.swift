@@ -16,7 +16,6 @@ struct Episode3_2View: View {
         ZStack {
             VStack {
                 Spacer()
-                
                 ZStack {
                     HStack {
                         Text(numberOfClickNext == 0 ? "I can hear a passing car.. but since the tactile paving is a guidance surface, I can just keep going, right?" : "Oh, my gosh!!\nSomeone honked their horn loudly to let me know that I was in danger.\nI think the tactile paving block might have been installed incorrectly.")
@@ -33,9 +32,7 @@ struct Episode3_2View: View {
                     }
                     VStack {
                         Spacer()
-                        
                         HStack {
-                            
                             Button {
                                 if numberOfClickNext == 0 {
                                     dismiss()
@@ -69,7 +66,6 @@ struct Episode3_2View: View {
                 .background {
                     RoundedRectangle(cornerRadius: 20)
                         .foregroundColor(Color.light.opacity(0.9))
-                        
                 }
             }
             .padding(.bottom, 40)
@@ -80,7 +76,6 @@ struct Episode3_2View: View {
                 Image("\(numberOfClickNext == 0 ? IMAGE_NoBraileSideWalkOnStreet0 : IMAGE_NoBraileSideWalkOnStreet1)")
                     .resizable()
                     .scaledToFill()
-                
                 if numberOfClickNext > 0 {
                     Image("\(IMAGE_Bang)")
                         .resizable()

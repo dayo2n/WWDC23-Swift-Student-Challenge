@@ -20,7 +20,6 @@ struct Episode1_4View: View {
                     .scaledToFit()
                     .frame(width: geo.size.width * 0.6)
                     .padding(.bottom, 500)
-                
                 VStack {
                     Spacer()
                     ZStack {
@@ -47,22 +46,17 @@ struct Episode1_4View: View {
                                         }
                                     }
                             }
-                            
                             Spacer()
                         }
-                            
                         VStack {
                             Spacer()
-                            
                             HStack {
                                 Button {
                                     dismiss()
                                 } label: {
                                     PrevButtonView()
                                 }
-                                
                                 Spacer()
-                                
                                 NavigationLink {
                                     Episode1_5View()
                                 } label: {
@@ -84,7 +78,6 @@ struct Episode1_4View: View {
                 VStack {
                     HStack {
                         Spacer()
-                        
                         Image("\(IMAGE_CroppedUpButton)")
                             .resizable()
                             .scaledToFit()
@@ -95,7 +88,6 @@ struct Episode1_4View: View {
                                 withAnimation(.linear(duration: 1.0).delay(1.5)) {
                                         isRotating = 190.0
                                     }
-                                
                                 withAnimation(.linear(duration: 1.0).delay(2.7)) {
                                     isMoving = Int(geo.size.height / 3)
                                     }

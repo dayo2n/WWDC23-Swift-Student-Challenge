@@ -13,7 +13,6 @@ struct Episode1_1View: View {
         ZStack {
             VStack {
                 Spacer()
-                
                 ZStack {
                     HStack(spacing: 20) {
                         VStack(alignment: .leading, spacing: 20) {

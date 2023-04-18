@@ -33,7 +33,6 @@ struct Episode2_3View: View {
                         CellView(isTapped: $isCellPressed[cell], cellSize: 100)
                     }
                 }
-                
                 VStack (spacing: 35) {
                     ForEach (0..<3) { cell in
                         CellView(isTapped: $isCellPressed[cell + 3], cellSize: 100)
@@ -52,7 +51,6 @@ struct Episode2_3View: View {
             
             VStack {
                 Spacer()
-                
                 ZStack {
                     HStack {
                         VStack (alignment: .leading, spacing: 10) {
@@ -102,7 +100,6 @@ struct Episode2_3View: View {
                         }
                         Spacer()
                     }
-                    
                     VStack {
                         Spacer()
                         HStack {

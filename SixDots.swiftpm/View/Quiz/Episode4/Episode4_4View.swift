@@ -11,15 +11,12 @@ struct Episode4_4View: View {
     @Environment(\.dismiss) private var dismiss
     var body: some View {
         ZStack {
-            
             Image("\(IMAGE_StopBellWithBraille)")
                 .resizable()
                 .scaledToFit()
                 .padding(.bottom, 500)
-            
             VStack {
                 Spacer()
-                
                 ZStack {
                     HStack {
                         Text("Even locating the bus stop button by touch be difficult for people with visual impairments, but it becomes even more challenging if there is no braille.😭")
@@ -28,7 +25,6 @@ struct Episode4_4View: View {
                             .lineSpacing(10)
                         Spacer()
                     }
-                    
                     VStack {
                         Spacer()
                         HStack {
@@ -46,7 +42,6 @@ struct Episode4_4View: View {
                 .background {
                     RoundedRectangle(cornerRadius: 20)
                         .foregroundColor(Color.light.opacity(0.9))
-                        
                 }
             }
             .padding(.bottom, 40)
