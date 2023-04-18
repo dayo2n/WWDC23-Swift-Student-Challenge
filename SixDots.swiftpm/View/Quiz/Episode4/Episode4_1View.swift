@@ -17,7 +17,7 @@ struct Episode4_1View: View {
                 
                 ZStack {
                     HStack {
-                        Text("Now, there is a bus coming to the bus stop in front of this building, and I go home by that bus.")
+                        Text("Oh, I can hear the bus coming!")
                             .font(.sandoll(size: 35, weight: .medium))
                             .foregroundColor(Color.dark)
                             .lineSpacing(10)

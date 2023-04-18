@@ -57,7 +57,7 @@ struct Episode3_3View: View {
                     Spacer()
                     HStack {
                         VStack(alignment: .leading, spacing: 20) {
-                            Text("There're invalid Braille blocks.")
+                            Text("There are incorrectly installed tactile paving blocks")
                                 .font(.sandoll(size: 35, weight: .medium))
                                 .foregroundColor(Color.dark)
                                 .lineSpacing(10)
@@ -67,7 +67,7 @@ struct Episode3_3View: View {
                                         textOpacities[0] = 1.0
                                     }
                                 }
-                            Text("**In front of the crosswalk, there should be a warning tile that means stop and be careful.**")
+                            Text("**In front of the crosswalk, there should be warning blocks that means stop and be careful.**")
                                 .font(.sandoll(size: 35, weight: .medium))
                                 .foregroundColor(Color.dark)
                                 .lineSpacing(10)
@@ -121,7 +121,7 @@ struct Episode3_3View: View {
                 .blur(radius: 15)
         }
         .ignoresSafeArea()
-        .alert("You did it🥳", isPresented: $showResult) {
+        .alert("Exactly! That's it!🥳", isPresented: $showResult) {
             Button("Next", role: .cancel) {
                 self.navigateToNextView = true
             }
@@ -147,7 +147,7 @@ struct Episode3_3View: View {
                 .foregroundColor(Color.dark)
                 .padding()
         }))
-        .alert("Tap the yellow braille block on the screen!", isPresented: $showHint) {
+        .alert("Tap the yellow Braille block to change the surface.", isPresented: $showHint) {
             Button("Okay", role: .cancel) { }
         }
     }

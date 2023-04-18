@@ -19,7 +19,6 @@ struct Episode2_2View: View {
     @Environment(\.dismiss) private var dismiss
     var body: some View {
         ZStack {
-            
             NavigationLink(destination: Episode2_3View(), isActive: $navigateToNextView) {
                 EmptyView()
             }
@@ -68,7 +67,6 @@ struct Episode2_2View: View {
             
             VStack {
                 Spacer()
-                
                 ZStack {
                     HStack {
                         VStack(alignment: .leading, spacing: 20) {
@@ -92,8 +90,8 @@ struct Episode2_2View: View {
                                         self.textOpcities[1] = 1.0
                                     }
                                 }
-                            Text("**Can you make a number Braille on the button on the first floor** I'm going to?")
-                                .font(.sandoll(size: 35, weight: .medium))
+                            Text("So can you make a number Braille on the **first floor** button?")
+                                .font(.sandoll(size: 40, weight: .medium))
                                 .foregroundColor(Color.dark)
                                 .lineSpacing(10)
                                 .opacity(self.textOpcities[2])
@@ -102,14 +100,11 @@ struct Episode2_2View: View {
                                         self.textOpcities[2] = 1.0
                                     }
                                 }
-                            
                         }
                         Spacer()
                     }
-                    
                     VStack {
                         Spacer()
-                        
                         HStack {
                             Button {
                                 if numberOfClickNext == 0 {
@@ -120,9 +115,7 @@ struct Episode2_2View: View {
                             } label: {
                                 PrevButtonView()
                             }
-                            
                             Spacer()
-                            
                             if numberOfClickNext == 0 {
                                 Button {
                                     numberOfClickNext += 1
@@ -138,7 +131,6 @@ struct Episode2_2View: View {
                 .background {
                     RoundedRectangle(cornerRadius: 20)
                         .foregroundColor(Color.light.opacity(0.9))
-                        
                 }
             }
             .padding(.bottom, 40)
@@ -157,7 +149,7 @@ struct Episode2_2View: View {
                 .scaledToFill()
                 .blur(radius: CGFloat(backgroundBlurRadius))
         }
-        .alert( "That's right!🥳", isPresented: $showResult) {
+        .alert("That's right!🥳", isPresented: $showResult) {
             Button("Next", role: .cancel) {
                 self.navigateToNextView = true
             }

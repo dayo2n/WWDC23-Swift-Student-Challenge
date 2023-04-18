@@ -9,6 +9,8 @@ import SwiftUI
 
 struct Episode4_2View: View {
     @Environment(\.dismiss) private var dismiss
+    @State private var leadingPadding = 0
+    @State private var contentOpacity = 0.0
     var body: some View {
         ZStack {
             
@@ -17,7 +19,7 @@ struct Episode4_2View: View {
                 
                 ZStack {
                     HStack {
-                        Text("If we get off at the next stop, it's my house.")
+                        Text("I'll almost be home once I get off at the next stop.")
                             .font(.sandoll(size: 35, weight: .medium))
                             .foregroundColor(Color.dark)
                             .lineSpacing(10)
@@ -51,6 +53,7 @@ struct Episode4_2View: View {
                         .foregroundColor(Color.light.opacity(0.9))
                         
                 }
+                .opacity(contentOpacity)
             }
             .padding(.bottom, 40)
             .padding(.horizontal, 40)
@@ -59,6 +62,15 @@ struct Episode4_2View: View {
             Image("\(IMAGE_InsideBus)")
                 .resizable()
                 .scaledToFill()
+                .padding(.leading, CGFloat(leadingPadding))
+                .onAppear(perform: {
+                    withAnimation(.linear(duration: 0.7).repeatForever(autoreverses: true)) { 
+                        leadingPadding = 20
+                    }
+                    withAnimation(.easeIn.delay(1.0)) { 
+                        contentOpacity = 1.0
+                    }
+                })
         }
         .ignoresSafeArea()
         .navigationBarBackButtonHidden(true)

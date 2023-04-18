@@ -69,7 +69,7 @@ struct Episode4_3View: View {
                 ZStack {
                     VStack(alignment: .leading, spacing: 20) {
                         
-                        Text(numberOfClickNext > 0 ? "Would you engrave braille for me?\nI just need **S**, the first letter of STOP to know!" : "Where the hell is the stop button?\nNo matter how hard I look, there's no braille.")
+                        Text(numberOfClickNext > 0 ? "Can you emboss braille for me? I can recognize it with just the first letter **'s'** of STOP!" : "Where is the bus stop button?\nI can't feel the braille no matter how much I touch it.")
                             .font(.sandoll(size: 35, weight: .medium))
                             .foregroundColor(Color.dark)
                             .lineSpacing(10)
@@ -80,7 +80,7 @@ struct Episode4_3View: View {
                                 }
                             }
                         
-                        Text(numberOfClickNext > 0 ? "\n\nPlease engrave it in the braille on the screen!" : "")
+                        Text(numberOfClickNext > 0 ? "\nLet's make the braille **s**!\nAgain, you can press the button on the upper right to see the hint." : "")
                             .font(.sandoll(size: 25, weight: .regular))
                             .foregroundColor(Color.dark)
                             .opacity(textOpacity)
@@ -151,7 +151,7 @@ struct Episode4_3View: View {
                     .padding()
             }
         }))
-        .alert("You did it🥳", isPresented: $showResult) {
+        .alert("You did it🥳🥳🥳", isPresented: $showResult) {
             Button("Next", role: .cancel) {
                 self.activateNavigationToNextView = true
             }

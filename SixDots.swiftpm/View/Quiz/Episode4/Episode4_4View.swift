@@ -22,7 +22,7 @@ struct Episode4_4View: View {
                 
                 ZStack {
                     HStack {
-                        Text("Blind people can't even find the location of the bus stop bell, but it's more difficult without braille.😭")
+                        Text("Even locating the bus stop button by touch be difficult for people with visual impairments, but it becomes even more challenging if there is no braille.😭")
                             .font(.sandoll(size: 35, weight: .medium))
                             .foregroundColor(Color.dark)
                             .lineSpacing(10)

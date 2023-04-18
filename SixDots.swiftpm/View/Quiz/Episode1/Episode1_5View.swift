@@ -12,7 +12,6 @@ struct Episode1_5View: View {
     @Environment(\.dismiss) private var dismiss
     var body: some View {
         ZStack {
-            
             Image("\(IMAGE_DownButtonWithCorrectedBraille)")
                 .resizable()
                 .scaledToFit()
@@ -21,29 +20,24 @@ struct Episode1_5View: View {
             
             VStack {
                 Spacer()
-                
                 ZStack {
                     HStack {
-                        Text("The down button should be **‘DOWN’** or abbreviated as **‘DWN’** in Braille so I can read it.")
+                        Text("I changed the braille correctly. The down button should be written in Braille as **‘down’** or abbreviated as **‘dwn’**.\nIf you want to check it out, press the 'Braille' button on the top right!")
                             .font(.sandoll(size: 35, weight: .medium))
                             .foregroundColor(Color.dark)
                             .lineSpacing(10)
-                        
                         Spacer()
                     }
                         
                     VStack {
                         Spacer()
-                        
                         HStack {
                             Button {
                                 dismiss()
                             } label: {
                                 PrevButtonView()
                             }
-                            
                             Spacer()
-                            
                             NavigationLink {
                                 Episode2_1View()
                             } label: {

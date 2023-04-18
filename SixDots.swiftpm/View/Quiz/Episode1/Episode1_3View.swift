@@ -13,8 +13,8 @@ struct Episode1_3View: View {
     @State private var clickedDownButton = false
     @State private var activateNavigationToNextView = false
     @State private var showHint = false
-    @State private var buttonWidth = 290
-    @State private var buttonHeight = 90
+    @State private var buttonWidth = 240
+    @State private var buttonHeight = 80
     @State private var textOpacities = Array(repeating: 0.0, count: 3)
     
     var body: some View {
@@ -38,7 +38,7 @@ struct Episode1_3View: View {
                         VStack(alignment: .center, spacing: 20) {
                             HStack {
                                 VStack(alignment: .leading, spacing: 20) {
-                                    Text("Braile on button is weird.")
+                                    Text("The Braile on button is weird.")
                                         .font(.sandoll(size: 35, weight: .medium))
                                         .foregroundColor(Color.dark)
                                         .lineSpacing(10)
@@ -48,7 +48,7 @@ struct Episode1_3View: View {
                                                 textOpacities[0] = 1.0
                                             }
                                         }
-                                    Text("**Is the wrong button a up button or a down button?**")
+                                    Text("**Which button has a weird braille mark? Up or down?**")
                                         .font(.sandoll(size: 35, weight: .medium))
                                         .foregroundColor(Color.dark)
                                         .lineSpacing(10)
@@ -58,8 +58,8 @@ struct Episode1_3View: View {
                                                 textOpacities[1] = 1.0
                                             }
                                         }
-                                    Text("\nIf you need a help, press the **hint button!**")
-                                        .font(.sandoll(size: 35, weight: .medium))
+                                    Text("\nBraille would be unfamiliar to you, right?\n**Then press the hint button on the top right!**")
+                                        .font(.sandoll(size: 25, weight: .medium))
                                         .foregroundColor(Color.dark)
                                         .lineSpacing(10)
                                         .opacity(textOpacities[2])
@@ -88,8 +88,8 @@ struct Episode1_3View: View {
                                         .cornerRadius(20)
                                         .onAppear {
                                             withAnimation(Animation.linear(duration: 0.9).repeatForever()) {
-                                                buttonWidth = 300
-                                                buttonHeight = 100
+                                                buttonWidth = 250
+                                                buttonHeight = 90
                                             }
                                         }
                                 }
@@ -128,12 +128,13 @@ struct Episode1_3View: View {
                 .blur(radius: 15)
         }
         .ignoresSafeArea()
-        .alert("Do it again🤓", isPresented: $clickedUpButton) {
+        .alert("Do it again!🤓", isPresented: $clickedUpButton) {
             Button("Again", role: .cancel) {
-
             }
+        } message: {
+            Text("Think about what letters will be written and look for braille in the hints.")
         }
-        .alert("You did it🥳", isPresented: $clickedDownButton) {
+        .alert("Thanks for your help🤩", isPresented: $clickedDownButton) {
             Button("Next", role: .cancel) {
                 self.activateNavigationToNextView = true
             }

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct Episode1_2View: View {
     
-    private let guidingTexts = ["This is the 10th floor of the building, so I have to take the elevator down.", "This is the 10th floor of the building, so I have to take the elevator down.\nUh, wait, what the hell is this?!"]
+    private let guidingTexts = ["This is the 10th floor of the building, so let's take the elevator down.", "Uh, wait, what is this?!"]
     @State private var numberOfClickNext = 0
     @Environment(\.dismiss) private var dismiss
     @State private var textOpacity = 0.0
@@ -81,6 +81,7 @@ struct Episode1_2View: View {
             Image("\(IMAGE_FrontElevator)")
                 .resizable()
                 .scaledToFill()
+                .aspectRatio(numberOfClickNext == 0 ? 1.0 : 2.0, contentMode: .fill)
         }
         .ignoresSafeArea()
         .navigationBarBackButtonHidden(true)

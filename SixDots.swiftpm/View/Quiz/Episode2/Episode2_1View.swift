@@ -11,32 +11,25 @@ struct Episode2_1View: View {
     @Environment(\.dismiss) private var dismiss
     var body: some View {
         ZStack {
-            
             VStack {
                 Spacer()
-                
                 ZStack {
                     HStack {
-                        Text("Surprised it's unreadable Braille, thanks for your help!")
+                        Text("I think the elevator has arrived, so let's hurry up and get on.")
                             .font(.sandoll(size: 35, weight: .medium))
                             .foregroundColor(Color.dark)
                             .lineSpacing(10)
-                        
                         Spacer()
                     }
-                    
                     VStack {
                         Spacer()
-                        
                         HStack {
                             Button {
                                 dismiss()
                             } label: {
                                 PrevButtonView()
                             }
-                            
                             Spacer()
-                            
                             NavigationLink {
                                 Episode2_2View()
                             } label: {
@@ -50,7 +43,6 @@ struct Episode2_1View: View {
                 .background {
                     RoundedRectangle(cornerRadius: 20)
                         .foregroundColor(Color.light.opacity(0.9))
-                        
                 }
             }
             .padding(.bottom, 40)

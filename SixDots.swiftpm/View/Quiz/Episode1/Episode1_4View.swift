@@ -15,7 +15,6 @@ struct Episode1_4View: View {
     var body: some View {
         GeometryReader { geo in
             ZStack {
-                
                 Image("\(IMAGE_DownButtonWithWrongBraille)")
                     .resizable()
                     .scaledToFit()
@@ -24,11 +23,10 @@ struct Episode1_4View: View {
                 
                 VStack {
                     Spacer()
-                    
                     ZStack {
                         HStack {
                             VStack (alignment: .leading, spacing: 20) {
-                                Text("Braille on this down button does not say **'DOWN'**.")
+                                Text("The elevator installer **rotated the UP button 180 degrees**, making it look like a DOWN button for visual purposes only.")
                                     .font(.sandoll(size: 35, weight: .medium))
                                     .foregroundColor(Color.dark)
                                     .lineSpacing(10)
@@ -38,7 +36,7 @@ struct Episode1_4View: View {
                                             textOpacities[0] = 1.0
                                         }
                                     }
-                                Text("The contractor just **rotated the 'UP' button 180 degrees.**")
+                                Text("As a result, visually impaired people like me cannot read the braille on this button.")
                                     .font(.sandoll(size: 35, weight: .medium))
                                     .foregroundColor(Color.dark)
                                     .lineSpacing(10)

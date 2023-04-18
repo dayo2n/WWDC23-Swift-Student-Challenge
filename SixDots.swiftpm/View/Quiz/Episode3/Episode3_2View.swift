@@ -19,7 +19,7 @@ struct Episode3_2View: View {
                 
                 ZStack {
                     HStack {
-                        Text(numberOfClickNext == 0 ? "I can hear the sound of cars passing by..\nBut since there's a guiding tiles, it must not be a road for cars, right?" : "Oh, my gosh!!\n Someone rang a crack to let me know it's dangerous.\nMaybe the Braille walking block is installed incorrectly.")
+                        Text(numberOfClickNext == 0 ? "I can hear a passing car.. but since the tactile paving is a guidance surface, I can just keep going, right?" : "Oh, my gosh!!\nSomeone honked their horn loudly to let me know that I was in danger.\nI think the tactile paving block might have been installed incorrectly.")
                             .font(.sandoll(size: 35, weight: .medium))
                             .foregroundColor(Color.dark)
                             .lineSpacing(10)

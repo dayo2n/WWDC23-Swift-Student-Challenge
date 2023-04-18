@@ -17,7 +17,7 @@ struct Episode1_1View: View {
                 ZStack {
                     HStack(spacing: 20) {
                         VStack(alignment: .leading, spacing: 20) {
-                            Text("Hi, My name is XHENA!")
+                            Text("Hi, I'm XHENA!")
                                 .font(.sandoll(size: 35, weight: .medium))
                                 .foregroundColor(Color.dark)
                                 .lineSpacing(10)
@@ -27,8 +27,8 @@ struct Episode1_1View: View {
                                         self.opacities[0] = 1.0
                                     }
                                 }
-                            Text("I’m visually impaired.")
-                                .font(.sandoll(size: 35, weight: .medium))
+                            Text("And I’m **visually impaired.**")
+                                .font(.sandoll(size: 40, weight: .medium))
                                 .foregroundColor(Color.dark)
                                 .lineSpacing(10)
                                 .opacity(opacities[1])
@@ -37,7 +37,7 @@ struct Episode1_1View: View {
                                         self.opacities[1] = 1.0
                                     }
                                 }
-                            Text("I went out today, but now I have to go home alone after finishing my business.\n")
+                            Text("I went out today, and now I'm done with my business, I have to go back home alone.\n")
                                 .font(.sandoll(size: 35, weight: .medium))
                                 .foregroundColor(Color.dark)
                                 .lineSpacing(10)
@@ -48,7 +48,7 @@ struct Episode1_1View: View {
                                     }
                                 }
                             Text("**Can you help me get home?**")
-                                .font(.sandoll(size: 35, weight: .medium))
+                                .font(.sandoll(size: 40, weight: .medium))
                                 .foregroundColor(Color.dark)
                                 .lineSpacing(10)
                                 .opacity(opacities[3])
