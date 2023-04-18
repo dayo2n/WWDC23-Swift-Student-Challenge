@@ -14,6 +14,8 @@ struct Episode2_2View: View {
     @State private var navigateToNextView = false
     @State private var showHint = false
     @State private var textOpcities = Array(repeating: 0.0, count: 3)
+    @State private var contentsOpacity = 0.0
+    @State private var backgroundBlurRadius = 0
     @Environment(\.dismiss) private var dismiss
     var body: some View {
         ZStack {
@@ -76,7 +78,7 @@ struct Episode2_2View: View {
                                 .lineSpacing(10)
                                 .opacity(self.textOpcities[0])
                                 .onAppear {
-                                    withAnimation(.easeIn) {
+                                    withAnimation(.easeIn.delay(2)) {
                                         self.textOpcities[0] = 1.0
                                     }
                                 }
@@ -86,7 +88,7 @@ struct Episode2_2View: View {
                                 .lineSpacing(10)
                                 .opacity(self.textOpcities[1])
                                 .onAppear {
-                                    withAnimation(.easeIn.delay(1)) {
+                                    withAnimation(.easeIn.delay(3)) {
                                         self.textOpcities[1] = 1.0
                                     }
                                 }
@@ -96,7 +98,7 @@ struct Episode2_2View: View {
                                 .lineSpacing(10)
                                 .opacity(self.textOpcities[2])
                                 .onAppear {
-                                    withAnimation(.easeIn.delay(2)) {
+                                    withAnimation(.easeIn.delay(3)) {
                                         self.textOpcities[2] = 1.0
                                     }
                                 }
@@ -142,11 +144,18 @@ struct Episode2_2View: View {
             .padding(.bottom, 40)
             .padding(.horizontal, 40)
         }
+        .opacity(contentsOpacity)
+        .onAppear {
+            withAnimation(.easeIn(duration: 1).delay(1)) {
+                contentsOpacity = 1.0
+                backgroundBlurRadius = 15
+            }
+        }
         .background {
             Image("\(IMAGE_InsideElevator)")
                 .resizable()
                 .scaledToFill()
-                .blur(radius: 15)
+                .blur(radius: CGFloat(backgroundBlurRadius))
         }
         .alert( "That's right!🥳", isPresented: $showResult) {
             Button("Next", role: .cancel) {

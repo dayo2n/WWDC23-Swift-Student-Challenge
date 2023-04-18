@@ -15,10 +15,8 @@ struct Episode1_2View: View {
     @State private var textOpacity = 0.0
     var body: some View {
         ZStack {
-            
             VStack {
                 Spacer()
-                
                 ZStack {
                     HStack {
                         Text("\(guidingTexts[numberOfClickNext])")
