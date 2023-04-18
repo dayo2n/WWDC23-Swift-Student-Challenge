@@ -14,6 +14,7 @@ struct Episode4_3View: View {
     @State private var showResult = false
     @State private var activateNavigationToNextView = false
     @State private var showHint = false
+    @Environment(\.dismiss) private var dismiss
     var body: some View {
         ZStack {
             
@@ -81,6 +82,17 @@ struct Episode4_3View: View {
                         Spacer()
                         
                         HStack {
+                            
+                            Button {
+                                if numberOfClickNext == 0 {
+                                    dismiss()
+                                } else {
+                                    numberOfClickNext -= 1
+                                }
+                            } label: {
+                                PrevButtonView()
+                            }
+
                             Spacer()
                             
                             if numberOfClickNext == 0 {
@@ -89,7 +101,6 @@ struct Episode4_3View: View {
                                 } label: {
                                     NextButtonView()
                                 }
-                                .padding(20)
                             }
                         }
                     }

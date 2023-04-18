@@ -14,15 +14,17 @@ struct Episode1_1View: View {
                 Spacer()
                 
                 ZStack {
-                    VStack(alignment: .leading, spacing: 20) {
-                        
+                    HStack(spacing: 20) {
                         Text("Hi, My name is XHENA!\nI’m visually impaired\nI went out today, but now I have to go home alone after finishing my business.\n\n**Can you help me get home?**")
                             .font(.sandoll(size: 35, weight: .medium))
                             .foregroundColor(Color.dark)
                             .lineSpacing(10)
+                        
+                        Spacer()
                     }
                         
                     VStack {
+                        
                         Spacer()
                         
                         HStack {
@@ -33,7 +35,6 @@ struct Episode1_1View: View {
                             } label: {
                                 NextButtonView()
                             }
-                            .padding(20)
                         }
                     }
                 }

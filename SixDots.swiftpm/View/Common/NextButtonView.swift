@@ -18,5 +18,6 @@ struct NextButtonView: View {
                 .font(.sandoll(size: 40, weight: .regular))
                 .foregroundColor(Color.keyColor)
         }
+        .padding(20)
     }
 }

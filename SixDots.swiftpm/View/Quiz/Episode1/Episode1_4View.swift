@@ -10,6 +10,7 @@ import SwiftUI
 struct Episode1_4View: View {
     @State private var isRotating = 0.0
     @State private var isMoving = 0
+    @Environment(\.dismiss) private var dismiss
     var body: some View {
         GeometryReader { geo in
             ZStack {
@@ -24,18 +25,25 @@ struct Episode1_4View: View {
                     Spacer()
                     
                     ZStack {
-                        VStack(alignment: .leading, spacing: 20) {
-                            
+                        HStack {
                             Text("Braille on this down button does not say **'DOWN'**.\nThe contractor simply **rotated the 'UP' button 180 degrees.**")
                                 .font(.sandoll(size: 35, weight: .medium))
                                 .foregroundColor(Color.dark)
                                 .lineSpacing(10)
+                            
+                            Spacer()
                         }
                             
                         VStack {
                             Spacer()
                             
                             HStack {
+                                Button {
+                                    dismiss()
+                                } label: {
+                                    PrevButtonView()
+                                }
+                                
                                 Spacer()
                                 
                                 NavigationLink {
@@ -43,7 +51,6 @@ struct Episode1_4View: View {
                                 } label: {
                                     NextButtonView()
                                 }
-                                .padding(20)
                             }
                         }
                     }

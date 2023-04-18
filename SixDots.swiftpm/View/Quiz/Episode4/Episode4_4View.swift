@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct Episode4_4View: View {
+    @Environment(\.dismiss) private var dismiss
     var body: some View {
         ZStack {
             
@@ -20,18 +21,22 @@ struct Episode4_4View: View {
                 Spacer()
                 
                 ZStack {
-                    VStack(alignment: .leading, spacing: 20) {
-                        
+                    HStack {
                         Text("Blind people can't even find the location of the bus stop bell, but it's more difficult without braille.😭")
                             .font(.sandoll(size: 35, weight: .medium))
                             .foregroundColor(Color.dark)
                             .lineSpacing(10)
+                        Spacer()
                     }
                     
                     VStack {
                         Spacer()
-                        
                         HStack {
+                            Button {
+                                dismiss()
+                            } label: {
+                                PrevButtonView()
+                            }
                             Spacer()
                         }
                     }

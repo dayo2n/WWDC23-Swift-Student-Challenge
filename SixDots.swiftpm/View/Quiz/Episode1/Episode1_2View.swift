@@ -11,6 +11,7 @@ struct Episode1_2View: View {
     
     private let guidingTexts = ["This is the 10th floor of the building, so I have to take the elevator down.", "This is the 10th floor of the building, so I have to take the elevator down.\nUh, wait, what the hell is this?!"]
     @State private var numberOfClickNext = 0
+    @Environment(\.dismiss) private var dismiss
     var body: some View {
         ZStack {
             
@@ -18,34 +19,45 @@ struct Episode1_2View: View {
                 Spacer()
                 
                 ZStack {
-                    VStack(alignment: .leading, spacing: 20) {
-                        
+                    HStack {
                         Text("\(guidingTexts[numberOfClickNext])")
                             .font(.sandoll(size: 35, weight: .medium))
                             .foregroundColor(Color.dark)
                             .lineSpacing(10)
+                        
+                        Spacer()
                     }
                         
                     VStack {
                         Spacer()
                         
                         HStack {
-                            Spacer()
-                            
                             if numberOfClickNext == 0 {
+                                Button {
+                                    dismiss()
+                                } label: {
+                                    PrevButtonView()
+                                }
+
+                                Spacer()
                                 Button {
                                     numberOfClickNext += 1
                                 } label: {
                                     NextButtonView()
                                 }
-                                .padding(20)
                             } else {
+                                Button {
+                                    numberOfClickNext -= 1
+                                } label: {
+                                    PrevButtonView()
+                                }
+
+                                Spacer()
                                 NavigationLink {
                                     Episode1_3View()
                                 } label: {
                                     NextButtonView()
                                 }
-                                .padding(20)
                             }
                         }
                     }

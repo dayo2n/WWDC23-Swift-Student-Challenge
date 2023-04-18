@@ -12,6 +12,7 @@ struct Episode3_3View: View {
     @State private var showResult = false
     @State private var navigateToNextView = false
     @State private var showHint = false
+    @Environment(\.dismiss) private var dismiss
     var body: some View {
         ZStack {
             
@@ -50,26 +51,35 @@ struct Episode3_3View: View {
                 }
             }
             
-            VStack {
-                Spacer()
-                
-                HStack {
+            ZStack {
+                VStack {
                     Spacer()
-                    VStack(alignment: .leading, spacing: 20) {
-                        
-                        Text("There're some invalid Braille blocks.\n**In front of the crosswalk, there should be a warning tile that means stop and be careful.**\nPlease change the wrong blocks!")
+                    HStack {
+                        Text("There're invalid Braille blocks.\n**In front of the crosswalk, there should be a warning tile that means stop and be careful.**\nPlease change the wrong blocks!")
                             .font(.sandoll(size: 35, weight: .medium))
                             .foregroundColor(Color.dark)
                             .lineSpacing(10)
+                        Spacer()
                     }
-                    Spacer()
+                    .padding(.horizontal, 15)
+                    .frame(height: 500)
+                    .background {
+                        RoundedRectangle(cornerRadius: 20)
+                            .foregroundColor(Color.light.opacity(0.9))
+                            
+                    }
                 }
-                .padding(.horizontal, 15)
-                .frame(height: 500)
-                .background {
-                    RoundedRectangle(cornerRadius: 20)
-                        .foregroundColor(Color.light.opacity(0.9))
+                VStack {
+                    Spacer()
+                    HStack {
+                        Button {
+                            dismiss()
+                        } label: {
+                            PrevButtonView()
+                        }
                         
+                        Spacer()
+                    }
                 }
             }
             .padding(.bottom, 40)

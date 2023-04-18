@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct Episode4_1View: View {
+    @Environment(\.dismiss) private var dismiss
     var body: some View {
         ZStack {
             
@@ -15,18 +16,23 @@ struct Episode4_1View: View {
                 Spacer()
                 
                 ZStack {
-                    VStack(alignment: .leading, spacing: 20) {
-                        
+                    HStack {
                         Text("Now, there is a bus coming to the bus stop in front of this building, and I go home by that bus.")
                             .font(.sandoll(size: 35, weight: .medium))
                             .foregroundColor(Color.dark)
                             .lineSpacing(10)
+                        Spacer()
                     }
                     
                     VStack {
                         Spacer()
-                        
                         HStack {
+                            Button {
+                                dismiss()
+                            } label: {
+                                PrevButtonView()
+                            }
+
                             Spacer()
                             
                             NavigationLink {
@@ -34,7 +40,6 @@ struct Episode4_1View: View {
                             } label: {
                                 NextButtonView()
                             }
-                            .padding(20)
                         }
                     }
                 }

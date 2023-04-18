@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct Episode3_4View: View {
+    @Environment(\.dismiss) private var dismiss
     var body: some View {
         ZStack {
             HStack(spacing: 50) {
@@ -39,18 +40,23 @@ struct Episode3_4View: View {
                 Spacer()
                 
                 ZStack {
-                    VStack(alignment: .leading, spacing: 20) {
-                        
+                    HStack {
                         Text("The block on the left is the **guiding block** that says you can **go straight.**\n\nThe block on the right is the **stop block** that tells you to stop. It is usually used in front of the crosswalk or when the road is divided into several directions.")
                             .font(.sandoll(size: 35, weight: .medium))
                             .foregroundColor(Color.dark)
                             .lineSpacing(10)
+                        Spacer()
                     }
                     
                     VStack {
                         Spacer()
-                        
                         HStack {
+                            Button {
+                                dismiss()
+                            } label: {
+                                PrevButtonView()
+                            }
+
                             Spacer()
                             
                             NavigationLink {
@@ -58,7 +64,6 @@ struct Episode3_4View: View {
                             } label: {
                                 NextButtonView()
                             }
-                            .padding(20)
                         }
                     }
                 }

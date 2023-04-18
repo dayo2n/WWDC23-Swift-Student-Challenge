@@ -13,6 +13,7 @@ struct Episode2_2View: View {
     @State private var showResult = false
     @State private var navigateToNextView = false
     @State private var showHint = false
+    @Environment(\.dismiss) private var dismiss
     var body: some View {
         ZStack {
             
@@ -66,18 +67,29 @@ struct Episode2_2View: View {
                 Spacer()
                 
                 ZStack {
-                    VStack(alignment: .leading, spacing: 20) {
-                        
+                    HStack {
                         Text("Hmm... Well, I've got a new snag..\nThere's no braille on the elevator button.\n**Can you make a number Braille on the button on the first floor** I'm going to?")
                             .font(.sandoll(size: 35, weight: .medium))
                             .foregroundColor(Color.dark)
                             .lineSpacing(10)
+                        
+                        Spacer()
                     }
                     
                     VStack {
                         Spacer()
                         
                         HStack {
+                            Button {
+                                if numberOfClickNext == 0 {
+                                    dismiss()
+                                } else {
+                                    numberOfClickNext -= 1
+                                }
+                            } label: {
+                                PrevButtonView()
+                            }
+                            
                             Spacer()
                             
                             if numberOfClickNext == 0 {
@@ -86,7 +98,6 @@ struct Episode2_2View: View {
                                 } label: {
                                     NextButtonView()
                                 }
-                                .padding(20)
                             }
                         }
                     }

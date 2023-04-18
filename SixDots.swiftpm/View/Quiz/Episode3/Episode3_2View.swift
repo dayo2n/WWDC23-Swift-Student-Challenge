@@ -9,6 +9,7 @@ import SwiftUI
 
 struct Episode3_2View: View {
     @State private var numberOfClickNext = 0
+    @Environment(\.dismiss) private var dismiss
     var body: some View {
         ZStack {
             
@@ -16,17 +17,28 @@ struct Episode3_2View: View {
                 Spacer()
                 
                 ZStack {
-                    VStack(alignment: .leading, spacing: 20) {
-                        
+                    HStack {
                         Text(numberOfClickNext == 0 ? "I can hear the sound of cars passing by..\nBut since there's a guiding tiles, it must not be a road for cars, right?" : "Oh, my gosh!!\nSomeone rang a crack to let me know it's dangerous.\nMaybe the Braille walking block is installed incorrectly.")
                             .font(.sandoll(size: 35, weight: .medium))
                             .foregroundColor(Color.dark)
                             .lineSpacing(10)
+                        Spacer()
                     }
-                    HStack {
+                    VStack {
                         Spacer()
                         
-                        VStack {
+                        HStack {
+                            
+                            Button {
+                                if numberOfClickNext == 0 {
+                                    dismiss()
+                                } else {
+                                    numberOfClickNext -= 1
+                                }
+                            } label: {
+                                PrevButtonView()
+                            }
+
                             Spacer()
                             
                             if numberOfClickNext == 0 {
@@ -35,14 +47,12 @@ struct Episode3_2View: View {
                                 } label: {
                                     NextButtonView()
                                 }
-                                .padding(20)
                             } else {
                                 NavigationLink {
                                     Episode3_3View()
                                 } label: {
                                     NextButtonView()
                                 }
-                                .padding(20)
                             }
                         }
                     }

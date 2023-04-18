@@ -9,6 +9,7 @@ import SwiftUI
 
 struct Episode3_1View: View {
     @State private var numberOfClickNext = 0
+    @Environment(\.dismiss) private var dismiss
     var body: some View {
         ZStack {
             
@@ -16,18 +17,29 @@ struct Episode3_1View: View {
                 Spacer()
                 
                 ZStack {
-                    VStack(alignment: .leading, spacing: 20) {
-                        
+                    HStack {
                         Text(numberOfClickNext == 0 ? "It's hard to even get out of the building..." : "Now, there is a bus coming to the bus stop in front of this building, and I go home by that bus.\nBut I have to **cross the crosswalk once** to the bus stop.")
                             .font(.sandoll(size: 35, weight: .medium))
                             .foregroundColor(Color.dark)
                             .lineSpacing(10)
+                        
+                        Spacer()
                     }
                     
                     VStack {
                         Spacer()
                         
                         HStack {
+                            Button {
+                                if numberOfClickNext == 0 {
+                                    dismiss()
+                                } else {
+                                    numberOfClickNext -= 1
+                                }
+                            } label: {
+                                PrevButtonView()
+                            }
+
                             Spacer()
                             
                             if numberOfClickNext == 0 {
@@ -43,7 +55,6 @@ struct Episode3_1View: View {
                                 } label: {
                                     NextButtonView()
                                 }
-                                .padding(20)
                             }
                         }
                     }

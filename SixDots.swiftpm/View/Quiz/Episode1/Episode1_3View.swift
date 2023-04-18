@@ -13,7 +13,8 @@ struct Episode1_3View: View {
     @State private var clickedDownButton = false
     @State private var activateNavigationToNextView = false
     @State private var showHint = false
-    @State private var buttonWidth = 300
+    @State private var buttonWidth = 290
+    @State private var buttonHeight = 90
     
     var body: some View {
         ZStack {
@@ -28,64 +29,64 @@ struct Episode1_3View: View {
                 .frame(width: 500)
                 .padding(.bottom, 500)
             
-            VStack {
-                Spacer()
-                
-                ZStack {
-                    VStack(alignment: .center, spacing: 20) {
-                        Text("The button on the elevator is weird.\n**Is the wrong button a up button or a down button?**\n\nIf you need a help, press the **hint button!**")
-                            .font(.sandoll(size: 35, weight: .medium))
-                            .foregroundColor(Color.dark)
-                            .lineSpacing(10)
-                        
-                        Spacer()
-                        
-                        HStack(spacing: 50) {
-                            Spacer()
-                            Button {
-                               clickedUpButton = true
-                            } label: {
-                                Text("UP")
-                                    .font(.sandoll(size: 35, weight: .semibold))
+            GeometryReader { geo in
+                VStack {
+                    Spacer()
+                    
+                    ZStack {
+                        VStack(alignment: .center, spacing: 20) {
+                            HStack {
+                                Text("Braile on button is weird.\n**Is the wrong button a up button or a down button?**\n\nIf you need a help, press the **hint button!**")
+                                    .font(.sandoll(size: 35, weight: .medium))
                                     .foregroundColor(Color.dark)
-                                    .padding(.vertical, 30)
-                                    .frame(width: CGFloat(buttonWidth))
-                                    .background(clickedUpButton ? Color.keyColor.opacity(0.8) : Color.dark.opacity(0.2))
-                                    .cornerRadius(20)
-                                    .onAppear {
-                                        withAnimation(Animation.linear(duration: 0.6).repeatForever()) {
-                                            buttonWidth = 310
-                                        }
-                                    }
+                                    .lineSpacing(10)
+                                Spacer()
                             }
                             
-                            Button {
-                               clickedDownButton = true
-                            } label: {
-                                Text("DOWN")
-                                    .font(.sandoll(size: 35, weight: .semibold))
-                                    .foregroundColor(Color.dark)
-                                    .padding(.vertical, 30)
-                                    .frame(width: CGFloat(buttonWidth))
-                                    .background(clickedDownButton ?  Color.keyColor.opacity(0.8) :  Color.dark.opacity(0.2))
-                                    .cornerRadius(20)
-                                
-                                .onAppear {
-                                    withAnimation(Animation.linear(duration: 0.6).repeatForever()) {
-                                        buttonWidth = 310
-                                    }
-                                }
-                            }
                             Spacer()
+                            
+                            HStack(spacing: 50) {
+                                Spacer()
+                                Button {
+                                   clickedUpButton = true
+                                } label: {
+                                    Text("UP")
+                                        .font(.sandoll(size: 35, weight: .semibold))
+                                        .foregroundColor(Color.dark)
+                                        .padding(.vertical, 30)
+                                        .frame(width: CGFloat(buttonWidth), height: CGFloat(buttonHeight))
+                                        .background(clickedUpButton ? Color.keyColor.opacity(0.8) : Color.dark.opacity(0.2))
+                                        .cornerRadius(20)
+                                        .onAppear {
+                                            withAnimation(Animation.linear(duration: 0.9).repeatForever()) {
+                                                buttonWidth = 300
+                                                buttonHeight = 100
+                                            }
+                                        }
+                                }
+                                
+                                Button {
+                                   clickedDownButton = true
+                                } label: {
+                                    Text("DOWN")
+                                        .font(.sandoll(size: 35, weight: .semibold))
+                                        .foregroundColor(Color.dark)
+                                        .padding(.vertical, 30)
+                                        .frame(width: CGFloat(buttonWidth), height: CGFloat(buttonHeight))
+                                        .background(clickedDownButton ?  Color.keyColor.opacity(0.8) :  Color.dark.opacity(0.2))
+                                        .cornerRadius(20)
+                                }
+                                Spacer()
+                            }
                         }
+                        .padding(.vertical, 40)
                     }
-                    .padding(.vertical, 40)
-                }
-                .frame(height: 500)
-                .padding(.horizontal, 15)
-                .background {
-                    RoundedRectangle(cornerRadius: 20)
-                        .foregroundColor(Color.light.opacity(0.9))   
+                    .frame(width: geo.size.width - 30, height: 500)
+                    .padding(.horizontal, 15)
+                    .background {
+                        RoundedRectangle(cornerRadius: 20)
+                            .foregroundColor(Color.light.opacity(0.9))
+                    }
                 }
             }
             .padding(.bottom, 40)
