@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct Episode1_5View: View {
+    @State private var showHint = false
     @Environment(\.dismiss) private var dismiss
     var body: some View {
         ZStack {
@@ -81,7 +82,38 @@ struct Episode1_5View: View {
                     .foregroundColor(Color.dark)
             }
             .padding()
+        }), trailing: Button(action: {
+            showHint = true
+        }, label: {
+            Text("Braille")
+                .font(.sandoll(size: 20, weight: .semibold))
+                .foregroundColor(Color.dark)
+                .padding()
         }))
+        .sheet(isPresented: $showHint) {
+            GeometryReader { geo in
+                VStack(alignment: .center) {
+                    Spacer()
+                    Image("\(IMAGE_BrailleNeue_KosukeTakahashi)")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: geo.size.width)
+                    HStack {
+                        Spacer()
+                        Text("Image credits Kosuke Takahashi.")
+                            .font(.sandoll(size: 15, weight: .regular))
+                            .padding([.bottom, .trailing], 20)
+                    }
+                    Button {
+                        showHint = false
+                    } label: {
+                        Text("Dismiss")
+                            .font(.sandoll(size: 20, weight: .semibold))
+                    }
+                    Spacer()
+                }
+            }
+        }
     }
 }
 
