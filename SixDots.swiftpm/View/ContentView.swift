@@ -15,12 +15,6 @@ struct ContentView: View {
                 } label: {
                     SelectModeButtonView(iconImageName: "graduationcap.fill", modeName: "Quiz")
                 }
-
-                NavigationLink {
-                    TutorialLevelSelctionView()
-                } label: {
-                    SelectModeButtonView(iconImageName: "books.vertical", modeName: "Tutorial")
-                }
             }
         }
     }
