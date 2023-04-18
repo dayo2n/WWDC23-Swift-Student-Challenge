@@ -92,21 +92,19 @@ struct Episode1_4View: View {
                             .scaledToFit()
                             .frame(width: 220)
                             .rotationEffect(.degrees(isRotating))
-                            .offset(x: -100, y: CGFloat(isMoving))
+                            .offset(x: 150, y: CGFloat(isMoving))
                             .onAppear {
-                                withAnimation(.linear(duration: 1.0)) {
+                                withAnimation(.linear(duration: 1.0).delay(1.5)) {
                                         isRotating = 190.0
                                     }
                                 
-                                withAnimation(.linear(duration: 1.0).delay(1.0)) {
+                                withAnimation(.linear(duration: 1.0).delay(2.7)) {
                                     isMoving = Int(geo.size.height / 3)
                                     }
                             }
                             .padding(30)
-                        
                         Spacer()
                     }
-                    
                     Spacer()
                 }
             }
