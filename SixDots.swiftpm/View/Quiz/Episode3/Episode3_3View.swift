@@ -114,6 +114,7 @@ struct Episode3_3View: View {
                 .resizable()
                 .scaledToFill()
                 .blur(radius: 15)
+                .grayscale(0.7)
         }
         .ignoresSafeArea()
         .alert("Exactly! That's it!🥳", isPresented: $showResult) {

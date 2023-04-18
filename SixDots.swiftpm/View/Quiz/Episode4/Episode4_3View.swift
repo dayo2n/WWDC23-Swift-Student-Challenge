@@ -118,6 +118,7 @@ struct Episode4_3View: View {
                 .resizable()
                 .scaledToFill()
                 .blur(radius: 15)
+                .grayscale(0.7)
         }
         .ignoresSafeArea()
         .navigationBarBackButtonHidden(true)
