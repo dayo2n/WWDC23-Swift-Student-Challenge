@@ -9,6 +9,7 @@ import SwiftUI
 
 struct Episode3_4View: View {
     @Environment(\.dismiss) private var dismiss
+    @State private var textOpacities = Array(repeating: 0.0, count: 3)
     var body: some View {
         ZStack {
             HStack(spacing: 50) {
@@ -38,13 +39,40 @@ struct Episode3_4View: View {
             
             VStack {
                 Spacer()
-                
                 ZStack {
                     HStack {
-                        Text("The block on the left is the **guiding block** that says you can **go straight.**\n\nThe block on the right is the **stop block** that tells you to stop. It is usually used in front of the crosswalk or when the road is divided into several directions.")
-                            .font(.sandoll(size: 35, weight: .medium))
-                            .foregroundColor(Color.dark)
-                            .lineSpacing(10)
+                        VStack (alignment: .leading, spacing: 10) {
+                            Text("The block on the left is the **guiding block** that says you can **go straight.**")
+                                .font(.sandoll(size: 35, weight: .medium))
+                                .foregroundColor(Color.dark)
+                                .lineSpacing(10)
+                                .opacity(textOpacities[0])
+                                .onAppear {
+                                    withAnimation(.easeIn.delay(0)) {
+                                        textOpacities[0] = 1.0
+                                    }
+                                }
+                            Text("\nThe block on the right is the **stop block** that tells you to stop.")
+                                .font(.sandoll(size: 35, weight: .medium))
+                                .foregroundColor(Color.dark)
+                                .lineSpacing(10)
+                                .opacity(textOpacities[1])
+                                .onAppear {
+                                    withAnimation(.easeIn.delay(1)) {
+                                        textOpacities[1] = 1.0
+                                    }
+                                }
+                            Text("It is usually used in front of the crosswalk or when the road is divided into several directions.")
+                                .font(.sandoll(size: 35, weight: .medium))
+                                .foregroundColor(Color.dark)
+                                .lineSpacing(10)
+                                .opacity(textOpacities[2])
+                                .onAppear {
+                                    withAnimation(.easeIn.delay(2)) {
+                                        textOpacities[2] = 1.0
+                                    }
+                                }
+                        }
                         Spacer()
                     }
                     

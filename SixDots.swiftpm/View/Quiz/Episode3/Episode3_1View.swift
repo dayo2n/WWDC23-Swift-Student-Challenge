@@ -9,6 +9,8 @@ import SwiftUI
 
 struct Episode3_1View: View {
     @State private var numberOfClickNext = 0
+    @State private var textOpacity = 0.0
+    
     @Environment(\.dismiss) private var dismiss
     var body: some View {
         ZStack {
@@ -18,10 +20,16 @@ struct Episode3_1View: View {
                 
                 ZStack {
                     HStack {
-                        Text(numberOfClickNext == 0 ? "It's hard to even get out of the building..." : "Now, there is a bus coming to the bus stop in front of this building, and I go home by that bus.\nBut I have to **cross the crosswalk once** to the bus stop.")
+                        Text(numberOfClickNext == 0 ? "It's hard to even get out of the building..." : "Now, there is a bus coming to the bus stop in front of this building, and I go home by that bus.\n\nBut I have to **cross the crosswalk once** to the bus stop.")
                             .font(.sandoll(size: 35, weight: .medium))
                             .foregroundColor(Color.dark)
                             .lineSpacing(10)
+                            .opacity(textOpacity)
+                            .onAppear {
+                                withAnimation(.easeIn) {
+                                    textOpacity = 1.0
+                                }
+                            }
                         
                         Spacer()
                     }
@@ -91,6 +99,13 @@ struct Episode3_1View: View {
             }
             .padding()
         }))
+        .onChange(of: self.numberOfClickNext) { newValue in
+            self.textOpacity = 0.0
+            
+            withAnimation(.easeIn) {
+                self.textOpacity = 1.0
+            }
+        }
     }
 }
 

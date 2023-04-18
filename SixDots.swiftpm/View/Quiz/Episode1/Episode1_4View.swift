@@ -10,6 +10,7 @@ import SwiftUI
 struct Episode1_4View: View {
     @State private var isRotating = 0.0
     @State private var isMoving = 0
+    @State private var textOpacities = [0.0, 0.0]
     @Environment(\.dismiss) private var dismiss
     var body: some View {
         GeometryReader { geo in
@@ -26,10 +27,28 @@ struct Episode1_4View: View {
                     
                     ZStack {
                         HStack {
-                            Text("Braille on this down button does not say **'DOWN'**.\nThe contractor simply **rotated the 'UP' button 180 degrees.**")
-                                .font(.sandoll(size: 35, weight: .medium))
-                                .foregroundColor(Color.dark)
-                                .lineSpacing(10)
+                            VStack (alignment: .leading, spacing: 20) {
+                                Text("Braille on this down button does not say **'DOWN'**.")
+                                    .font(.sandoll(size: 35, weight: .medium))
+                                    .foregroundColor(Color.dark)
+                                    .lineSpacing(10)
+                                    .opacity(textOpacities[0])
+                                    .onAppear {
+                                        withAnimation(.easeIn) {
+                                            textOpacities[0] = 1.0
+                                        }
+                                    }
+                                Text("The contractor just **rotated the 'UP' button 180 degrees.**")
+                                    .font(.sandoll(size: 35, weight: .medium))
+                                    .foregroundColor(Color.dark)
+                                    .lineSpacing(10)
+                                    .opacity(textOpacities[1])
+                                    .onAppear {
+                                        withAnimation(.easeIn.delay(1)) {
+                                            textOpacities[1] = 1.0
+                                        }
+                                    }
+                            }
                             
                             Spacer()
                         }

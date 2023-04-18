@@ -12,6 +12,7 @@ struct Episode1_2View: View {
     private let guidingTexts = ["This is the 10th floor of the building, so I have to take the elevator down.", "This is the 10th floor of the building, so I have to take the elevator down.\nUh, wait, what the hell is this?!"]
     @State private var numberOfClickNext = 0
     @Environment(\.dismiss) private var dismiss
+    @State private var textOpacity = 0.0
     var body: some View {
         ZStack {
             
@@ -24,6 +25,12 @@ struct Episode1_2View: View {
                             .font(.sandoll(size: 35, weight: .medium))
                             .foregroundColor(Color.dark)
                             .lineSpacing(10)
+                            .opacity(self.textOpacity)
+                            .onAppear {
+                                withAnimation(.easeIn) {
+                                    self.textOpacity = 1.0
+                                }
+                            }
                         
                         Spacer()
                     }
@@ -92,6 +99,13 @@ struct Episode1_2View: View {
             }
             .padding()
         }))
+        .onChange(of: self.numberOfClickNext) { newValue in
+            self.textOpacity = 0.0
+            
+            withAnimation(.easeIn) {
+                self.textOpacity = 1.0
+            }
+        }
     }
 }
 

@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct Episode1_1View: View {
+    @State private var opacities = Array(repeating: 0.0, count: 4)
     var body: some View {
         ZStack {
             VStack {
@@ -15,11 +16,48 @@ struct Episode1_1View: View {
                 
                 ZStack {
                     HStack(spacing: 20) {
-                        Text("Hi, My name is XHENA!\nI’m visually impaired\nI went out today, but now I have to go home alone after finishing my business.\n\n**Can you help me get home?**")
-                            .font(.sandoll(size: 35, weight: .medium))
-                            .foregroundColor(Color.dark)
-                            .lineSpacing(10)
-                        
+                        VStack(alignment: .leading, spacing: 20) {
+                            Text("Hi, My name is XHENA!")
+                                .font(.sandoll(size: 35, weight: .medium))
+                                .foregroundColor(Color.dark)
+                                .lineSpacing(10)
+                                .opacity(opacities[0])
+                                .onAppear {
+                                    withAnimation(.easeIn) {
+                                        self.opacities[0] = 1.0
+                                    }
+                                }
+                            Text("I’m visually impaired.")
+                                .font(.sandoll(size: 35, weight: .medium))
+                                .foregroundColor(Color.dark)
+                                .lineSpacing(10)
+                                .opacity(opacities[1])
+                                .onAppear {
+                                    withAnimation(.easeIn.delay(1)) {
+                                        self.opacities[1] = 1.0
+                                    }
+                                }
+                            Text("I went out today, but now I have to go home alone after finishing my business.\n")
+                                .font(.sandoll(size: 35, weight: .medium))
+                                .foregroundColor(Color.dark)
+                                .lineSpacing(10)
+                                .opacity(opacities[2])
+                                .onAppear {
+                                    withAnimation(.easeIn.delay(2)) {
+                                        self.opacities[2] = 1.0
+                                    }
+                                }
+                            Text("**Can you help me get home?**")
+                                .font(.sandoll(size: 35, weight: .medium))
+                                .foregroundColor(Color.dark)
+                                .lineSpacing(10)
+                                .opacity(opacities[3])
+                                .onAppear {
+                                    withAnimation(.easeIn.delay(3)) {
+                                        self.opacities[3] = 1.0
+                                    }
+                                }
+                        }
                         Spacer()
                     }
                         

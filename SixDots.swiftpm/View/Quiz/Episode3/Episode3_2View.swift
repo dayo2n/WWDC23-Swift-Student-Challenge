@@ -9,19 +9,26 @@ import SwiftUI
 
 struct Episode3_2View: View {
     @State private var numberOfClickNext = 0
+    @State private var imageBANGSize = 700
+    @State private var textOpacity = 0.0
     @Environment(\.dismiss) private var dismiss
     var body: some View {
         ZStack {
-            
             VStack {
                 Spacer()
                 
                 ZStack {
                     HStack {
-                        Text(numberOfClickNext == 0 ? "I can hear the sound of cars passing by..\nBut since there's a guiding tiles, it must not be a road for cars, right?" : "Oh, my gosh!!\nSomeone rang a crack to let me know it's dangerous.\nMaybe the Braille walking block is installed incorrectly.")
+                        Text(numberOfClickNext == 0 ? "I can hear the sound of cars passing by..\nBut since there's a guiding tiles, it must not be a road for cars, right?" : "Oh, my gosh!!\n Someone rang a crack to let me know it's dangerous.\nMaybe the Braille walking block is installed incorrectly.")
                             .font(.sandoll(size: 35, weight: .medium))
                             .foregroundColor(Color.dark)
                             .lineSpacing(10)
+                            .opacity(textOpacity)
+                            .onAppear {
+                                withAnimation(.easeIn) {
+                                    textOpacity = 1.0
+                                }
+                            }
                         Spacer()
                     }
                     VStack {
@@ -69,9 +76,27 @@ struct Episode3_2View: View {
             .padding(.horizontal, 40)
         }
         .background {
-            Image("\(numberOfClickNext == 0 ? IMAGE_NoBraileSideWalkOnStreet0 : IMAGE_NoBraileSideWalkOnStreet1)")
-                .resizable()
-                .scaledToFill()
+            ZStack {
+                Image("\(numberOfClickNext == 0 ? IMAGE_NoBraileSideWalkOnStreet0 : IMAGE_NoBraileSideWalkOnStreet1)")
+                    .resizable()
+                    .scaledToFill()
+                
+                if numberOfClickNext > 0 {
+                    Image("\(IMAGE_Bang)")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: CGFloat(imageBANGSize))
+                        .padding([.trailing, .bottom], 200)
+                        .onAppear {
+                            withAnimation(.easeIn(duration: 0.5)) {
+                                imageBANGSize = 1200
+                            }
+                            withAnimation(.easeIn.delay(0.5)) {
+                                imageBANGSize = 700
+                            }
+                        }
+                }
+            }
         }
         .ignoresSafeArea()
         .navigationBarBackButtonHidden(true)
@@ -88,6 +113,13 @@ struct Episode3_2View: View {
             }
             .padding()
         }))
+        .onChange(of: self.numberOfClickNext) { newValue in
+            self.textOpacity = 0.0
+            
+            withAnimation(.easeIn) {
+                self.textOpacity = 1.0
+            }
+        }
     }
 }
 

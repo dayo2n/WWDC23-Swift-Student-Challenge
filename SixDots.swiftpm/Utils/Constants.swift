@@ -29,6 +29,7 @@ let IMAGE_InsideElevator = "InsideElevator"
 let IMAGE_Crosswalk = "Crosswalk"
 let IMAGE_StopBlock = "StopBlock"
 let IMAGE_GuidanceBlock = "GuidanceBlock"
+let IMAGE_Bang = "Bang"
 let IMAGE_NoBraileSideWalkOnStreet0 = "NoBraileSideWalkOnStreet0"
 let IMAGE_NoBraileSideWalkOnStreet1 = "NoBraileSideWalkOnStreet1"
 

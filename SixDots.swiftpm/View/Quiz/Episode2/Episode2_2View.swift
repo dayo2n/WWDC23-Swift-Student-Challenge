@@ -13,6 +13,7 @@ struct Episode2_2View: View {
     @State private var showResult = false
     @State private var navigateToNextView = false
     @State private var showHint = false
+    @State private var textOpcities = Array(repeating: 0.0, count: 3)
     @Environment(\.dismiss) private var dismiss
     var body: some View {
         ZStack {
@@ -68,11 +69,39 @@ struct Episode2_2View: View {
                 
                 ZStack {
                     HStack {
-                        Text("Hmm... Well, I've got a new snag..\nThere's no braille on the elevator button.\n**Can you make a number Braille on the button on the first floor** I'm going to?")
-                            .font(.sandoll(size: 35, weight: .medium))
-                            .foregroundColor(Color.dark)
-                            .lineSpacing(10)
-                        
+                        VStack(alignment: .leading, spacing: 20) {
+                            Text("Hmm... Well, I've got a new snag..")
+                                .font(.sandoll(size: 35, weight: .medium))
+                                .foregroundColor(Color.dark)
+                                .lineSpacing(10)
+                                .opacity(self.textOpcities[0])
+                                .onAppear {
+                                    withAnimation(.easeIn) {
+                                        self.textOpcities[0] = 1.0
+                                    }
+                                }
+                            Text("There's no braille on the elevator button.")
+                                .font(.sandoll(size: 35, weight: .medium))
+                                .foregroundColor(Color.dark)
+                                .lineSpacing(10)
+                                .opacity(self.textOpcities[1])
+                                .onAppear {
+                                    withAnimation(.easeIn.delay(1)) {
+                                        self.textOpcities[1] = 1.0
+                                    }
+                                }
+                            Text("**Can you make a number Braille on the button on the first floor** I'm going to?")
+                                .font(.sandoll(size: 35, weight: .medium))
+                                .foregroundColor(Color.dark)
+                                .lineSpacing(10)
+                                .opacity(self.textOpcities[2])
+                                .onAppear {
+                                    withAnimation(.easeIn.delay(2)) {
+                                        self.textOpcities[2] = 1.0
+                                    }
+                                }
+                            
+                        }
                         Spacer()
                     }
                     

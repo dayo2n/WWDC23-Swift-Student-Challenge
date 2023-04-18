@@ -15,6 +15,7 @@ struct Episode1_3View: View {
     @State private var showHint = false
     @State private var buttonWidth = 290
     @State private var buttonHeight = 90
+    @State private var textOpacities = Array(repeating: 0.0, count: 3)
     
     var body: some View {
         ZStack {
@@ -36,10 +37,38 @@ struct Episode1_3View: View {
                     ZStack {
                         VStack(alignment: .center, spacing: 20) {
                             HStack {
-                                Text("Braile on button is weird.\n**Is the wrong button a up button or a down button?**\n\nIf you need a help, press the **hint button!**")
-                                    .font(.sandoll(size: 35, weight: .medium))
-                                    .foregroundColor(Color.dark)
-                                    .lineSpacing(10)
+                                VStack(alignment: .leading, spacing: 20) {
+                                    Text("Braile on button is weird.")
+                                        .font(.sandoll(size: 35, weight: .medium))
+                                        .foregroundColor(Color.dark)
+                                        .lineSpacing(10)
+                                        .opacity(textOpacities[0])
+                                        .onAppear {
+                                            withAnimation(.easeIn) {
+                                                textOpacities[0] = 1.0
+                                            }
+                                        }
+                                    Text("**Is the wrong button a up button or a down button?**")
+                                        .font(.sandoll(size: 35, weight: .medium))
+                                        .foregroundColor(Color.dark)
+                                        .lineSpacing(10)
+                                        .opacity(textOpacities[1])
+                                        .onAppear {
+                                            withAnimation(.easeIn.delay(1)) {
+                                                textOpacities[1] = 1.0
+                                            }
+                                        }
+                                    Text("\nIf you need a help, press the **hint button!**")
+                                        .font(.sandoll(size: 35, weight: .medium))
+                                        .foregroundColor(Color.dark)
+                                        .lineSpacing(10)
+                                        .opacity(textOpacities[2])
+                                        .onAppear {
+                                            withAnimation(.easeIn.delay(2)) {
+                                                textOpacities[2] = 1.0
+                                            }
+                                        }
+                                }
                                 Spacer()
                             }
                             

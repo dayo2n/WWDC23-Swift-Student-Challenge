@@ -14,6 +14,7 @@ struct Episode4_3View: View {
     @State private var showResult = false
     @State private var activateNavigationToNextView = false
     @State private var showHint = false
+    @State private var textOpacity = 0.0
     @Environment(\.dismiss) private var dismiss
     var body: some View {
         ZStack {
@@ -72,10 +73,17 @@ struct Episode4_3View: View {
                             .font(.sandoll(size: 35, weight: .medium))
                             .foregroundColor(Color.dark)
                             .lineSpacing(10)
+                            .opacity(textOpacity)
+                            .onAppear {
+                                withAnimation(.easeIn) {
+                                    textOpacity = 1.0
+                                }
+                            }
                         
                         Text(numberOfClickNext > 0 ? "\n\nPlease engrave it in the braille on the screen!" : "")
                             .font(.sandoll(size: 25, weight: .regular))
                             .foregroundColor(Color.dark)
+                            .opacity(textOpacity)
                     }
                     
                     VStack {
@@ -170,6 +178,13 @@ struct Episode4_3View: View {
                     }
                     Spacer()
                 }
+            }
+        }
+        .onChange(of: self.numberOfClickNext) { newValue in
+            self.textOpacity = 0.0
+            
+            withAnimation(.easeIn) {
+                self.textOpacity = 1.0
             }
         }
     }

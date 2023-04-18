@@ -12,6 +12,7 @@ struct Episode3_3View: View {
     @State private var showResult = false
     @State private var navigateToNextView = false
     @State private var showHint = false
+    @State private var textOpacities = Array(repeating: 0.0, count: 3)
     @Environment(\.dismiss) private var dismiss
     var body: some View {
         ZStack {
@@ -55,10 +56,38 @@ struct Episode3_3View: View {
                 VStack {
                     Spacer()
                     HStack {
-                        Text("There're invalid Braille blocks.\n**In front of the crosswalk, there should be a warning tile that means stop and be careful.**\nPlease change the wrong blocks!")
-                            .font(.sandoll(size: 35, weight: .medium))
-                            .foregroundColor(Color.dark)
-                            .lineSpacing(10)
+                        VStack(alignment: .leading, spacing: 20) {
+                            Text("There're invalid Braille blocks.")
+                                .font(.sandoll(size: 35, weight: .medium))
+                                .foregroundColor(Color.dark)
+                                .lineSpacing(10)
+                                .opacity(textOpacities[0])
+                                .onAppear {
+                                    withAnimation(.easeIn.delay(0)) {
+                                        textOpacities[0] = 1.0
+                                    }
+                                }
+                            Text("**In front of the crosswalk, there should be a warning tile that means stop and be careful.**")
+                                .font(.sandoll(size: 35, weight: .medium))
+                                .foregroundColor(Color.dark)
+                                .lineSpacing(10)
+                                .opacity(textOpacities[1])
+                                .onAppear {
+                                    withAnimation(.easeIn.delay(1)) {
+                                        textOpacities[1] = 1.0
+                                    }
+                                }
+                            Text("Please change the wrong blocks!")
+                                .font(.sandoll(size: 35, weight: .medium))
+                                .foregroundColor(Color.dark)
+                                .lineSpacing(10)
+                                .opacity(textOpacities[2])
+                                .onAppear {
+                                    withAnimation(.easeIn.delay(2)) {
+                                        textOpacities[2] = 1.0
+                                    }
+                                }
+                        }
                         Spacer()
                     }
                     .padding(.horizontal, 15)
