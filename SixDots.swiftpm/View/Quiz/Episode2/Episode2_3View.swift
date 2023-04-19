@@ -68,7 +68,7 @@ struct Episode2_3View: View {
                                             self.textOpacities[1] = 1.0
                                         }
                                     }
-                                Text("Braille on the left side of Braile 1 is a **numeric symbol**.")
+                                Text("Braille on the left side of braile 1 is a **numeric symbol**.")
                                     .font(.sandoll(size: textSize, weight: .medium))
                                     .foregroundColor(Color.dark)
                                     .lineSpacing(10)

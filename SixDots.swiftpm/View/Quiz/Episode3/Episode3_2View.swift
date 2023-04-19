@@ -21,7 +21,7 @@ struct Episode3_2View: View {
                     Spacer()
                     ZStack {
                         HStack {
-                            Text(numberOfClickNext == 0 ? "I can hear a passing car.. but since the tactile paving is a guidance surface, I can just keep going, right?" : "Oh, my gosh!!\nSomeone honked their horn loudly to let me know that I was in danger.\nI think the tactile paving block might have been installed incorrectly.")
+                            Text(numberOfClickNext == 0 ? "I can hear a passing car.. but since the tactile paving is a guidance surface, I can just keep going, right?" : "Oh my gosh!!\nSomeone honked their horn loudly to let me know that I was in danger.\nI think the tactile paving block might have been installed incorrectly.")
                                 .font(.sandoll(size: textSize, weight: .medium))
                                 .foregroundColor(Color.dark)
                                 .lineSpacing(10)

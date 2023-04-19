@@ -92,7 +92,7 @@ struct Episode2_2View: View {
                                             self.textOpcities[1] = 1.0
                                         }
                                     }
-                                Text("So can you make a number Braille on the **first floor** button?")
+                                Text("So can you make a number braille on the **first floor** button?")
                                     .font(.sandoll(size: textSize, weight: .medium))
                                     .foregroundColor(Color.dark)
                                     .lineSpacing(10)

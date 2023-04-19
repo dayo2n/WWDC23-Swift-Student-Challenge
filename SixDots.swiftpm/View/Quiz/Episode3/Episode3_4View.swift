@@ -22,7 +22,7 @@ struct Episode3_4View: View {
                             .frame(width: min(geo.size.width, geo.size.height) * 0.4)
                             .padding(.bottom, 20)
                         
-                        Text("Straight")
+                        Text("Go straight")
                             .font(.sandoll(size: textSize * 1.2, weight: .bold))
                             .foregroundColor(Color.dark)
                             .padding(.horizontal, 20)

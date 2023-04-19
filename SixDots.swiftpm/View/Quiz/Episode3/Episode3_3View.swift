@@ -56,7 +56,7 @@ struct Episode3_3View: View {
                         Spacer()
                         HStack {
                             VStack(alignment: .leading, spacing: 20) {
-                                Text("There are incorrectly installed tactile paving blocks")
+                                Text("There are incorrectly installed tactile paving blocks.")
                                     .font(.sandoll(size: CGFloat(textSize), weight: .medium))
                                     .foregroundColor(Color.dark)
                                     .lineSpacing(10)
