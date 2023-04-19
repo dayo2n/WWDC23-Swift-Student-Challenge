@@ -30,7 +30,7 @@ struct Episode1_1View: View {
                                         }
                                     }
                                 Text("And I’m **visually impaired.**")
-                                    .font(.sandoll(size: textSize, weight: .medium))
+                                    .font(.sandoll(size: textSize * 1.5, weight: .medium))
                                     .foregroundColor(Color.dark)
                                     .lineSpacing(10)
                                     .opacity(opacities[1])
