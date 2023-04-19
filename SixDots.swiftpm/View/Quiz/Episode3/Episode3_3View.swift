@@ -62,7 +62,7 @@ struct Episode3_3View: View {
                                     .lineSpacing(10)
                                     .opacity(textOpacities[0])
                                     .onAppear {
-                                        textSize = geo.size.width * 0.05
+                                        textSize = min(geo.size.width * 0.035, geo.size.height * 0.035)
                                         withAnimation(.easeIn.delay(0)) {
                                             textOpacities[0] = 1.0
                                         }
@@ -138,14 +138,12 @@ struct Episode3_3View: View {
                     .font(.sandoll(size: textSize, weight: .semibold))
                     .foregroundColor(Color.dark)
             }
-            .padding()
         }), trailing: Button(action: {
             showHint = true
         }, label: {
             Text("Hint")
                 .font(.sandoll(size: textSize, weight: .semibold))
                 .foregroundColor(Color.dark)
-                .padding()
         }))
         .alert("Tap the yellow Braille block to change the surface.", isPresented: $showHint) {
             Button("Okay", role: .cancel) { }

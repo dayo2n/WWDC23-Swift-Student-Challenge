@@ -26,7 +26,7 @@ struct EndingView: View {
                                 .foregroundColor(Color.dark)
                                 .lineSpacing(10)
                                 .onAppear {
-                                    textSize = geo.size.width * 0.05
+                                    textSize = min(geo.size.width * 0.035, geo.size.height * 0.035)
                                     _ = Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true) { timer in
                                         if typedText.count < fullText.count {
                                             typedText += String(fullText[fullText.index(fullText.startIndex, offsetBy: typedText.count)])
@@ -50,7 +50,7 @@ struct EndingView: View {
                         }
                     }
                     .padding(.horizontal, textSize)
-                    .frame(height: geo.size.height * 0.9)
+                    .frame(height: geo.size.height * 0.8)
                     .background {
                         RoundedRectangle(cornerRadius: 20)
                             .foregroundColor(Color.light.opacity(0.9))
@@ -78,7 +78,6 @@ struct EndingView: View {
                 Text("Home")
                     .font(.sandoll(size: textSize, weight: .semibold))
             }
-            .padding()
         }))
     }
 }

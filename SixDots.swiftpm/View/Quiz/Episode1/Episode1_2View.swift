@@ -27,7 +27,7 @@ struct Episode1_2View: View {
                                 .lineSpacing(10)
                                 .opacity(self.textOpacity)
                                 .onAppear {
-                                    textSize = geo.size.width * 0.05
+                                    textSize = min(geo.size.width * 0.035, geo.size.height * 0.035)
                                     withAnimation(.easeIn) {
                                         self.textOpacity = 1.0
                                     }
@@ -95,7 +95,6 @@ struct Episode1_2View: View {
                     .font(.sandoll(size: textSize, weight: .semibold))
                     .foregroundColor(Color.dark)
             }
-            .padding()
         }))
         .onChange(of: self.numberOfClickNext) { newValue in
             self.textOpacity = 0.0

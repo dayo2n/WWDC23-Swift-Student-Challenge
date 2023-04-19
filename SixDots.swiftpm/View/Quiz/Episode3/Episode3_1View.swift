@@ -26,7 +26,7 @@ struct Episode3_1View: View {
                                 .lineSpacing(10)
                                 .opacity(textOpacity)
                                 .onAppear {
-                                    textSize = geo.size.width * 0.05
+                                    textSize = min(geo.size.width * 0.035, geo.size.height * 0.035)
                                     withAnimation(.easeIn) {
                                         textOpacity = 1.0
                                     }
@@ -92,7 +92,6 @@ struct Episode3_1View: View {
                 Text("Home")
                     .font(.sandoll(size: textSize, weight: .semibold))
             }
-            .padding()
         }))
         .onChange(of: self.numberOfClickNext) { newValue in
             self.textOpacity = 0.0

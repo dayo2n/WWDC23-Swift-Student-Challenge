@@ -32,7 +32,7 @@ struct Episode1_4View: View {
                                     .lineSpacing(10)
                                     .opacity(textOpacities[0])
                                     .onAppear {
-                                        textSize = geo.size.width * 0.05
+                                        textSize = min(geo.size.width * 0.035, geo.size.height * 0.035)
                                         withAnimation(.easeIn) {
                                             textOpacities[0] = 1.0
                                         }
@@ -83,9 +83,9 @@ struct Episode1_4View: View {
                         Image("\(IMAGE_CroppedUpButton)")
                             .resizable()
                             .scaledToFit()
-                            .frame(width: geo.size.width * 0.3)
+                            .frame(width: min(geo.size.width, geo.size.height) * 0.3)
                             .rotationEffect(.degrees(isRotating))
-                            .offset(x: geo.size.width * 0.3, y: CGFloat(isMoving))
+                            .offset(x: geo.size.width * 0.2, y: CGFloat(isMoving))
                             .onAppear {
                                 withAnimation(.linear(duration: 1.0).delay(1.5)) {
                                         isRotating = 185.0
@@ -119,7 +119,6 @@ struct Episode1_4View: View {
                         .font(.sandoll(size: textSize, weight: .semibold))
                         .foregroundColor(Color.dark)
                 }
-                .padding()
             }))
         }
     }

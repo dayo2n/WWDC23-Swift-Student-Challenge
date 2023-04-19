@@ -32,7 +32,7 @@ struct Episode4_3View: View {
                         HStack (spacing: 25) {
                             VStack (spacing: 20) {
                                 ForEach (0..<3) { cell in
-                                    CellView(isTapped: $isCellPressed[cell], cellSize: geo.size.width * 0.15)
+                                    CellView(isTapped: $isCellPressed[cell], cellSize: min(geo.size.width, geo.size.height) * 0.12)
                                         .onTapGesture {
                                             isCellPressed[cell].toggle()
                                             if isCellPressed == Braille.BRAILLE_ALPHABETS[18].cells {
@@ -43,7 +43,7 @@ struct Episode4_3View: View {
                             }
                             VStack (spacing: 25) {
                                 ForEach (0..<3) { cell in
-                                    CellView(isTapped: $isCellPressed[cell + 3], cellSize: geo.size.width * 0.15)
+                                    CellView(isTapped: $isCellPressed[cell + 3], cellSize: min(geo.size.width, geo.size.height) * 0.12)
                                         .onTapGesture {
                                             isCellPressed[cell+3].toggle()
                                             if isCellPressed == Braille.BRAILLE_ALPHABETS[18].cells {
@@ -75,7 +75,7 @@ struct Episode4_3View: View {
                                     .lineSpacing(10)
                                     .opacity(textOpacity)
                                     .onAppear {
-                                        textSize = geo.size.width * 0.05
+                                        textSize = min(geo.size.width * 0.035, geo.size.height * 0.035)
                                         withAnimation(.easeIn) {
                                             textOpacity = 1.0
                                         }
@@ -141,15 +141,13 @@ struct Episode4_3View: View {
                 Text("Home")
                     .font(.sandoll(size: textSize, weight: .semibold))
             }
-            .padding()
         }), trailing: Button(action: {
             showHint = true
         }, label: {
             if numberOfClickNext > 0 {
                 Text("Hint")
                     .font(.sandoll(size: textSize, weight: .semibold))
-                    .padding()
-            }
+                }
         }))
         .alert("You did it🥳🥳🥳", isPresented: $showResult) {
             Button("Next", role: .cancel) {

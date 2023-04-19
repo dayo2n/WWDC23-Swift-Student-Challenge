@@ -10,7 +10,7 @@ import SwiftUI
 struct Episode3_4View: View {
     @Environment(\.dismiss) private var dismiss
     @State private var textOpacities = Array(repeating: 0.0, count: 2)
-    @State private var textsize: CGFloat = 20
+    @State private var textSize: CGFloat = 20
     var body: some View {
         GeometryReader { geo in
             ZStack {
@@ -19,11 +19,12 @@ struct Episode3_4View: View {
                         Image("\(IMAGE_GuidanceBlock)")
                             .resizable()
                             .scaledToFit()
-                            .frame(width: geo.size.width * 0.4)
+                            .frame(width: min(geo.size.width, geo.size.height) * 0.4)
                             .padding(.bottom, 20)
                         
                         Text("Straight")
-                            .font(.sandoll(size: textsize * 1.2, weight: .bold))
+                            .font(.sandoll(size: textSize * 1.2, weight: .bold))
+                            .foregroundColor(Color.dark)
                             .padding(.horizontal, 20)
                             .padding(.vertical, 10)
                             .background {
@@ -36,11 +37,12 @@ struct Episode3_4View: View {
                         Image("\(IMAGE_StopBlock)")
                             .resizable()
                             .scaledToFit()
-                            .frame(width: geo.size.width * 0.4)
+                            .frame(width: min(geo.size.width, geo.size.height) * 0.4)
                             .padding(.bottom, 20)
                         
                         Text("Stop")
-                            .font(.sandoll(size: textsize * 1.2, weight: .bold))
+                            .font(.sandoll(size: textSize * 1.2, weight: .bold))
+                            .foregroundColor(Color.dark)
                             .padding(.horizontal, 20)
                             .padding(.vertical, 10)
                             .background {
@@ -58,18 +60,18 @@ struct Episode3_4View: View {
                         HStack {
                             VStack (alignment: .leading, spacing: 30) {
                                 Text("The block on the left is a braille **guiding block** that says you can **go straight.**")
-                                    .font(.sandoll(size: CGFloat(textsize), weight: .medium))
+                                    .font(.sandoll(size: CGFloat(textSize), weight: .medium))
                                     .foregroundColor(Color.dark)
                                     .lineSpacing(10)
                                     .opacity(textOpacities[0])
                                     .onAppear {
-                                        textsize = geo.size.width * 0.05
+                                        textSize = min(geo.size.width * 0.035, geo.size.height * 0.035)
                                         withAnimation(.easeIn.delay(0)) {
                                             textOpacities[0] = 1.0
                                         }
                                     }
                                 Text("The block on the right is a braille **stop block** used to stop temporarily, usually at **crosswalks** or when **there is a sudden change** in the direction of the road.")
-                                    .font(.sandoll(size: textsize, weight: .medium))
+                                    .font(.sandoll(size: textSize, weight: .medium))
                                     .foregroundColor(Color.dark)
                                     .lineSpacing(10)
                                     .opacity(textOpacities[1])
@@ -87,7 +89,7 @@ struct Episode3_4View: View {
                                 Button {
                                     dismiss()
                                 } label: {
-                                    PrevButtonView(fontSize: textsize)
+                                    PrevButtonView(fontSize: textSize)
                                 }
 
                                 Spacer()
@@ -95,20 +97,20 @@ struct Episode3_4View: View {
                                 NavigationLink {
                                     Episode4_1View()
                                 } label: {
-                                    NextButtonView(fontSize: textsize)
+                                    NextButtonView(fontSize: textSize)
                                 }
                             }
                         }
                     }
-                    .padding(.horizontal, textsize)
-                    .frame(height: geo.size.height * 0.5)
+                    .padding(.horizontal, textSize)
+                    .frame(height: geo.size.height * 0.4)
                     .background {
                         RoundedRectangle(cornerRadius: 20)
                             .foregroundColor(Color.light.opacity(0.9))
                     }
                 }
-                .padding(.bottom, textsize)
-                .padding(.horizontal, textsize)
+                .padding(.bottom, textSize)
+                .padding(.horizontal, textSize)
             }
         }
         .background {
@@ -125,13 +127,12 @@ struct Episode3_4View: View {
         }, label: {
             HStack {
                 Image(systemName: "house")
-                    .font(.sandoll(size: textsize * 0.5, weight: .semibold))
+                    .font(.sandoll(size: textSize * 0.5, weight: .semibold))
                     .foregroundColor(Color.dark)
                 Text("Home")
-                    .font(.sandoll(size: textsize, weight: .semibold))
+                    .font(.sandoll(size: textSize, weight: .semibold))
                     .foregroundColor(Color.dark)
             }
-            .padding()
         }))
     }
 }

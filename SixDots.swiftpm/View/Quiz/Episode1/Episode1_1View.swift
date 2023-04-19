@@ -24,7 +24,7 @@ struct Episode1_1View: View {
                                     .lineSpacing(10)
                                     .opacity(opacities[0])
                                     .onAppear {
-                                        textSize = geo.size.width * 0.05
+                                        textSize = min(geo.size.width * 0.035, geo.size.height * 0.035)
                                         withAnimation(.easeIn) {
                                             self.opacities[0] = 1.0
                                         }
@@ -102,7 +102,6 @@ struct Episode1_1View: View {
                 Text("Home")
                     .font(.sandoll(size: textSize, weight: .semibold))
             }
-            .padding()
         }))
     }
 }

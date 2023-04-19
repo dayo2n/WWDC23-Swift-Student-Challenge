@@ -34,6 +34,7 @@ struct Episode1_3View: View {
                     Spacer()
                     ZStack {
                         VStack(alignment: .center) {
+                            Spacer()
                             HStack {
                                 VStack(alignment: .leading, spacing: 20) {
                                     Text("The Braile on button is weird.")
@@ -42,7 +43,7 @@ struct Episode1_3View: View {
                                         .lineSpacing(10)
                                         .opacity(contentsOpacities[0])
                                         .onAppear {
-                                            textSize = geo.size.width * 0.05
+                                            textSize = min(geo.size.width * 0.035, geo.size.height * 0.035)
                                             withAnimation(.easeIn) {
                                                 contentsOpacities[0] = 1.0
                                             }
@@ -86,7 +87,7 @@ struct Episode1_3View: View {
                                         .onAppear {
                                             withAnimation(Animation.linear(duration: 0.9).repeatForever()) {
                                                 buttonWidth = Int(geo.size.width * 0.32) + 10
-                                                buttonHeight = Int(geo.size.height * 0.06) + 10
+                                                buttonHeight = Int(geo.size.height * 0.07) + 10
                                             }
                                         }
                                 }
@@ -106,11 +107,12 @@ struct Episode1_3View: View {
                             .opacity(contentsOpacities[3])
                             .onAppear {
                                 buttonWidth = Int(geo.size.width * 0.32)
-                                buttonHeight = Int(geo.size.height * 0.06)
+                                buttonHeight = Int(geo.size.height * 0.07)
                                 withAnimation(.easeIn.delay(3)) {
                                     contentsOpacities[3] = 1.0
                                 }
                             }
+                            Spacer()
                         }
                         .padding(.vertical, textSize)
                     }
@@ -155,14 +157,12 @@ struct Episode1_3View: View {
                     .font(.sandoll(size: textSize, weight: .semibold))
                     .foregroundColor(Color.dark)
             }
-            .padding()
         }), trailing: Button(action: {
             showHint = true
         }, label: {
             Text("Hint")
                 .font(.sandoll(size: textSize, weight: .semibold))
                 .foregroundColor(Color.dark)
-                .padding()
         }))
         .sheet(isPresented: $showHint) {
             GeometryReader { geo in

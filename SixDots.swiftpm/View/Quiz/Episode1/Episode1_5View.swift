@@ -57,7 +57,7 @@ struct Episode1_5View: View {
                 .padding(.horizontal, textSize)
             }
             .onAppear {
-                textSize = geo.size.width * 0.05
+                textSize = min(geo.size.width * 0.035, geo.size.height * 0.035)
             }
         }
         .background {
@@ -79,14 +79,12 @@ struct Episode1_5View: View {
                     .font(.sandoll(size: textSize, weight: .semibold))
                     .foregroundColor(Color.dark)
             }
-            .padding()
         }), trailing: Button(action: {
             showHint = true
         }, label: {
             Text("Braille")
                 .font(.sandoll(size: textSize, weight: .semibold))
                 .foregroundColor(Color.dark)
-                .padding()
         }))
         .sheet(isPresented: $showHint) {
             GeometryReader { geo in

@@ -32,12 +32,12 @@ struct Episode2_3View: View {
                 HStack (spacing: 30) {
                     VStack (spacing: 25) {
                         ForEach (0..<3) { cell in
-                            CellView(isTapped: $isCellPressed[cell], cellSize: geo.size.width * 0.15)
+                            CellView(isTapped: $isCellPressed[cell], cellSize: min(geo.size.width, geo.size.height) * 0.12)
                         }
                     }
                     VStack (spacing: 25) {
                         ForEach (0..<3) { cell in
-                            CellView(isTapped: $isCellPressed[cell + 3], cellSize: geo.size.width * 0.15)
+                            CellView(isTapped: $isCellPressed[cell + 3], cellSize: min(geo.size.width, geo.size.height) * 0.12)
                         }
                     }
                 }
@@ -63,7 +63,7 @@ struct Episode2_3View: View {
                                     .lineSpacing(10)
                                     .opacity(self.textOpacities[1])
                                     .onAppear {
-                                        textSize = geo.size.width * 0.05
+                                        textSize = min(geo.size.width * 0.035, geo.size.height * 0.035)
                                         withAnimation(.easeIn.delay(1)) {
                                             self.textOpacities[1] = 1.0
                                         }
@@ -150,7 +150,6 @@ struct Episode2_3View: View {
                 Text("Home")
                     .font(.sandoll(size: textSize, weight: .semibold))
             }
-            .padding()
         }))
     }
 }

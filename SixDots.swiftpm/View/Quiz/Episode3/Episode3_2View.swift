@@ -27,7 +27,7 @@ struct Episode3_2View: View {
                                 .lineSpacing(10)
                                 .opacity(textOpacity)
                                 .onAppear {
-                                    textSize = geo.size.width * 0.05
+                                    textSize = min(geo.size.width * 0.035, geo.size.height * 0.035)
                                     imageBANGSmallSize = geo.size.width * 0.8
                                     withAnimation(.easeIn) {
                                         textOpacity = 1.0
@@ -114,13 +114,16 @@ struct Episode3_2View: View {
                     .font(.sandoll(size: textSize, weight: .semibold))
                     .foregroundColor(Color.dark)
             }
-            .padding()
         }))
         .onChange(of: self.numberOfClickNext) { newValue in
             self.textOpacity = 0.0
             
             withAnimation(.easeIn) {
                 self.textOpacity = 1.0
+            }
+            
+            if newValue == 0 {
+                imageBANGSize = 200
             }
         }
     }

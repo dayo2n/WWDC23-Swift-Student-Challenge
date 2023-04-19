@@ -35,7 +35,7 @@ struct Episode2_2View: View {
                     HStack (spacing: 30) {
                         VStack (spacing: 25) {
                             ForEach (0..<3) { cell in
-                                CellView(isTapped: $isCellPressed[cell], cellSize: geo.size.width * 0.15)
+                                CellView(isTapped: $isCellPressed[cell], cellSize: min(geo.size.width, geo.size.height) * 0.12)
                                     .onTapGesture {
                                         isCellPressed[cell].toggle()
                                         if isCellPressed == Braille.BRAILLE_NUMBERS[0].cells {
@@ -46,7 +46,7 @@ struct Episode2_2View: View {
                         }
                         VStack (spacing: 25) {
                             ForEach (0..<3) { cell in
-                                CellView(isTapped: $isCellPressed[cell + 3], cellSize: geo.size.width * 0.15)
+                                CellView(isTapped: $isCellPressed[cell + 3], cellSize: min(geo.size.width, geo.size.height) * 0.12)
                                     .onTapGesture {
                                         isCellPressed[cell+3].toggle()
                                         if isCellPressed == Braille.BRAILLE_NUMBERS[0].cells {
@@ -77,7 +77,7 @@ struct Episode2_2View: View {
                                     .lineSpacing(10)
                                     .opacity(self.textOpcities[0])
                                     .onAppear {
-                                        textSize = geo.size.width * 0.05
+                                        textSize = min(geo.size.width * 0.035, geo.size.height * 0.035)
                                         withAnimation(.easeIn.delay(2)) {
                                             self.textOpcities[0] = 1.0
                                         }
@@ -159,14 +159,12 @@ struct Episode2_2View: View {
                 Text("Home")
                     .font(.sandoll(size: textSize, weight: .semibold))
             }
-            .padding()
             .opacity(contentsOpacity)
         }), trailing: Button(action: {
             showHint = true
         }, label: {
             Text("Hint")
                 .font(.sandoll(size: textSize, weight: .semibold))
-                .padding()
                 .opacity(contentsOpacity)
         }))
         .sheet(isPresented: $showHint) {

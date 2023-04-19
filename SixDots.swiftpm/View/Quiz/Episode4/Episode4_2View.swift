@@ -56,7 +56,7 @@ struct Episode4_2View: View {
                 .padding(.horizontal, textSize)
             }
             .onAppear {
-                textSize = geo.size.width * 0.05
+                textSize = min(geo.size.width * 0.035, geo.size.height * 0.035)
             }
         }
         .background {

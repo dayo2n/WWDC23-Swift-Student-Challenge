@@ -53,7 +53,7 @@ struct Episode4_1View: View {
                 .padding(.horizontal, textSize)
             }
             .onAppear {
-                textSize = geo.size.width * 0.05
+                textSize = min(geo.size.width * 0.035, geo.size.height * 0.035)
             }
         }
         .background {
@@ -74,7 +74,6 @@ struct Episode4_1View: View {
                 Text("Home")
                     .font(.sandoll(size: textSize, weight: .semibold))
             }
-            .padding()
         }))
     }
 }
