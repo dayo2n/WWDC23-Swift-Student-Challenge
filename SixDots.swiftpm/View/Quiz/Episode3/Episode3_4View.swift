@@ -53,6 +53,7 @@ struct Episode3_4View: View {
                     }
                 }
                 .padding(.bottom, geo.size.height * 0.45)
+                .padding(.top, textSize)
                 
                 VStack {
                     Spacer()

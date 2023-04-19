@@ -158,6 +158,10 @@ struct Episode4_3View: View {
             GeometryReader { geo in
                 VStack(alignment: .center) {
                     Spacer()
+                    
+                    Text("Tap the screen to mark braille :)")
+                        .font(.sandoll(size: textSize * 0.7, weight: .regular))
+                    
                     Image("\(IMAGE_BrailleNeue_KosukeTakahashi)")
                         .resizable()
                         .scaledToFit()
