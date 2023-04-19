@@ -18,7 +18,7 @@ struct Episode1_1View: View {
                     ZStack {
                         HStack(spacing: 20) {
                             VStack(alignment: .leading, spacing: 20) {
-                                Text("Hi, I'm XHENA!")
+                                Text("Hi, I'm ZENA!")
                                     .font(.sandoll(size: textSize, weight: .medium))
                                     .foregroundColor(Color.dark)
                                     .lineSpacing(10)
