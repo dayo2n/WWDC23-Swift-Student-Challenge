@@ -163,6 +163,7 @@ struct Episode2_2View: View {
                     .font(.sandoll(size: 20, weight: .semibold))
             }
             .padding()
+            .opacity(contentsOpacity)
         }), trailing: Button(action: {
             showHint = true
         }, label: {

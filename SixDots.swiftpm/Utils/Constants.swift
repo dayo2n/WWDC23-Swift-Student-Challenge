@@ -39,3 +39,7 @@ let IMAGE_StopBell = "StopBell"
 let IMAGE_StopBellWithBraille = "StopBellWithBraille"
 
 // XHENA
+let IMAGE_XHENA1 = "XHENA1"
+let IMAGE_XHENA2 = "XHENA2"
+let IMAGE_XHENA3 = "XHENA3"
+let IMAGE_XHENA4 = "XHENA4"

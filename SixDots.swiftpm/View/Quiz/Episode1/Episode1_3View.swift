@@ -15,7 +15,7 @@ struct Episode1_3View: View {
     @State private var showHint = false
     @State private var buttonWidth = 240
     @State private var buttonHeight = 80
-    @State private var textOpacities = Array(repeating: 0.0, count: 3)
+    @State private var contentsOpacities = Array(repeating: 0.0, count: 4)
     
     var body: some View {
         ZStack {
@@ -40,30 +40,30 @@ struct Episode1_3View: View {
                                         .font(.sandoll(size: 35, weight: .medium))
                                         .foregroundColor(Color.dark)
                                         .lineSpacing(10)
-                                        .opacity(textOpacities[0])
+                                        .opacity(contentsOpacities[0])
                                         .onAppear {
                                             withAnimation(.easeIn) {
-                                                textOpacities[0] = 1.0
+                                                contentsOpacities[0] = 1.0
                                             }
                                         }
                                     Text("**Which button has a weird braille mark? Up or down?**")
                                         .font(.sandoll(size: 35, weight: .medium))
                                         .foregroundColor(Color.dark)
                                         .lineSpacing(10)
-                                        .opacity(textOpacities[1])
+                                        .opacity(contentsOpacities[1])
                                         .onAppear {
                                             withAnimation(.easeIn.delay(1)) {
-                                                textOpacities[1] = 1.0
+                                                contentsOpacities[1] = 1.0
                                             }
                                         }
                                     Text("\nBraille would be unfamiliar to you, right?\n**Then press the hint button on the top right!**")
                                         .font(.sandoll(size: 25, weight: .medium))
                                         .foregroundColor(Color.dark)
                                         .lineSpacing(10)
-                                        .opacity(textOpacities[2])
+                                        .opacity(contentsOpacities[2])
                                         .onAppear {
                                             withAnimation(.easeIn.delay(2)) {
-                                                textOpacities[2] = 1.0
+                                                contentsOpacities[2] = 1.0
                                             }
                                         }
                                 }
@@ -101,6 +101,12 @@ struct Episode1_3View: View {
                                         .cornerRadius(20)
                                 }
                                 Spacer()
+                            }
+                            .opacity(contentsOpacities[3])
+                            .onAppear {
+                                withAnimation(.easeIn.delay(3)) {
+                                    contentsOpacities[3] = 1.0
+                                }
                             }
                         }
                         .padding(.vertical, 40)

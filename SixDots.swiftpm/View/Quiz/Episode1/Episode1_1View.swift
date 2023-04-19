@@ -86,7 +86,7 @@ struct Episode1_1View: View {
             .padding(.horizontal, 40)
         }
         .background {
-            Image("XHENA1")
+            Image("\(IMAGE_XHENA1)")
                 .resizable()
                 .scaledToFit()
                 .padding(.all, 200)

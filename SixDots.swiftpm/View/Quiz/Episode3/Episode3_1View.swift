@@ -73,7 +73,7 @@ struct Episode3_1View: View {
             .padding(.horizontal, 40)
         }
         .background {
-            Image(numberOfClickNext == 0 ? "XHENA3" : "XHENA4")
+            Image(numberOfClickNext == 0 ? "\(IMAGE_XHENA3)" : "\(IMAGE_XHENA4)")
                 .resizable()
                 .scaledToFit()
                 .padding(.horizontal, 100)

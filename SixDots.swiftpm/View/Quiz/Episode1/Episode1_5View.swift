@@ -21,7 +21,7 @@ struct Episode1_5View: View {
                 Spacer()
                 ZStack {
                     HStack {
-                        Text("I changed the braille correctly. The down button should be written in Braille as **‘down’** or abbreviated as **‘dwn’**.\nIf you want to check it out, press the 'Braille' button on the top right!")
+                        Text("The down button should be written in Braille as **‘down’** or abbreviated as **‘dwn’**.\nI changed the braille correctly. If you want to check it out, press the 'Braille' button on the top right!")
                             .font(.sandoll(size: 35, weight: .medium))
                             .foregroundColor(Color.dark)
                             .lineSpacing(10)

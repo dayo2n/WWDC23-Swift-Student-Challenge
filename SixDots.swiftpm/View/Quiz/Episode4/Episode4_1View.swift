@@ -51,7 +51,7 @@ struct Episode4_1View: View {
             .padding(.horizontal, 40)
         }
         .background {
-            Image("XHENA2")
+            Image("\(IMAGE_XHENA2)")
                 .resizable()
                 .scaledToFit()
                 .rotation3DEffect(.degrees(180), axis: (x: 0, y:1, z:0))
