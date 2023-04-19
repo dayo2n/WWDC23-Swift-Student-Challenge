@@ -165,7 +165,7 @@ struct Episode4_3View: View {
                     HStack {
                         Spacer()
                         Text("Image credits Kosuke Takahashi")
-                            .font(.sandoll(size: textSize * 0.8, weight: .regular))
+                            .font(.sandoll(size: textSize * 0.5, weight: .regular))
                             .padding([.bottom, .trailing], 20)
                     }
                     Button {
