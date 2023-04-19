@@ -9,54 +9,59 @@ import SwiftUI
 
 struct Episode4_1View: View {
     @Environment(\.dismiss) private var dismiss
+    @State private var textSize = CGFloat(20)
     var body: some View {
-        ZStack {
-            VStack {
-                Spacer()
-                ZStack {
-                    HStack {
-                        Text("Oh, I can hear the bus coming!")
-                            .font(.sandoll(size: 35, weight: .medium))
-                            .foregroundColor(Color.dark)
-                            .lineSpacing(10)
-                        Spacer()
-                    }
-                    VStack {
-                        Spacer()
+        GeometryReader { geo in
+            ZStack {
+                VStack {
+                    Spacer()
+                    ZStack {
                         HStack {
-                            Button {
-                                dismiss()
-                            } label: {
-                                PrevButtonView()
-                            }
-
+                            Text("Oh, I can hear the bus coming!")
+                                .font(.sandoll(size: textSize, weight: .medium))
+                                .foregroundColor(Color.dark)
+                                .lineSpacing(10)
                             Spacer()
-                            
-                            NavigationLink {
-                                Episode4_2View()
-                            } label: {
-                                NextButtonView()
+                        }
+                        VStack {
+                            Spacer()
+                            HStack {
+                                Button {
+                                    dismiss()
+                                } label: {
+                                    PrevButtonView(fontSize: textSize)
+                                }
+
+                                Spacer()
+                                
+                                NavigationLink {
+                                    Episode4_2View()
+                                } label: {
+                                    NextButtonView(fontSize: textSize)
+                                }
                             }
                         }
                     }
+                    .padding(.horizontal, textSize)
+                    .frame(height: geo.size.height * 0.45)
+                    .background {
+                        RoundedRectangle(cornerRadius: 20)
+                            .foregroundColor(Color.light.opacity(0.9))
+                    }
                 }
-                .padding(.horizontal, 15)
-                .frame(height: 500)
-                .background {
-                    RoundedRectangle(cornerRadius: 20)
-                        .foregroundColor(Color.light.opacity(0.9))
-                }
+                .padding(.bottom, textSize)
+                .padding(.horizontal, textSize)
             }
-            .padding(.bottom, 40)
-            .padding(.horizontal, 40)
+            .onAppear {
+                textSize = geo.size.width * 0.05
+            }
         }
         .background {
             Image("\(IMAGE_XHENA2)")
                 .resizable()
                 .scaledToFit()
                 .rotation3DEffect(.degrees(180), axis: (x: 0, y:1, z:0))
-                .padding(.horizontal, 100)
-                .padding(.top, 200)
+                .padding(.all, 50)
         }
         .ignoresSafeArea()
         .navigationBarBackButtonHidden(true)
@@ -65,9 +70,9 @@ struct Episode4_1View: View {
         }, label: {
             HStack {
                 Image(systemName: "house")
-                    .font(.sandoll(size: 20, weight: .semibold))
+                    .font(.sandoll(size: textSize * 0.5, weight: .semibold))
                 Text("Home")
-                    .font(.sandoll(size: 20, weight: .semibold))
+                    .font(.sandoll(size: textSize, weight: .semibold))
             }
             .padding()
         }))

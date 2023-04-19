@@ -13,66 +13,68 @@ struct Episode1_2View: View {
     @State private var numberOfClickNext = 0
     @Environment(\.dismiss) private var dismiss
     @State private var textOpacity = 0.0
+    @State private var textSize = CGFloat(20)
     var body: some View {
-        ZStack {
-            VStack {
-                Spacer()
-                ZStack {
-                    HStack {
-                        Text("\(guidingTexts[numberOfClickNext])")
-                            .font(.sandoll(size: 35, weight: .medium))
-                            .foregroundColor(Color.dark)
-                            .lineSpacing(10)
-                            .opacity(self.textOpacity)
-                            .onAppear {
-                                withAnimation(.easeIn) {
-                                    self.textOpacity = 1.0
-                                }
-                            }
-                        Spacer()
-                    }
-                    VStack {
-                        Spacer()
+        GeometryReader { geo in
+            ZStack {
+                VStack {
+                    Spacer()
+                    ZStack {
                         HStack {
-                            if numberOfClickNext == 0 {
-                                Button {
-                                    dismiss()
-                                } label: {
-                                    PrevButtonView()
+                            Text("\(guidingTexts[numberOfClickNext])")
+                                .font(.sandoll(size: geo.size.width * 0.05, weight: .medium))
+                                .foregroundColor(Color.dark)
+                                .lineSpacing(10)
+                                .opacity(self.textOpacity)
+                                .onAppear {
+                                    textSize = geo.size.width * 0.05
+                                    withAnimation(.easeIn) {
+                                        self.textOpacity = 1.0
+                                    }
                                 }
-
-                                Spacer()
-                                Button {
-                                    numberOfClickNext += 1
-                                } label: {
-                                    NextButtonView()
-                                }
-                            } else {
-                                Button {
-                                    numberOfClickNext -= 1
-                                } label: {
-                                    PrevButtonView()
-                                }
-
-                                Spacer()
-                                NavigationLink {
-                                    Episode1_3View()
-                                } label: {
-                                    NextButtonView()
+                            Spacer()
+                        }
+                        VStack {
+                            Spacer()
+                            HStack {
+                                if numberOfClickNext == 0 {
+                                    Button {
+                                        dismiss()
+                                    } label: {
+                                        PrevButtonView(fontSize: textSize)
+                                    }
+                                    Spacer()
+                                    Button {
+                                        numberOfClickNext += 1
+                                    } label: {
+                                        NextButtonView(fontSize: textSize)
+                                    }
+                                } else {
+                                    Button {
+                                        numberOfClickNext -= 1
+                                    } label: {
+                                        PrevButtonView(fontSize: textSize)
+                                    }
+                                    Spacer()
+                                    NavigationLink {
+                                        Episode1_3View()
+                                    } label: {
+                                        NextButtonView(fontSize: textSize)
+                                    }
                                 }
                             }
                         }
                     }
+                    .padding(.horizontal, textSize)
+                    .frame(height: geo.size.height * 0.45)
+                    .background {
+                        RoundedRectangle(cornerRadius: 20)
+                            .foregroundColor(Color.light.opacity(0.9))
+                    }
                 }
-                .padding(.horizontal, 15)
-                .frame(height: 500)
-                .background {
-                    RoundedRectangle(cornerRadius: 20)
-                        .foregroundColor(Color.light.opacity(0.9))
-                }
+                .padding(.bottom, textSize)
+                .padding(.horizontal, textSize)
             }
-            .padding(.bottom, 40)
-            .padding(.horizontal, 40)
         }
         .background {
             Image("\(IMAGE_FrontElevator)")
@@ -87,10 +89,10 @@ struct Episode1_2View: View {
         }, label: {
             HStack {
                 Image(systemName: "house")
-                    .font(.sandoll(size: 20, weight: .semibold))
+                    .font(.sandoll(size: textSize * 0.5, weight: .semibold))
                     .foregroundColor(Color.dark)
                 Text("Home")
-                    .font(.sandoll(size: 20, weight: .semibold))
+                    .font(.sandoll(size: textSize, weight: .semibold))
                     .foregroundColor(Color.dark)
             }
             .padding()

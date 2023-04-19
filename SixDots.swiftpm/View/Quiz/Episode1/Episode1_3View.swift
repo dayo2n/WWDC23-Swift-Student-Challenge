@@ -13,41 +13,42 @@ struct Episode1_3View: View {
     @State private var clickedDownButton = false
     @State private var activateNavigationToNextView = false
     @State private var showHint = false
-    @State private var buttonWidth = 240
-    @State private var buttonHeight = 80
+    @State private var buttonWidth = 50
+    @State private var buttonHeight = 50
     @State private var contentsOpacities = Array(repeating: 0.0, count: 4)
+    @State private var textSize = CGFloat(20)
     
     var body: some View {
-        ZStack {
-            NavigationLink(destination: Episode1_4View(), isActive: $activateNavigationToNextView) {
-                EmptyView()
-            }
-            
-            Image("\(IMAGE_DownButtonWithWrongBraille)")
-                .resizable()
-                .scaledToFit()
-                .frame(width: 500)
-                .padding(.bottom, 500)
-            
-            GeometryReader { geo in
+        GeometryReader { geo in
+            ZStack {
+                NavigationLink(destination: Episode1_4View(), isActive: $activateNavigationToNextView) {
+                    EmptyView()
+                }
+                Image("\(IMAGE_DownButtonWithWrongBraille)")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: geo.size.width * 0.6)
+                    .padding(.bottom, geo.size.height * 0.4)
+                
                 VStack {
                     Spacer()
                     ZStack {
-                        VStack(alignment: .center, spacing: 20) {
+                        VStack(alignment: .center) {
                             HStack {
                                 VStack(alignment: .leading, spacing: 20) {
                                     Text("The Braile on button is weird.")
-                                        .font(.sandoll(size: 35, weight: .medium))
+                                        .font(.sandoll(size: textSize, weight: .medium))
                                         .foregroundColor(Color.dark)
                                         .lineSpacing(10)
                                         .opacity(contentsOpacities[0])
                                         .onAppear {
+                                            textSize = geo.size.width * 0.05
                                             withAnimation(.easeIn) {
                                                 contentsOpacities[0] = 1.0
                                             }
                                         }
                                     Text("**Which button has a weird braille mark? Up or down?**")
-                                        .font(.sandoll(size: 35, weight: .medium))
+                                        .font(.sandoll(size: textSize, weight: .medium))
                                         .foregroundColor(Color.dark)
                                         .lineSpacing(10)
                                         .opacity(contentsOpacities[1])
@@ -57,7 +58,7 @@ struct Episode1_3View: View {
                                             }
                                         }
                                     Text("\nBraille would be unfamiliar to you, right?\n**Then press the hint button on the top right!**")
-                                        .font(.sandoll(size: 25, weight: .medium))
+                                        .font(.sandoll(size: textSize * 0.8, weight: .medium))
                                         .foregroundColor(Color.dark)
                                         .lineSpacing(10)
                                         .opacity(contentsOpacities[2])
@@ -70,13 +71,13 @@ struct Episode1_3View: View {
                                 Spacer()
                             }
                             Spacer()
-                            HStack(spacing: 50) {
+                            HStack(spacing: geo.size.width * 0.1) {
                                 Spacer()
                                 Button {
-                                   clickedUpButton = true
+                                    clickedUpButton = true
                                 } label: {
                                     Text("UP")
-                                        .font(.sandoll(size: 35, weight: .semibold))
+                                        .font(.sandoll(size: textSize * 1.2, weight: .semibold))
                                         .foregroundColor(Color.dark)
                                         .padding(.vertical, 30)
                                         .frame(width: CGFloat(buttonWidth), height: CGFloat(buttonHeight))
@@ -84,16 +85,16 @@ struct Episode1_3View: View {
                                         .cornerRadius(20)
                                         .onAppear {
                                             withAnimation(Animation.linear(duration: 0.9).repeatForever()) {
-                                                buttonWidth = 250
-                                                buttonHeight = 90
+                                                buttonWidth = Int(geo.size.width * 0.32) + 10
+                                                buttonHeight = Int(geo.size.height * 0.06) + 10
                                             }
                                         }
                                 }
                                 Button {
-                                   clickedDownButton = true
+                                    clickedDownButton = true
                                 } label: {
                                     Text("DOWN")
-                                        .font(.sandoll(size: 35, weight: .semibold))
+                                        .font(.sandoll(size: textSize * 1.2, weight: .semibold))
                                         .foregroundColor(Color.dark)
                                         .padding(.vertical, 30)
                                         .frame(width: CGFloat(buttonWidth), height: CGFloat(buttonHeight))
@@ -104,23 +105,25 @@ struct Episode1_3View: View {
                             }
                             .opacity(contentsOpacities[3])
                             .onAppear {
+                                buttonWidth = Int(geo.size.width * 0.32)
+                                buttonHeight = Int(geo.size.height * 0.06)
                                 withAnimation(.easeIn.delay(3)) {
                                     contentsOpacities[3] = 1.0
                                 }
                             }
                         }
-                        .padding(.vertical, 40)
+                        .padding(.vertical, textSize)
                     }
-                    .frame(width: geo.size.width - 30, height: 500)
-                    .padding(.horizontal, 15)
+                    .frame(width: geo.size.width - textSize * 4, height: geo.size.height * 0.45)
+                    .padding(.horizontal, textSize)
                     .background {
                         RoundedRectangle(cornerRadius: 20)
                             .foregroundColor(Color.light.opacity(0.9))
                     }
                 }
             }
-            .padding(.bottom, 40)
-            .padding(.horizontal, 40)
+            .padding(.bottom, textSize)
+            .padding(.horizontal, textSize)
         }
         .background {
             Image("\(IMAGE_FrontElevator)")
@@ -146,10 +149,10 @@ struct Episode1_3View: View {
         }, label: {
             HStack {
                 Image(systemName: "house")
-                    .font(.sandoll(size: 20, weight: .semibold))
+                    .font(.sandoll(size: textSize * 0.5, weight: .semibold))
                     .foregroundColor(Color.dark)
                 Text("Home")
-                    .font(.sandoll(size: 20, weight: .semibold))
+                    .font(.sandoll(size: textSize, weight: .semibold))
                     .foregroundColor(Color.dark)
             }
             .padding()
@@ -157,7 +160,7 @@ struct Episode1_3View: View {
             showHint = true
         }, label: {
             Text("Hint")
-                .font(.sandoll(size: 20, weight: .semibold))
+                .font(.sandoll(size: textSize, weight: .semibold))
                 .foregroundColor(Color.dark)
                 .padding()
         }))
@@ -171,15 +174,15 @@ struct Episode1_3View: View {
                         .frame(width: geo.size.width)
                     HStack {
                         Spacer()
-                        Text("Image credits Kosuke Takahashi.")
-                            .font(.sandoll(size: 15, weight: .regular))
+                        Text("Image credits Kosuke Takahashi")
+                            .font(.sandoll(size: textSize * 0.8, weight: .regular))
                             .padding([.bottom, .trailing], 20)
                     }
                     Button {
                         showHint = false
                     } label: {
                         Text("Dismiss")
-                            .font(.sandoll(size: 20, weight: .semibold))
+                            .font(.sandoll(size: textSize, weight: .semibold))
                     }
                     Spacer()
                 }

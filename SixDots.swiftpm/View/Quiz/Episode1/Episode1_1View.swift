@@ -9,87 +9,87 @@ import SwiftUI
 
 struct Episode1_1View: View {
     @State private var opacities = Array(repeating: 0.0, count: 4)
+    @State private var textSize = CGFloat(20)
     var body: some View {
-        ZStack {
-            VStack {
-                Spacer()
-                ZStack {
-                    HStack(spacing: 20) {
-                        VStack(alignment: .leading, spacing: 20) {
-                            Text("Hi, I'm XHENA!")
-                                .font(.sandoll(size: 35, weight: .medium))
-                                .foregroundColor(Color.dark)
-                                .lineSpacing(10)
-                                .opacity(opacities[0])
-                                .onAppear {
-                                    withAnimation(.easeIn) {
-                                        self.opacities[0] = 1.0
+        GeometryReader { geo in
+            ZStack {
+                VStack {
+                    Spacer()
+                    ZStack {
+                        HStack(spacing: 20) {
+                            VStack(alignment: .leading, spacing: 20) {
+                                Text("Hi, I'm XHENA!")
+                                    .font(.sandoll(size: textSize, weight: .medium))
+                                    .foregroundColor(Color.dark)
+                                    .lineSpacing(10)
+                                    .opacity(opacities[0])
+                                    .onAppear {
+                                        textSize = geo.size.width * 0.05
+                                        withAnimation(.easeIn) {
+                                            self.opacities[0] = 1.0
+                                        }
                                     }
-                                }
-                            Text("And I’m **visually impaired.**")
-                                .font(.sandoll(size: 40, weight: .medium))
-                                .foregroundColor(Color.dark)
-                                .lineSpacing(10)
-                                .opacity(opacities[1])
-                                .onAppear {
-                                    withAnimation(.easeIn.delay(1)) {
-                                        self.opacities[1] = 1.0
+                                Text("And I’m **visually impaired.**")
+                                    .font(.sandoll(size: textSize, weight: .medium))
+                                    .foregroundColor(Color.dark)
+                                    .lineSpacing(10)
+                                    .opacity(opacities[1])
+                                    .onAppear {
+                                        withAnimation(.easeIn.delay(1)) {
+                                            self.opacities[1] = 1.0
+                                        }
                                     }
-                                }
-                            Text("I went out today, and now I'm done with my business, I have to go back home alone.\n")
-                                .font(.sandoll(size: 35, weight: .medium))
-                                .foregroundColor(Color.dark)
-                                .lineSpacing(10)
-                                .opacity(opacities[2])
-                                .onAppear {
-                                    withAnimation(.easeIn.delay(2)) {
-                                        self.opacities[2] = 1.0
+                                Text("I went out today, and now I'm done with my business, I have to go back home alone.")
+                                    .font(.sandoll(size: textSize, weight: .medium))
+                                    .foregroundColor(Color.dark)
+                                    .lineSpacing(10)
+                                    .opacity(opacities[2])
+                                    .onAppear {
+                                        withAnimation(.easeIn.delay(2)) {
+                                            self.opacities[2] = 1.0
+                                        }
                                     }
-                                }
-                            Text("**Can you help me get home?**")
-                                .font(.sandoll(size: 40, weight: .medium))
-                                .foregroundColor(Color.dark)
-                                .lineSpacing(10)
-                                .opacity(opacities[3])
-                                .onAppear {
-                                    withAnimation(.easeIn.delay(3)) {
-                                        self.opacities[3] = 1.0
+                                Text("**Can you help me get home?**")
+                                    .font(.sandoll(size: textSize, weight: .medium))
+                                    .foregroundColor(Color.dark)
+                                    .lineSpacing(10)
+                                    .opacity(opacities[3])
+                                    .onAppear {
+                                        withAnimation(.easeIn.delay(3)) {
+                                            self.opacities[3] = 1.0
+                                        }
                                     }
-                                }
-                        }
-                        Spacer()
-                    }
-                        
-                    VStack {
-                        
-                        Spacer()
-                        
-                        HStack {
+                            }
                             Spacer()
-                            
-                            NavigationLink {
-                                Episode1_2View()
-                            } label: {
-                                NextButtonView()
+                        }
+                        VStack {
+                            Spacer()
+                            HStack {
+                                Spacer()
+                                NavigationLink {
+                                    Episode1_2View()
+                                } label: {
+                                    NextButtonView(fontSize: textSize)
+                                }
                             }
                         }
                     }
+                    .padding(.horizontal, textSize)
+                    .frame(height: geo.size.height * 0.45)
+                    .background {
+                        RoundedRectangle(cornerRadius: 20)
+                            .foregroundColor(Color.light.opacity(0.9))
+                    }
                 }
-                .padding(.horizontal, 15)
-                .frame(height: 500)
-                .background {
-                    RoundedRectangle(cornerRadius: 20)
-                        .foregroundColor(Color.light.opacity(0.9))
-                }
+                .padding(.bottom, textSize)
+                .padding(.horizontal, textSize)
             }
-            .padding(.bottom, 40)
-            .padding(.horizontal, 40)
         }
         .background {
             Image("\(IMAGE_XHENA1)")
                 .resizable()
                 .scaledToFit()
-                .padding(.all, 200)
+                .padding(.all, 50)
         }
         .ignoresSafeArea()
         .navigationBarBackButtonHidden(true)
@@ -98,9 +98,9 @@ struct Episode1_1View: View {
         }, label: {
             HStack {
                 Image(systemName: "house")
-                    .font(.sandoll(size: 20, weight: .semibold))
+                    .font(.sandoll(size: textSize * 0.5, weight: .semibold))
                 Text("Home")
-                    .font(.sandoll(size: 20, weight: .semibold))
+                    .font(.sandoll(size: textSize, weight: .semibold))
             }
             .padding()
         }))

@@ -11,6 +11,7 @@ struct Episode1_4View: View {
     @State private var isRotating = 0.0
     @State private var isMoving = 0
     @State private var textOpacities = [0.0, 0.0]
+    @State private var textSize = CGFloat(20)
     @Environment(\.dismiss) private var dismiss
     var body: some View {
         GeometryReader { geo in
@@ -19,24 +20,25 @@ struct Episode1_4View: View {
                     .resizable()
                     .scaledToFit()
                     .frame(width: geo.size.width * 0.6)
-                    .padding(.bottom, 500)
+                    .padding(.bottom, geo.size.height * 0.4)
                 VStack {
                     Spacer()
                     ZStack {
                         HStack {
                             VStack (alignment: .leading, spacing: 20) {
                                 Text("The elevator installer **rotated the UP button 180 degrees**, making it look like a DOWN button for visual purposes only.")
-                                    .font(.sandoll(size: 35, weight: .medium))
+                                    .font(.sandoll(size: textSize, weight: .medium))
                                     .foregroundColor(Color.dark)
                                     .lineSpacing(10)
                                     .opacity(textOpacities[0])
                                     .onAppear {
+                                        textSize = geo.size.width * 0.05
                                         withAnimation(.easeIn) {
                                             textOpacities[0] = 1.0
                                         }
                                     }
                                 Text("As a result, visually impaired people like me cannot read the braille on this button.")
-                                    .font(.sandoll(size: 35, weight: .medium))
+                                    .font(.sandoll(size: textSize, weight: .medium))
                                     .foregroundColor(Color.dark)
                                     .lineSpacing(10)
                                     .opacity(textOpacities[1])
@@ -54,26 +56,26 @@ struct Episode1_4View: View {
                                 Button {
                                     dismiss()
                                 } label: {
-                                    PrevButtonView()
+                                    PrevButtonView(fontSize: textSize)
                                 }
                                 Spacer()
                                 NavigationLink {
                                     Episode1_5View()
                                 } label: {
-                                    NextButtonView()
+                                    NextButtonView(fontSize: textSize)
                                 }
                             }
                         }
                     }
-                    .padding(.horizontal, 15)
-                    .frame(height: 500)
+                    .padding(.horizontal, textSize)
+                    .frame(height: geo.size.height * 0.45)
                     .background {
                         RoundedRectangle(cornerRadius: 20)
                             .foregroundColor(Color.light.opacity(0.9))
                     }
                 }
-                .padding(.bottom, 40)
-                .padding(.horizontal, 40)
+                .padding(.bottom, textSize)
+                .padding(.horizontal, textSize)
                 
                 VStack {
                     HStack {
@@ -81,12 +83,12 @@ struct Episode1_4View: View {
                         Image("\(IMAGE_CroppedUpButton)")
                             .resizable()
                             .scaledToFit()
-                            .frame(width: 220)
+                            .frame(width: geo.size.width * 0.3)
                             .rotationEffect(.degrees(isRotating))
-                            .offset(x: 150, y: CGFloat(isMoving))
+                            .offset(x: geo.size.width * 0.3, y: CGFloat(isMoving))
                             .onAppear {
                                 withAnimation(.linear(duration: 1.0).delay(1.5)) {
-                                        isRotating = 190.0
+                                        isRotating = 185.0
                                     }
                                 withAnimation(.linear(duration: 1.0).delay(2.7)) {
                                     isMoving = Int(geo.size.height / 3)
@@ -111,10 +113,10 @@ struct Episode1_4View: View {
             }, label: {
                 HStack {
                     Image(systemName: "house")
-                        .font(.sandoll(size: 20, weight: .semibold))
+                        .font(.sandoll(size: textSize * 0.5, weight: .semibold))
                         .foregroundColor(Color.dark)
                     Text("Home")
-                        .font(.sandoll(size: 20, weight: .semibold))
+                        .font(.sandoll(size: textSize, weight: .semibold))
                         .foregroundColor(Color.dark)
                 }
                 .padding()

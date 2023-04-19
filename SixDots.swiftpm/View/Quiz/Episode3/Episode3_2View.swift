@@ -9,85 +9,93 @@ import SwiftUI
 
 struct Episode3_2View: View {
     @State private var numberOfClickNext = 0
-    @State private var imageBANGSize = 700
+    @State private var imageBANGSize = CGFloat(200)
+    @State private var imageBANGSmallSize = CGFloat(200)
     @State private var textOpacity = 0.0
     @Environment(\.dismiss) private var dismiss
+    @State private var textSize = CGFloat(20)
     var body: some View {
-        ZStack {
-            VStack {
-                Spacer()
-                ZStack {
-                    HStack {
-                        Text(numberOfClickNext == 0 ? "I can hear a passing car.. but since the tactile paving is a guidance surface, I can just keep going, right?" : "Oh, my gosh!!\nSomeone honked their horn loudly to let me know that I was in danger.\nI think the tactile paving block might have been installed incorrectly.")
-                            .font(.sandoll(size: 35, weight: .medium))
-                            .foregroundColor(Color.dark)
-                            .lineSpacing(10)
-                            .opacity(textOpacity)
-                            .onAppear {
-                                withAnimation(.easeIn) {
-                                    textOpacity = 1.0
-                                }
-                            }
-                        Spacer()
-                    }
-                    VStack {
-                        Spacer()
+        GeometryReader { geo in 
+            ZStack {
+                VStack {
+                    Spacer()
+                    ZStack {
                         HStack {
-                            Button {
-                                if numberOfClickNext == 0 {
-                                    dismiss()
-                                } else {
-                                    numberOfClickNext -= 1
+                            Text(numberOfClickNext == 0 ? "I can hear a passing car.. but since the tactile paving is a guidance surface, I can just keep going, right?" : "Oh, my gosh!!\nSomeone honked their horn loudly to let me know that I was in danger.\nI think the tactile paving block might have been installed incorrectly.")
+                                .font(.sandoll(size: textSize, weight: .medium))
+                                .foregroundColor(Color.dark)
+                                .lineSpacing(10)
+                                .opacity(textOpacity)
+                                .onAppear {
+                                    textSize = geo.size.width * 0.05
+                                    imageBANGSmallSize = geo.size.width * 0.8
+                                    withAnimation(.easeIn) {
+                                        textOpacity = 1.0
+                                    }
                                 }
-                            } label: {
-                                PrevButtonView()
-                            }
-
                             Spacer()
-                            
-                            if numberOfClickNext == 0 {
+                        }
+                        VStack {
+                            Spacer()
+                            HStack {
                                 Button {
-                                    numberOfClickNext += 1
+                                    if numberOfClickNext == 0 {
+                                        dismiss()
+                                    } else {
+                                        numberOfClickNext -= 1
+                                    }
                                 } label: {
-                                    NextButtonView()
+                                    PrevButtonView(fontSize: textSize)
                                 }
-                            } else {
-                                NavigationLink {
-                                    Episode3_3View()
-                                } label: {
-                                    NextButtonView()
+
+                                Spacer()
+                                
+                                if numberOfClickNext == 0 {
+                                    Button {
+                                        numberOfClickNext += 1
+                                    } label: {
+                                        NextButtonView(fontSize: textSize)
+                                    }
+                                } else {
+                                    NavigationLink {
+                                        Episode3_3View()
+                                    } label: {
+                                        NextButtonView(fontSize: textSize)
+                                    }
                                 }
                             }
                         }
                     }
+                    .padding(.horizontal, textSize)
+                    .frame(height: geo.size.height * 0.45)
+                    .background {
+                        RoundedRectangle(cornerRadius: 20)
+                            .foregroundColor(Color.light.opacity(0.9))
+                    }
                 }
-                .padding(.horizontal, 15)
-                .frame(height: 500)
-                .background {
-                    RoundedRectangle(cornerRadius: 20)
-                        .foregroundColor(Color.light.opacity(0.9))
-                }
+                .padding(.bottom, textSize)
+                .padding(.horizontal, textSize)
             }
-            .padding(.bottom, 40)
-            .padding(.horizontal, 40)
         }
         .background {
             ZStack {
+                Color(hex: "D1C6B4")
                 Image("\(numberOfClickNext == 0 ? IMAGE_NoBraileSideWalkOnStreet0 : IMAGE_NoBraileSideWalkOnStreet1)")
                     .resizable()
                     .scaledToFill()
+                    .padding(.trailing, 100)
                 if numberOfClickNext > 0 {
                     Image("\(IMAGE_Bang)")
                         .resizable()
                         .scaledToFit()
                         .frame(width: CGFloat(imageBANGSize))
-                        .padding([.trailing, .bottom], 200)
+                        .padding([.trailing, .bottom], 180)
                         .onAppear {
                             withAnimation(.easeIn(duration: 0.5)) {
-                                imageBANGSize = 1200
+                                imageBANGSize = UIScreen.main.bounds.width
                             }
                             withAnimation(.easeIn.delay(0.5)) {
-                                imageBANGSize = 700
+                                imageBANGSize = imageBANGSmallSize
                             }
                         }
                 }
@@ -100,10 +108,10 @@ struct Episode3_2View: View {
         }, label: {
             HStack {
                 Image(systemName: "house")
-                    .font(.sandoll(size: 20, weight: .semibold))
+                    .font(.sandoll(size: textSize * 0.5, weight: .semibold))
                     .foregroundColor(Color.dark)
                 Text("Home")
-                    .font(.sandoll(size: 20, weight: .semibold))
+                    .font(.sandoll(size: textSize, weight: .semibold))
                     .foregroundColor(Color.dark)
             }
             .padding()

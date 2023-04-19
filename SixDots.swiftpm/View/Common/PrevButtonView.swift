@@ -8,14 +8,15 @@
 import SwiftUI
 
 struct PrevButtonView: View {
+    var fontSize: CGFloat = 30
     var body: some View {
         HStack {
             Image(systemName: "arrowtriangle.backward.fill")
-                .font(.sandoll(size: 40, weight: .regular))
+                .font(.sandoll(size: fontSize, weight: .regular))
                 .foregroundColor(Color.keyColor)
             
             Text("PREV")
-                .font(.sandoll(size: 40, weight: .bold))
+                .font(.sandoll(size: fontSize, weight: .bold))
                 .foregroundColor(Color.keyColor)
         }
         .padding(20)

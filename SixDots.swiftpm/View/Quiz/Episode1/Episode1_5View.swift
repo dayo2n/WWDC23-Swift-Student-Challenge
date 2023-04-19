@@ -9,50 +9,56 @@ import SwiftUI
 
 struct Episode1_5View: View {
     @State private var showHint = false
+    @State private var textSize = CGFloat(20)
     @Environment(\.dismiss) private var dismiss
     var body: some View {
-        ZStack {
-            Image("\(IMAGE_DownButtonWithCorrectedBraille)")
-                .resizable()
-                .scaledToFit()
-                .frame(width: 500)
-                .padding(.bottom, 500)
-            VStack {
-                Spacer()
-                ZStack {
-                    HStack {
-                        Text("The down button should be written in Braille as **‘down’** or abbreviated as **‘dwn’**.\nI changed the braille correctly. If you want to check it out, press the 'Braille' button on the top right!")
-                            .font(.sandoll(size: 35, weight: .medium))
-                            .foregroundColor(Color.dark)
-                            .lineSpacing(10)
-                        Spacer()
-                    }
-                    VStack {
-                        Spacer()
+        GeometryReader { geo in
+            ZStack {
+                Image("\(IMAGE_DownButtonWithCorrectedBraille)")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: geo.size.width * 0.6)
+                    .padding(.bottom, geo.size.height * 0.4)
+                VStack {
+                    Spacer()
+                    ZStack {
                         HStack {
-                            Button {
-                                dismiss()
-                            } label: {
-                                PrevButtonView()
-                            }
+                            Text("The down button should be written in Braille as **‘down’** or abbreviated as **‘dwn’**.\nI changed the braille correctly. If you want to check it out, press the 'Braille' button on the top right!")
+                                .font(.sandoll(size: textSize, weight: .medium))
+                                .foregroundColor(Color.dark)
+                                .lineSpacing(10)
                             Spacer()
-                            NavigationLink {
-                                Episode2_1View()
-                            } label: {
-                                NextButtonView()
+                        }
+                        VStack {
+                            Spacer()
+                            HStack {
+                                Button {
+                                    dismiss()
+                                } label: {
+                                    PrevButtonView(fontSize: textSize)
+                                }
+                                Spacer()
+                                NavigationLink {
+                                    Episode2_1View()
+                                } label: {
+                                    NextButtonView(fontSize: textSize)
+                                }
                             }
                         }
                     }
+                    .padding(.horizontal, textSize)
+                    .frame(height: geo.size.height * 0.45)
+                    .background {
+                        RoundedRectangle(cornerRadius: 20)
+                            .foregroundColor(Color.light.opacity(0.9))
+                    }
                 }
-                .padding(.horizontal, 15)
-                .frame(height: 500)
-                .background {
-                    RoundedRectangle(cornerRadius: 20)
-                        .foregroundColor(Color.light.opacity(0.9))
-                }
+                .padding(.bottom, textSize)
+                .padding(.horizontal, textSize)
             }
-            .padding(.bottom, 40)
-            .padding(.horizontal, 40)
+            .onAppear {
+                textSize = geo.size.width * 0.05
+            }
         }
         .background {
             Image("\(IMAGE_FrontElevator)")
@@ -67,10 +73,10 @@ struct Episode1_5View: View {
         }, label: {
             HStack {
                 Image(systemName: "house")
-                    .font(.sandoll(size: 20, weight: .semibold))
+                    .font(.sandoll(size: textSize * 0.5, weight: .semibold))
                     .foregroundColor(Color.dark)
                 Text("Home")
-                    .font(.sandoll(size: 20, weight: .semibold))
+                    .font(.sandoll(size: textSize, weight: .semibold))
                     .foregroundColor(Color.dark)
             }
             .padding()
@@ -78,7 +84,7 @@ struct Episode1_5View: View {
             showHint = true
         }, label: {
             Text("Braille")
-                .font(.sandoll(size: 20, weight: .semibold))
+                .font(.sandoll(size: textSize, weight: .semibold))
                 .foregroundColor(Color.dark)
                 .padding()
         }))
@@ -92,15 +98,15 @@ struct Episode1_5View: View {
                         .frame(width: geo.size.width)
                     HStack {
                         Spacer()
-                        Text("Image credits Kosuke Takahashi.")
-                            .font(.sandoll(size: 15, weight: .regular))
+                        Text("Image credits Kosuke Takahashi")
+                            .font(.sandoll(size: textSize * 0.8, weight: .regular))
                             .padding([.bottom, .trailing], 20)
                     }
                     Button {
                         showHint = false
                     } label: {
                         Text("Dismiss")
-                            .font(.sandoll(size: 20, weight: .semibold))
+                            .font(.sandoll(size: textSize, weight: .semibold))
                     }
                     Spacer()
                 }

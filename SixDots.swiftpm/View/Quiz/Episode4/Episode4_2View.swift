@@ -11,47 +11,53 @@ struct Episode4_2View: View {
     @Environment(\.dismiss) private var dismiss
     @State private var leadingPadding = 0
     @State private var contentOpacity = 0.0
+    @State private var textSize = CGFloat(20)
     var body: some View {
-        ZStack {
-            VStack {
-                Spacer()
-                ZStack {
-                    HStack {
-                        Text("I'll almost be home once I get off at the next stop.")
-                            .font(.sandoll(size: 35, weight: .medium))
-                            .foregroundColor(Color.dark)
-                            .lineSpacing(10)
-                        Spacer()
-                    }
-                    VStack {
-                        Spacer()
+        GeometryReader { geo in
+            ZStack {
+                VStack {
+                    Spacer()
+                    ZStack {
                         HStack {
-                            Button {
-                                dismiss()
-                            } label: {
-                                PrevButtonView()
-                            }
-
+                            Text("I'll almost be home once I get off at the next stop.")
+                                .font(.sandoll(size: textSize, weight: .medium))
+                                .foregroundColor(Color.dark)
+                                .lineSpacing(10)
                             Spacer()
-                            
-                            NavigationLink {
-                                Episode4_3View()
-                            } label: {
-                                NextButtonView()
+                        }
+                        VStack {
+                            Spacer()
+                            HStack {
+                                Button {
+                                    dismiss()
+                                } label: {
+                                    PrevButtonView(fontSize: textSize)
+                                }
+
+                                Spacer()
+                                
+                                NavigationLink {
+                                    Episode4_3View()
+                                } label: {
+                                    NextButtonView(fontSize: textSize)
+                                }
                             }
                         }
                     }
+                    .padding(.horizontal, textSize)
+                    .frame(height: geo.size.height * 0.45)
+                    .background {
+                        RoundedRectangle(cornerRadius: 20)
+                            .foregroundColor(Color.light.opacity(0.9))
+                    }
+                    .opacity(contentOpacity)
                 }
-                .padding(.horizontal, 15)
-                .frame(height: 500)
-                .background {
-                    RoundedRectangle(cornerRadius: 20)
-                        .foregroundColor(Color.light.opacity(0.9))
-                }
-                .opacity(contentOpacity)
+                .padding(.bottom, textSize)
+                .padding(.horizontal, textSize)
             }
-            .padding(.bottom, 40)
-            .padding(.horizontal, 40)
+            .onAppear {
+                textSize = geo.size.width * 0.05
+            }
         }
         .background {
             Image("\(IMAGE_InsideBus)")

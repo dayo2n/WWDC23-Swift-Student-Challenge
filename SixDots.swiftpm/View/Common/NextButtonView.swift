@@ -8,14 +8,15 @@
 import SwiftUI
 
 struct NextButtonView: View {
+    var fontSize = CGFloat(30)
     var body: some View {
         HStack {
             Text("NEXT")
-                .font(.sandoll(size: 40, weight: .bold))
+                .font(.sandoll(size: CGFloat(fontSize), weight: .bold))
                 .foregroundColor(Color.keyColor)
             
             Image(systemName: "arrowtriangle.forward.fill")
-                .font(.sandoll(size: 40, weight: .regular))
+                .font(.sandoll(size: CGFloat(fontSize), weight: .regular))
                 .foregroundColor(Color.keyColor)
         }
         .padding(20)

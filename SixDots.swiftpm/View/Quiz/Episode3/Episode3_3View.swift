@@ -13,101 +13,105 @@ struct Episode3_3View: View {
     @State private var navigateToNextView = false
     @State private var showHint = false
     @State private var textOpacities = Array(repeating: 0.0, count: 3)
+    @State private var textSize = CGFloat(20)
     @Environment(\.dismiss) private var dismiss
     var body: some View {
-        ZStack {
-            NavigationLink(destination: Episode3_4View(), isActive: $navigateToNextView) {
-                EmptyView()
-            }
+        GeometryReader { geo in
             ZStack {
-                Image("\(IMAGE_Crosswalk)")
-                    .resizable()
-                    .scaledToFit()
-                    .padding(.bottom, 550)
-                VStack {
-                    HStack {
-                        ForEach(0..<5) { index in
-                            Image("\(isStopBlock[index] ? IMAGE_StopBlock : IMAGE_GuidanceBlock)")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 120)
-                                .onTapGesture {
-                                    isStopBlock[index].toggle()
-                                    if !isStopBlock.contains(false) {
-                                        showResult = true
-                                    }
-                                }
-                        }
-                    }
-                    Image("\(IMAGE_GuidanceBlock)")
+                NavigationLink(destination: Episode3_4View(), isActive: $navigateToNextView) {
+                    EmptyView()
+                }
+                ZStack {
+                    Image("\(IMAGE_Crosswalk)")
                         .resizable()
                         .scaledToFit()
-                        .frame(width: 120)
-                    Image("\(IMAGE_GuidanceBlock)")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 120)
-                }
-            }
-            ZStack {
-                VStack {
-                    Spacer()
-                    HStack {
-                        VStack(alignment: .leading, spacing: 20) {
-                            Text("There are incorrectly installed tactile paving blocks")
-                                .font(.sandoll(size: 35, weight: .medium))
-                                .foregroundColor(Color.dark)
-                                .lineSpacing(10)
-                                .opacity(textOpacities[0])
-                                .onAppear {
-                                    withAnimation(.easeIn.delay(0)) {
-                                        textOpacities[0] = 1.0
+                        .padding(.bottom, geo.size.height * 0.4)
+                    VStack {
+                        HStack {
+                            ForEach(0..<5) { index in
+                                Image("\(isStopBlock[index] ? IMAGE_StopBlock : IMAGE_GuidanceBlock)")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(height: geo.size.height * 0.1)
+                                    .onTapGesture {
+                                        isStopBlock[index].toggle()
+                                        if !isStopBlock.contains(false) {
+                                            showResult = true
+                                        }
                                     }
-                                }
-                            Text("**In front of the crosswalk, there should be warning blocks that means stop and be careful.**")
-                                .font(.sandoll(size: 35, weight: .medium))
-                                .foregroundColor(Color.dark)
-                                .lineSpacing(10)
-                                .opacity(textOpacities[1])
-                                .onAppear {
-                                    withAnimation(.easeIn.delay(1)) {
-                                        textOpacities[1] = 1.0
-                                    }
-                                }
-                            Text("Please change the wrong blocks!")
-                                .font(.sandoll(size: 35, weight: .medium))
-                                .foregroundColor(Color.dark)
-                                .lineSpacing(10)
-                                .opacity(textOpacities[2])
-                                .onAppear {
-                                    withAnimation(.easeIn.delay(2)) {
-                                        textOpacities[2] = 1.0
-                                    }
-                                }
+                            }
                         }
-                        Spacer()
-                    }
-                    .padding(.horizontal, 15)
-                    .frame(height: 500)
-                    .background {
-                        RoundedRectangle(cornerRadius: 20)
-                            .foregroundColor(Color.light.opacity(0.9))
+                        Image("\(IMAGE_GuidanceBlock)")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(height: geo.size.height * 0.1)
+                        Image("\(IMAGE_GuidanceBlock)")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(height: geo.size.height * 0.1)
                     }
                 }
-                VStack {
-                    Spacer()
-                    HStack {
-                        Button {
-                            dismiss()
-                        } label: {
-                            PrevButtonView()
+                ZStack {
+                    VStack {
+                        Spacer()
+                        HStack {
+                            VStack(alignment: .leading, spacing: 20) {
+                                Text("There are incorrectly installed tactile paving blocks")
+                                    .font(.sandoll(size: CGFloat(textSize), weight: .medium))
+                                    .foregroundColor(Color.dark)
+                                    .lineSpacing(10)
+                                    .opacity(textOpacities[0])
+                                    .onAppear {
+                                        textSize = geo.size.width * 0.05
+                                        withAnimation(.easeIn.delay(0)) {
+                                            textOpacities[0] = 1.0
+                                        }
+                                    }
+                                Text("**In front of the crosswalk, there should be warning blocks that means stop and be careful.**")
+                                    .font(.sandoll(size: CGFloat(textSize), weight: .medium))
+                                    .foregroundColor(Color.dark)
+                                    .lineSpacing(10)
+                                    .opacity(textOpacities[1])
+                                    .onAppear {
+                                        withAnimation(.easeIn.delay(1)) {
+                                            textOpacities[1] = 1.0
+                                        }
+                                    }
+                                Text("Please change the wrong blocks!")
+                                    .font(.sandoll(size: CGFloat(textSize), weight: .medium))
+                                    .foregroundColor(Color.dark)
+                                    .lineSpacing(10)
+                                    .opacity(textOpacities[2])
+                                    .onAppear {
+                                        withAnimation(.easeIn.delay(2)) {
+                                            textOpacities[2] = 1.0
+                                        }
+                                    }
+                            }
+                            Spacer()
                         }
+                        .padding(.horizontal, textSize)
+                        .frame(height: geo.size.height * 0.45)
+                        .background {
+                            RoundedRectangle(cornerRadius: 20)
+                                .foregroundColor(Color.light.opacity(0.9))
+                        }
+                    }
+                    VStack {
                         Spacer()
+                        HStack {
+                            Button {
+                                dismiss()
+                            } label: {
+                                PrevButtonView(fontSize: textSize)
+                            }
+                            Spacer()
+                        }
                     }
                 }
+                .padding(.bottom, textSize)
+                .padding(.horizontal, textSize)
             }
-            .padding(.bottom, 40)
-            .padding(.horizontal, 40)
         }
         .background {
             Image("\(IMAGE_NoBraileSideWalkOnStreet0)")
@@ -128,10 +132,10 @@ struct Episode3_3View: View {
         }, label: {
             HStack {
                 Image(systemName: "house")
-                    .font(.sandoll(size: 20, weight: .semibold))
+                    .font(.sandoll(size: textSize * 0.5, weight: .semibold))
                     .foregroundColor(Color.dark)
                 Text("Home")
-                    .font(.sandoll(size: 20, weight: .semibold))
+                    .font(.sandoll(size: textSize, weight: .semibold))
                     .foregroundColor(Color.dark)
             }
             .padding()
@@ -139,7 +143,7 @@ struct Episode3_3View: View {
             showHint = true
         }, label: {
             Text("Hint")
-                .font(.sandoll(size: 20, weight: .semibold))
+                .font(.sandoll(size: textSize, weight: .semibold))
                 .foregroundColor(Color.dark)
                 .padding()
         }))
