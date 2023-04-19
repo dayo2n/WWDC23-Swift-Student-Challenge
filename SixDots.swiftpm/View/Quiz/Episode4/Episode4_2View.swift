@@ -69,17 +69,6 @@ struct Episode4_2View: View {
         }
         .ignoresSafeArea()
         .navigationBarBackButtonHidden(true)
-        .navigationBarItems(leading: Button(action: {
-            NavigationUtil.popToRootView()
-        }, label: {
-            HStack {
-                Image(systemName: "house")
-                    .font(.sandoll(size: 20, weight: .semibold))
-                Text("Home")
-                    .font(.sandoll(size: 20, weight: .semibold))
-            }
-            .padding()
-        }))
     }
 }
 
