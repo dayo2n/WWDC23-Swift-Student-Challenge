@@ -12,7 +12,7 @@ Misuse of braille can cause greater confusion for people with visual impairments
 
 Although I had some knowledge of these issues from a visually impaired YouTuber I follow, creating this app allowed me to fully comprehend the severity of these problems and even made me fearful of my future if I were to become visually impaired. I hope that people will indirectly experience this sense of caution and empathy through my app.
 
-Six Dots는 한국의 시각장애인 유튜버 원샷한솔님의 영상을 보며 잘못 표기되는 점자들로 인해 느끼는 혼란, 불안, 당혹스러움 등을 느끼며 구상하게 되었습니다. Six Dots를 통해 점자 잘못 표기함으로써 시각장애인들이 매일 겪는 어려움을 사람들에게도 알리고자 했습니다. 비장애인들에게는 일상 속에 아무 어려움이 없을 수 있지만, 시각장애인에게는 건물을 나가는 것조차도 어려울 수 있다는 사실을요. 이 앱의 주인공인 시각장애인 ZENA와 집으로 돌아가는 길을 함께하는 과정에서 겪는 어려움을 사용자들이 간접적으로 경험하고, 인식과 공감을 불러일으키는 것이 목표였습니다.  
+Six Dots는 한국의 시각장애인 [유튜버 원샷한솔님](https://www.youtube.com/@OneshotHansol)의 영상을 보며 잘못 표기되는 점자들로 인해 느끼는 혼란, 불안, 당혹스러움 등을 느끼며 구상하게 되었습니다. Six Dots를 통해 점자 잘못 표기함으로써 시각장애인들이 매일 겪는 어려움을 사람들에게도 알리고자 했습니다. 비장애인들에게는 일상 속에 아무 어려움이 없을 수 있지만, 시각장애인에게는 건물을 나가는 것조차도 어려울 수 있다는 사실을요. 이 앱의 주인공인 시각장애인 ZENA와 집으로 돌아가는 길을 함께하는 과정에서 겪는 어려움을 사용자들이 간접적으로 경험하고, 인식과 공감을 불러일으키는 것이 목표였습니다.  
 
 점자를 잘못 사용하면 시각장애인들에게 큰 혼란을 야기할 수 있습니다. 사진은 이러한 예로, 엘리베이터 버튼을 잘 살펴보세요. 올라가는 버튼을 180도 회전하면 아래쪽을 가리키는 모양과 같아집니다. 점자까지도요. 실제로 제대로 점자에 따라 버튼을 배치하지 않고 비장애인에게 대충 맞추기만 하는 경우가 많습니다.
 
@@ -20,9 +20,6 @@ Six Dots는 한국의 시각장애인 유튜버 원샷한솔님의 영상을 보
 
 </br>
 
-#### 🙏 Special thanks to
-
-[유튜버 원샷한솔님](https://www.youtube.com/@OneshotHansol)
 
 
 ## Youtube
