@@ -21,7 +21,7 @@ Six Dots는 한국의 시각장애인 [유튜버 원샷한솔님](https://www.yo
 </br>
 
 
-<img src="https://github.com/dayo2n/WWDC23-Swift-Student-Challenge/assets/57654681/c3f43b40-a800-4d40-88de-a36a9333bede" height=400><img src="https://github.com/dayo2n/WWDC23-Swift-Student-Challenge/assets/57654681/76940836-2580-4d1f-91b0-99310f16a7c8" height=400>
+<img src="https://github.com/dayo2n/WWDC23-Swift-Student-Challenge/assets/57654681/c3f43b40-a800-4d40-88de-a36a9333bede" height=300><img src="https://github.com/dayo2n/WWDC23-Swift-Student-Challenge/assets/57654681/76940836-2580-4d1f-91b0-99310f16a7c8" height=300>
 
 
 ## Youtube
