@@ -21,6 +21,8 @@ Six Dots는 한국의 시각장애인 [유튜버 원샷한솔님](https://www.yo
 </br>
 
 
+<img src="https://github.com/dayo2n/WWDC23-Swift-Student-Challenge/assets/57654681/c3f43b40-a800-4d40-88de-a36a9333bede" height=400><img src="https://github.com/dayo2n/WWDC23-Swift-Student-Challenge/assets/57654681/76940836-2580-4d1f-91b0-99310f16a7c8" height=400>
+
 
 ## Youtube
 
@@ -32,28 +34,3 @@ https://www.youtube.com/watch?v=NY2yq6vh-M0&t=3s
 - Swetha Mylavarapu(@sweatha04) on Figma 
 - Image by [Australian Braille Authority](https://www.facebook.com/BrailleAustralia)
 - Images from Freepik [https://www.freepik.com/](https://www.freepik.com/)
-
-## License
-
-
-The MIT License
-
-Copyright (c) 2023 Dayeon Moon
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
